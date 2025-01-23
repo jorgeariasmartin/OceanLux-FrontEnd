@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+/* Importar los estilos de PrimeNG directamente desde node_modules */
+/* Directamente desde node_modules sin ~ */
+@import "primeicons/primeicons.css";
+
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
