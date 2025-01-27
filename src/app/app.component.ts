@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-
-import { ButtonModule } from 'primeng/button';
-import { CalendarModule } from 'primeng/calendar';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { HeaderComponent } from '../component/header/header.component';
+import { routes } from './app.routes';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ButtonModule, CalendarModule],
-  templateUrl: './app.component.html'
+  imports: [RouterModule, RouterOutlet, HeaderComponent],
+  templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'OcenanLux-FrontEnd';
+  title = 'OceanLux-FrontEnd';
 }
