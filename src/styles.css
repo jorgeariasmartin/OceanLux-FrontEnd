@@ -3,10 +3,17 @@
 /* Directamente desde node_modules sin ~ */
 @import "primeicons/primeicons.css";
 
-
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+.dark-blue-bg {
+  background-color: #102F41;
+}
+
+body {
+  font-family: "Hanken Grotesk", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
