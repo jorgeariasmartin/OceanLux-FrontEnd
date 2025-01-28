@@ -41,7 +41,7 @@
           <span class="sr-only">Close sidebar</span>
         </button>
       </div>
-      <nav class="flex flex-col flex-1 w-64 p-4 mt-4 text-secondary">
+      <nav class="flex flex-col flex-1 w-64 p-4 mt-4 gap-3 text-secondary">
         <a href="#" class="flex items-center space-x-2">
           <svg
             class="w-6 h-6"
@@ -60,6 +60,14 @@
           </svg>
           <span>Home</span>
         </a>
+        <label class="flex items-center gap-3 cursor-pointer"routerLink="/logaccount">
+          <i class="pi pi-user"></i>
+          <span>Iniciar Sesión</span>
+        </label>
+        <label class="flex items-center gap-3 cursor-pointer"routerLink="/trips">
+          <i class="pi pi-search"></i>
+          <span>Explorar</span>
+        </label>
       </nav>
       <div class="flex-shrink-0 p-4">
         <button class="flex items-center space-x-2 text-secondary">
