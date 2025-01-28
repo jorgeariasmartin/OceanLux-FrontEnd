@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { HeaderComponent } from '../component/header/header.component';
-import { routes } from './app.routes';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterModule, RouterOutlet, HeaderComponent],
+  imports: [RouterModule, RouterOutlet],
   templateUrl: './app.component.html',
+  standalone: true
 })
 export class AppComponent {
   title = 'OceanLux-FrontEnd';
