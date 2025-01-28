@@ -1,0 +1,26 @@
+<div class="bg-[url('/landing-page-bg.png')] bg-scroll bg-cover">
+  <div class="card flex pt-20 justify-center">
+    <div>
+      <p-selectButton
+        [options]="stateOptions"
+        [(ngModel)]="activeForm"
+        optionLabel="label"
+        optionValue="value"
+        allowEmpty="false"
+        class="p-selectbutton w-full">
+      </p-selectButton>
+    </div>
+  </div>
+
+  <div class="mt-5 flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
+      <div class="flex flex-col items-center p-4" *ngIf="activeForm=='login'">
+        <p>hola que ase</p>
+      </div>
+      <div class="flex flex-col items-center p-4" *ngIf="activeForm=='register'">
+        <p>Hola que ase 2</p>
+      </div>
+    </div>
+  </div>
+  <app-sidebar/>
+</div>
