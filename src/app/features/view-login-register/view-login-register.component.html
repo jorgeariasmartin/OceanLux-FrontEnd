@@ -15,12 +15,117 @@
   <div class="mt-5 flex items-center justify-center">
     <div class="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
       <div class="flex flex-col items-center p-4" *ngIf="activeForm=='login'">
-        <p>hola que ase</p>
+        <h2 class="mb-2 text-center text-2xl font-bold tracking-tight text-gray-800">Inicio de Sesión</h2>
+        <h2 class="mb-9 text-center text-l font-bold tracking-tight text-gray-600">¡Bienvendido de vuelta!</h2>
+        <div class="w-full space-y-4">
+          <div class="flex flex-col">
+            <label for="loginUsername" class="block text-m font-medium text-gray-700">Nombre de Usuario</label>
+            <input class="w-100" pInputText id="loginUsername" type="text"/>
+          </div>
+          <div class="flex flex-col">
+            <label for="loginPassword" class=" block text-m font-medium text-gray-700">Contraseña</label>
+            <p-password id="loginPassword" type="password" [feedback]="false"
+                        styleClass="p-password p-component p-inputwrapper p-input-icon-right"
+                        [style]="{'width':'100%'}"
+                        [inputStyle]="{'width':'100%'}" [toggleMask]="true"
+            ></p-password>
+          </div>
+          <div class="flex items-center align-middle justify-center">
+            <p-button
+              [style]="{'width':'100%', 'margin-top':' 3rem', 'background-color':'#102F41'}"
+              type="submit"
+              label="Iniciar Sesión"
+              icon="pi pi-user"
+              styleClass="icon-button"
+            ></p-button>
+          </div>
+        </div>
       </div>
       <div class="flex flex-col items-center p-4" *ngIf="activeForm=='register'">
-        <p>Hola que ase 2</p>
+        <h2 class="mb-2 text-center text-2xl font-bold tracking-tight text-gray-800">Registro</h2>
+        <h2 class="mb-9 text-center text-l font-bold tracking-tight text-gray-600">Experiencias únicas te esperan</h2>
+        <div  class="w-full space-y-4">
+
+          <div  class="flex flex-col">
+            <label for="username" class="block text-m font-medium text-gray-700">Nombre de Usuario</label>
+            <input type="text" id="username" pInputText/>
+          </div>
+          <div class="flex flex-col">
+            <label for="password" class=" block text-m font-medium text-gray-700">Contraseña</label>
+            <p-password [toggleMask]="true" [feedback]="true"
+                        id="password"
+                        type="password"
+                        styleClass="w-full"
+                        [inputStyle]="{'width':'100%'}"
+                        weakLabel="Fortaleza baja"
+                        mediumLabel="Fortaleza media"
+                        strongLabel="Fortaleza alta"
+            />
+          </div>
+
+          <div  class="flex flex-col">
+            <label for="dni" class="block text-m font-medium text-gray-700">DNI</label>
+            <input type="text" id="dni" pInputText/>
+          </div>
+
+          <div  class="flex flex-col">
+            <label for="address" class="block text-m font-medium text-gray-700">Dirección</label>
+            <input type="text" id="address" pInputText/>
+          </div>
+
+          <div class="flex flex-col">
+            <label for="telephone">Numero de teléfono</label>
+            <p-input-number id="telephone" mode="decimal" [min]="0" [inputStyle]="{'width':'100%'}" pInputNumber></p-input-number>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="flex flex-col">
+              <label for="firstname" class="block text-m font-medium text-gray-700">Nombre</label>
+              <input type="text" id="firstname" pInputText/>
+            </div>
+
+            <div class="flex flex-col">
+              <label for="surname" class="block text-m font-medium text-gray-700">Apellidos</label>
+              <input type="text" id="surname" pInputText/>
+            </div>
+          </div>
+
+
+
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="flex flex-col">
+              <label for="email" class="block text-m font-medium text-gray-700">Email</label>
+              <input
+                type="email"
+                id="email"
+                pInputText
+              />
+            </div>
+
+            <div class="flex flex-col">
+              <label for="birthdate" class="block  text-m font-medium text-gray-700">
+                Fecha de nacimiento
+              </label>
+              <input
+                pInputText
+                type="date"
+                id="birthdate"
+              >
+            </div>
+
+            </div>
+          </div>
+
+          <p-button  [style]="{'width':'80%', 'margin-top':' 3rem', 'margin-left':'2rem', 'background-color':'#102F41'}"
+                     type="submit"
+                     label="Registrarse"
+                     icon="pi pi-user"
+                     styleClass="icon-button">
+
+          </p-button>
       </div>
     </div>
   </div>
   <app-sidebar/>
 </div>
+
