@@ -8,6 +8,7 @@ import {Password} from 'primeng/password';
 import {Button} from 'primeng/button';
 import {InputText} from 'primeng/inputtext';
 import { InputNumber } from 'primeng/inputnumber';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-view-login-register',
@@ -15,11 +16,16 @@ import { InputNumber } from 'primeng/inputnumber';
   imports: [RouterModule, SidebarComponent, FormsModule, SelectButtonModule, NgIf, Password, Button, InputText, InputNumber],
   templateUrl: './view-login-register.component.html',
 })
-export class ViewLoginRegisterComponent {
+export class ViewLoginRegisterComponent implements OnInit {
+
   stateOptions: any[] = [
     { label: 'Iniciar sesión', value: 'login' },
     { label: 'Registrarse', value: 'register' },
   ];
 
   activeForm: string = '';
+
+  ngOnInit() {
+    this.activeForm = 'login';
+  }
 }

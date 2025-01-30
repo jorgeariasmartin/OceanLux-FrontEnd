@@ -1,4 +1,4 @@
-<div class="bg-[url('/landing-page-bg.png')] bg-scroll bg-cover">
+<div class="bg-[url('/login-bg.png')] bg-auto min-h-screen">
   <div class="card flex pt-20 justify-center">
     <div>
       <p-selectButton
@@ -13,7 +13,7 @@
   </div>
 
   <div class="mt-5 flex items-center justify-center">
-    <div class="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full mb-10">
       <div class="flex flex-col items-center p-4" *ngIf="activeForm=='login'">
         <h2 class="mb-2 text-center text-2xl font-bold tracking-tight text-gray-800">Inicio de Sesión</h2>
         <h2 class="mb-9 text-center text-l font-bold tracking-tight text-gray-600">¡Bienvendido de vuelta!</h2>
@@ -116,7 +116,7 @@
             </div>
           </div>
 
-          <p-button  [style]="{'width':'80%', 'margin-top':' 3rem', 'margin-left':'2rem', 'background-color':'#102F41'}"
+          <p-button  [style]="{'width':'100%', 'margin-top':' 3rem', 'background-color':'#102F41'}"
                      type="submit"
                      label="Registrarse"
                      icon="pi pi-user"
