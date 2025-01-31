@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { trigger, style, transition, animate } from '@angular/animations';
 import {NgIf} from '@angular/common';
 import {RouterLink} from '@angular/router';
+import {NgClass, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
@@ -19,6 +20,8 @@ import {RouterLink} from '@angular/router';
     ]),
   ],
   imports: [
+    NgIf,
+    NgClass
     NgIf,
     RouterLink
   ],

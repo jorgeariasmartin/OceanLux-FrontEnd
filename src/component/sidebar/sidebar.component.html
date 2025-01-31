@@ -94,7 +94,7 @@
   </div>
 </div>
 
-<button (click)="toggleSidebar()" class="fixed p-2 text-secondary bg-primary rounded-lg top-5 left-5">
+<button [ngClass]="{'hidden': isSidebarOpen}" (click)="toggleSidebar()" class="fixed p-2 text-secondary bg-primary rounded-lg top-5 left-5">
   <svg
     class="w-6 h-6"
     fill="none"
