@@ -8,6 +8,5 @@ export const routes: Routes = [
   {path: '', component: HomeComponent},
   { path: 'trips', component: ViewAllTripsComponent },
   { path: 'yachts', component: YachtListComponent },  // Ruta por defecto o cualquier ruta que elijas
-
   { path: 'logaccount', component: ViewLoginRegisterComponent },
 ];
