@@ -16,31 +16,39 @@
     <div class="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full mb-10">
       <div class="flex flex-col items-center p-4" *ngIf="activeForm=='login'">
         <h2 class="mb-2 text-center text-2xl font-bold tracking-tight text-gray-800">Inicio de Sesión</h2>
-        <h2 class="mb-9 text-center text-l font-bold tracking-tight text-gray-600">¡Bienvendido de vuelta!</h2>
+        <h2 class="mb-9 text-center text-l font-bold tracking-tight text-gray-600">¡Bienvenido de vuelta!</h2>
+
         <div class="w-full space-y-4">
           <div class="flex flex-col">
             <label for="loginUsername" class="block text-m font-medium text-gray-700">Nombre de Usuario</label>
-            <input class="w-100" pInputText id="loginUsername" type="text"/>
+            <input class="w-100" pInputText id="loginUsername" type="text" [(ngModel)]="user.username"/>
           </div>
+
           <div class="flex flex-col">
-            <label for="loginPassword" class=" block text-m font-medium text-gray-700">Contraseña</label>
+            <label for="loginPassword" class="block text-m font-medium text-gray-700">Contraseña</label>
             <p-password id="loginPassword" type="password" [feedback]="false"
                         styleClass="p-password p-component p-inputwrapper p-input-icon-right"
                         [style]="{'width':'100%'}"
                         [inputStyle]="{'width':'100%'}" [toggleMask]="true"
+                        [(ngModel)]="user.password"
             ></p-password>
           </div>
+
+          <p *ngIf="errorMessage" class="text-red-500 text-sm">{{ errorMessage }}</p>
+
           <div class="flex items-center align-middle justify-center">
             <p-button
-              [style]="{'width':'100%', 'margin-top':' 3rem', 'background-color':'#102F41'}"
-              type="submit"
+              [style]="{'width':'100%', 'margin-top':'3rem', 'background-color':'#102F41'}"
+              type="button"
               label="Iniciar Sesión"
               icon="pi pi-user"
               styleClass="icon-button"
+              (click)="login()"
             ></p-button>
           </div>
         </div>
       </div>
+
       <div class="flex flex-col items-center p-4" *ngIf="activeForm=='register'">
         <h2 class="mb-2 text-center text-2xl font-bold tracking-tight text-gray-800">Registro</h2>
         <h2 class="mb-9 text-center text-l font-bold tracking-tight text-gray-600">Experiencias únicas te esperan</h2>
