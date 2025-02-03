@@ -62,10 +62,6 @@
         </svg>
         <span>Home</span>
       </a>
-      <label class="flex items-center gap-3 cursor-pointer"routerLink="/logaccount">
-        <i class="pi pi-user"></i>
-        <span>Iniciar Sesión</span>
-      </label>
       <label class="flex items-center gap-3 cursor-pointer"routerLink="/trips">
         <i class="pi pi-search"></i>
         <span>Explorar</span>
@@ -73,22 +69,31 @@
     </nav>
     <div class="flex-shrink-0 p-4">
       <button class="flex items-center space-x-2 text-secondary">
-        <svg
-          aria-hidden="true"
-          class="w-6 h-6"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="#F2F9FD"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-          />
-        </svg>
-        <span>Logout</span>
+        <div>
+          <label *ngIf="!(isLoggedIn | async)" class="flex items-center gap-3 cursor-pointer" routerLink="/logaccount">
+            <i class="pi pi-user"></i>
+            <span>Iniciar Sesión</span>
+          </label>
+          <label *ngIf="isLoggedIn | async" class="flex items-center gap-3 cursor-pointer" (click)="logout()">
+            <svg
+              aria-hidden="true"
+              class="w-6 h-6"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="#F2F9FD"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+              />
+            </svg>
+            <span>Cerrar Sesión</span>
+          </label>
+        </div>
+
       </button>
     </div>
   </div>
