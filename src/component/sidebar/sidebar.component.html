@@ -20,7 +20,6 @@
   <!-- Sidebar content -->
   <div class="z-10 flex flex-col flex-1">
     <div class="flex items-center justify-between flex-shrink-0 w-64 p-4">
-      <!-- Logo -->
       <a href="#">
         <img
           aria-hidden="true"
@@ -28,7 +27,7 @@
           src="/Logo-SVG.svg"
         />
       </a>
-      <!-- Close btn -->
+
       <button (click)="toggleSidebar()" class="p-1 rounded-lg focus:outline-none focus:ring text">
         <svg
           class="w-6 h-6"
@@ -43,8 +42,8 @@
         <span class="sr-only">Close sidebar</span>
       </button>
     </div>
-    <nav class="flex flex-col flex-1 w-64 p-4 mt-4 text-secondary">
-      <a href="#" class="flex items-center space-x-2">
+    <nav class="flex flex-col flex-1 w-64 p-4 mt-4 text-secondary space-y-4">
+      <a class="flex items-center space-x-2" routerLink="/home">
         <svg
           class="w-6 h-6"
           aria-hidden="true"
@@ -62,10 +61,12 @@
         </svg>
         <span>Home</span>
       </a>
-      <label class="flex items-center gap-3 cursor-pointer"routerLink="/trips">
-        <i class="pi pi-search"></i>
+      <a class="flex items-center space-x-2" routerLink="/trips">
+        <div class="h-6 w-6 flex items-center justify-center">
+          <i class="pi pi-search"></i>
+        </div>
         <span>Explorar</span>
-      </label>
+      </a>
     </nav>
     <div class="flex-shrink-0 p-4">
       <button class="flex items-center space-x-2 text-secondary">
