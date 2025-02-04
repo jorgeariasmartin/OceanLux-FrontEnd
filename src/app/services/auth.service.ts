@@ -9,14 +9,14 @@ import { User } from '../model/User';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8000/api';
+  private apiUrl = 'http://localhost:8000';
   private authStatus = new BehaviorSubject<boolean>(this.hasToken());
 
   constructor(private http: HttpClient, private router: Router) {}
 
   // Método de login
   login(user: User): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login/check`, user).pipe(
+    return this.http.post<any>(`${this.apiUrl}/api/login/check`, user).pipe(
       tap(response => {
         if (response.token) {
           localStorage.setItem('authToken', response.token);
@@ -24,6 +24,10 @@ export class AuthService {
         }
       })
     );
+  }
+
+  register(userData: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/user/create`, userData);
   }
 
   // Verifica si hay un token guardado
