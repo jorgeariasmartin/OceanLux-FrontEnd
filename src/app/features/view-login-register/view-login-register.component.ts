@@ -121,20 +121,35 @@ export class ViewLoginRegisterComponent implements OnInit {
 
     this.authService.register(this.userData).subscribe({
       next: (response) => {
-        console.log('Registro exitoso:', response);
-
-        // ✅ MOSTRAR TOAST DE ÉXITO
         this.messageService.add({ severity: 'success', summary: 'Éxito', detail: 'Registro exitoso' });
-
-        // ✅ CAMBIAR AL FORMULARIO DE LOGIN
+        this.resetForm();
         this.activeForm = 'login';
       },
       error: (error) => {
         console.error('Error en el registro:', error);
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Error en el registro' });
+
+        this.userData.password = '';
       }
     });
   }
+
+  resetForm() {
+    this.userData = {
+      username: '',
+      password: '',
+      email: '',
+      client: {
+        name: '',
+        surname: '',
+        birthdate: '',
+        dni: '',
+        address: '',
+        phone_number: null
+      }
+    };
+  }
+
 
   login() {
     if (!this.user.username || !this.user.password) {
