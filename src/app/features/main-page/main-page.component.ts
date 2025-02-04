@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {HeaderComponent} from '../../../component/header/header.component';
-import {SidebarComponent} from '../../../component/sidebar/sidebar.component';
 import {SearchbarComponent} from '../../../component/searchbar/searchbar.component';
 import {CardComponent} from '../../../component/card/card.component';
 
