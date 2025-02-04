@@ -10,7 +10,8 @@ module.exports = {
         'primary-light': '#17688D',
         'primary-lighter': '#1C87B5',
         'secondary': '#F2F9FD',
-        'gray': '#EFEFEF'
+        'gray': '#F1EFEF',
+        'alert': '#DC3545'
       }
     },
   },
