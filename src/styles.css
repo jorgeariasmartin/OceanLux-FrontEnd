@@ -19,26 +19,44 @@ body {
 
   --sb-track-color: #102f41;
   --sb-thumb-color: #f2f9fd;
-  --sb-size: 10px;
+  --sb-size: 16px;
+  --sb-thumb-padding: 4px;
 }
 
 body::-webkit-scrollbar {
-  width: var(--sb-size)
+  width: var(--sb-size);
 }
 
 body::-webkit-scrollbar-track {
   background: var(--sb-track-color);
-  border-radius: 0px;
 }
 
 body::-webkit-scrollbar-thumb {
   background: var(--sb-thumb-color);
   border-radius: 20px;
-
+  border: var(--sb-thumb-padding) solid transparent;
+  background-clip: content-box;
 }
 
+.carousel-scrollbar::-webkit-scrollbar {
+  height: 10px;
+}
+
+.carousel-scrollbar::-webkit-scrollbar-track {
+  background: var(--sb-thumb-color);
+}
+
+.carousel-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--sb-track-color);
+  border-radius: 20px;
+}
+
+/* Fallback para navegadores que no soportan ::-webkit-scrollbar */
 @supports not selector(::-webkit-scrollbar) {
-  body {
-    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  body, .carousel-scrollbar {
+    scrollbar-color: var(--sb-track-color) var(--sb-thumb-color) ;
+    scrollbar-width: thin;
   }
 }
+
+
