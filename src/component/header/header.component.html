@@ -1,10 +1,19 @@
-<div class="bg-primary h-[80px] grid grid-cols-3">
-  <app-sidebar *ngIf="showSidebar"/>
-
+<div *ngIf="showSidebar" class="bg-primary h-[80px] grid grid-cols-3">
+  <app-sidebar/>
   <div class="grid-start-1 flex justify-center items-center">
-    <img src="/oceanLux-logo.png" class="h-[50px]">
+    <img src="/oceanLux-logo.png" class="h-[50px] sm:inline hidden">
   </div>
   <div class="grid-start-2 flex items-center pr-[35px] justify-end">
-    <h1 class="text-white text-xl">Tickets</h1>
+    <h1 class="text-secondary text-xl">Tickets</h1>
+  </div>
+</div>
+
+<div *ngIf="!showSidebar" class="bg-primary h-[80px] grid grid-cols-2">
+  <div class="flex justify-start items-center pl-[35px] gap-4">
+    <img src="/oceanLux-logo.png" class="h-[40px] sm:inline hidden">
+    <h1 class="text-secondary text-3xl">Oceanlux</h1>
+  </div>
+  <div class="grid-start-2 flex items-center pr-[35px] justify-end">
+    <h1 class="text-secondary text-xl">Tickets</h1>
   </div>
 </div>
