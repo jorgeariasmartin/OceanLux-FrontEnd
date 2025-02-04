@@ -52,88 +52,124 @@
       <div class="flex flex-col items-center p-4" *ngIf="activeForm=='register'">
         <h2 class="mb-2 text-center text-2xl font-bold tracking-tight text-gray-800">Registro</h2>
         <h2 class="mb-9 text-center text-l font-bold tracking-tight text-gray-600">Experiencias únicas te esperan</h2>
-        <div  class="w-full space-y-4">
 
-          <div  class="flex flex-col">
-            <label for="username" class="block text-m font-medium text-gray-700">Nombre de Usuario</label>
-            <input type="text" id="username" pInputText/>
-          </div>
+        <div class="w-full space-y-4">
           <div class="flex flex-col">
-            <label for="password" class=" block text-m font-medium text-gray-700">Contraseña</label>
-            <p-password [toggleMask]="true" [feedback]="true"
-                        id="password"
-                        type="password"
-                        styleClass="w-full"
-                        [inputStyle]="{'width':'100%'}"
-                        weakLabel="Fortaleza baja"
-                        mediumLabel="Fortaleza media"
-                        strongLabel="Fortaleza alta"
+            <label for="username">Nombre de Usuario</label>
+            <input type="text" id="username" [(ngModel)]="userData.username" pInputText/>
+          </div>
+
+          <div class="flex flex-col">
+            <label for="password">Contraseña</label>
+            <p-password [(ngModel)]="userData.password" [toggleMask]="true" [feedback]="true"
+                        id="password" styleClass="w-full" [inputStyle]="{'width':'100%'}"
+                        weakLabel="Fortaleza baja" mediumLabel="Fortaleza media" strongLabel="Fortaleza alta" />
+          </div>
+
+          <div class="flex flex-col">
+            <label for="dni">DNI</label>
+
+            <input
+              type="text"
+              id="dni"
+              [(ngModel)]="userData.client.dni"
+              pInputText
+              (input)="validateDNI()"
+              [ngClass]="{'ng-invalid ng-dirty border-red-500': dniValid === false}"
             />
+
+            <!-- Mensaje de error cuando el DNI es inválido -->
+            <small class="text-red-500 mt-1" *ngIf="dniValid === false">
+              Introduce un DNI válido (8 números seguidos de una letra).
+            </small>
           </div>
 
-          <div  class="flex flex-col">
-            <label for="dni" class="block text-m font-medium text-gray-700">DNI</label>
-            <input type="text" id="dni" pInputText/>
-          </div>
 
-          <div  class="flex flex-col">
-            <label for="address" class="block text-m font-medium text-gray-700">Dirección</label>
-            <input type="text" id="address" pInputText/>
+          <div class="flex flex-col">
+            <label for="address">Dirección</label>
+            <input type="text" id="address" [(ngModel)]="userData.client.address" pInputText/>
           </div>
 
           <div class="flex flex-col">
-            <label for="telephone">Numero de teléfono</label>
-            <p-input-number id="telephone" mode="decimal" [min]="0" [inputStyle]="{'width':'100%'}" pInputNumber></p-input-number>
+            <label for="telephone">Número de Teléfono</label>
+
+            <input
+              [(ngModel)]="userData.client.phone_number"
+              id="telephone"
+              type="number"
+              (input)="validatePhoneNumber()"
+              pInputText
+              [ngClass]="{'ng-invalid ng-dirty border-red-500': phoneValid === false}"
+            />
+            <small class="text-red-500 mt-1" *ngIf="phoneValid === false">
+              Introduce un número de teléfono válido (9-15 dígitos).
+            </small>
           </div>
+
+
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="flex flex-col">
-              <label for="firstname" class="block text-m font-medium text-gray-700">Nombre</label>
-              <input type="text" id="firstname" pInputText/>
+              <label for="firstname">Nombre</label>
+              <input type="text" id="firstname" [(ngModel)]="userData.client.name" pInputText/>
             </div>
 
             <div class="flex flex-col">
-              <label for="surname" class="block text-m font-medium text-gray-700">Apellidos</label>
-              <input type="text" id="surname" pInputText/>
+              <label for="surname">Apellidos</label>
+              <input type="text" id="surname" [(ngModel)]="userData.client.surname" pInputText/>
             </div>
           </div>
 
-
-
-
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="flex flex-col">
-              <label for="email" class="block text-m font-medium text-gray-700">Email</label>
-              <input
-                type="email"
-                id="email"
-                pInputText
-              />
+            <div class="grid  gap-4 w-full">
+              <div class="flex flex-col w-full">
+                <label for="email">Email</label>
+
+                <input
+                  type="email"
+                  id="email"
+                  [(ngModel)]="userData.email"
+                  pInputText
+                  (input)="validateEmail()"
+                  class="w-full"
+                  [ngClass]="{'ng-invalid ng-dirty border-red-500': emailValid === false}"
+                />
+                <small class="text-red-500 mt-1" *ngIf="emailValid === false">
+                  Introduce un correo válido.
+                </small>
+              </div>
             </div>
 
             <div class="flex flex-col">
-              <label for="birthdate" class="block  text-m font-medium text-gray-700">
-                Fecha de nacimiento
-              </label>
+              <label for="birthdate">Fecha de nacimiento</label>
+
               <input
-                pInputText
                 type="date"
                 id="birthdate"
-              >
+                [(ngModel)]="userData.client.birthdate"
+                (input)="validateBirthdate()"
+                pInputText
+                [ngClass]="{'ng-invalid ng-dirty border-red-500': birthdateValid === false}"
+              />
+              <small class="text-red-500 mt-1" *ngIf="birthdateValid === false">
+                Debes tener al menos 18 años para registrarte.
+              </small>
             </div>
 
-            </div>
           </div>
+        </div>
 
-          <p-button  [style]="{'width':'100%', 'margin-top':' 3rem', 'background-color':'#102F41'}"
-                     type="submit"
-                     label="Registrarse"
-                     icon="pi pi-user"
-                     styleClass="icon-button">
-
-          </p-button>
+        <p-button [style]="{'width':'100%', 'margin-top':'3rem', 'background-color':'#102F41'}"
+                  (click)="register()"
+                  label="Registrarse"
+                  icon="pi pi-user"
+                  styleClass="icon-button">
+        </p-button>
+        <p *ngIf="errorMessage" class="text-red-500 text-center mt-3">{{ errorMessage }}</p>
       </div>
+
     </div>
   </div>
   <app-sidebar/>
+  <p-toast></p-toast>
 </div>
 
