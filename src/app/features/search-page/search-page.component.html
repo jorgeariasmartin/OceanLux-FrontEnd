@@ -1,0 +1,79 @@
+<app-header [showSidebar]="true"/>
+<div class="md:px-[50px] xl:px-[200px] px-4 mb-10 pt-4">
+  <app-searchbar/>
+  <div class="grid grid-cols-3 gap-8 sm:mt-8 mt-2">
+    <div class="md:col-span-2 col-span-3">
+      <!-- Boton filtro movil -->
+      <button class="md:hidden border-primary border-2 inline mb-4 text-primary py-1.5 w-full rounded-md
+      hover:border-primary-light hover:text-secondary hover:bg-primary-light transition duration-300"
+              (click)="filterModal.openModal()">
+        Filtros
+      </button>
+
+      <h2 class="text-primary text-xl sm:text-2xl md:text-3xl font-bold">Resultados de: <u class="italic">Algeciras</u></h2>
+      <div class="mt-8 flex sm:flex-col gap-8 flex-row flex-wrap justify-center">
+        <app-card-details/>
+        <app-card-details/>
+        <app-card-details/>
+        <app-card-details/>
+      </div>
+    </div>
+
+    <div class="text-primary bg-gray-50 rounded-xl shadow-sm w-48 md:inline hidden">
+      <h2 class="text-3xl font-bold mb-4">Filtros</h2>
+
+      <!-- Filtro de barco -->
+      <h3 class="text-xl font-semibold mb-2">Tipo de barco</h3>
+
+      <div class="flex flex-col gap-3 mb-8">
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" value="yate" class="w-5 h-5 border-2 border-gray-400 rounded-sm hover:cursor-pointer focus:ring-primary-light accent-primary">
+          <span class="text-lg">Yate</span>
+        </label>
+
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" value="lancha" class="w-5 h-5 border-2 border-gray-400 rounded-sm hover:cursor-pointer focus:ring-primary-light accent-primary">
+          <span class="text-lg">Lancha</span>
+        </label>
+
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" value="barco" class="w-5 h-5 border-2 border-gray-400 rounded-sm hover:cursor-pointer focus:ring-primary-light accent-primary">
+          <span class="text-lg">Barco</span>
+        </label>
+      </div>
+
+      <!-- Filtro de precio -->
+      <h3 class="text-xl font-semibold mb-2">Rango de Precio</h3>
+
+      <div class="flex flex-col gap-3 mb-8">
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" value="0-100" class="w-5 h-5 border-2 border-gray-400 rounded-sm accent-primary transition">
+          <span class="text-lg">0€ - 100€</span>
+        </label>
+
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" value="101-300" class="w-5 h-5 border-2 border-gray-400 rounded-sm accent-primary transition">
+          <span class="text-lg">101€ - 300€</span>
+        </label>
+
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" value="301-500" class="w-5 h-5 border-2 border-gray-400 rounded-sm accent-primary transition">
+          <span class="text-lg">301€ - 500€</span>
+        </label>
+
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" value="500+" class="w-5 h-5 border-2 border-gray-400 rounded-sm accent-primary transition">
+          <span class="text-lg">500€ o más</span>
+        </label>
+      </div>
+
+      <button class="bg-primary text-secondary py-1.5 w-full rounded-md hover:bg-primary-light transition duration-300">
+        Aplicar filtros
+      </button>
+    </div>
+
+    <app-modal-filter #filterModal></app-modal-filter>
+  </div>
+</div>
+
+

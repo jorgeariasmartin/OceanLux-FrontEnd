@@ -1,4 +1,4 @@
-<div class="flex sm:flex-row flex-col items-center gap-2 py-4 bg-gray-50">
+<div class="flex items-center gap-2 py-4 bg-gray-50">
 
   <div class="flex items-center w-full border border-primary rounded-md px-3 py-2 focus-within:ring-2 focus-within:ring-primary-lighter">
     <i class="pi pi-search text-primary-light mr-2"></i>
@@ -9,8 +9,13 @@
     />
   </div>
 
-  <button class="bg-primary text-secondary py-2 sm:w-[170px] w-full rounded-md hover:bg-primary-light transition duration-300">
+  <button class="sm:inline hidden bg-primary text-secondary py-2 sm:w-[170px] w-full rounded-md hover:bg-primary-light transition duration-300">
     Buscar
+  </button>
+  <button class="sm:hidden inline bg-primary text-secondary p-2 w-min rounded-md hover:bg-primary-light transition duration-300">
+    <div class="h-6 w-6 flex items-center justify-center">
+      <i class="pi pi-search"></i>
+    </div>
   </button>
 </div>
 
