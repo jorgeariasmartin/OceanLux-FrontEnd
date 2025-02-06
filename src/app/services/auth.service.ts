@@ -35,6 +35,11 @@ export class AuthService {
     return !!localStorage.getItem('authToken');
   }
 
+  // Método para obtener el token
+  getToken(): string {
+    return <string>localStorage.getItem('authToken');
+  }
+
   // Método para saber si el usuario está autenticado
   isAuthenticated(): Observable<boolean> {
     return this.authStatus.asObservable();
@@ -44,6 +49,6 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('authToken');
     this.authStatus.next(false);
-    this.router.navigate(['/logaccount']);
+    this.router.navigate(['/logaccount']).then(r => r);
   }
 }
