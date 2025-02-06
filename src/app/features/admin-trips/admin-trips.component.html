@@ -1,0 +1,47 @@
+<app-header></app-header>
+<app-toast></app-toast>
+<p-confirmpopup></p-confirmpopup>
+<div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
+  <h2 class="text-2xl font-bold mb-4 text-center">Creación de Viajes</h2>
+
+  <form (submit)="confirmSubmit($event); $event.preventDefault()" class="space-y-4">
+    <p-floatlabel variant="on" class="w-full">
+      <input pInputText id="name" [(ngModel)]="trip.name" name="name" autocomplete="on" class="w-full p-2 border rounded" required />
+      <label for="name">Nombre del viaje</label>
+    </p-floatlabel>
+
+    <div class="w-full flex gap-x-4">
+      <p-floatlabel variant="on" class="w-[50%]">
+        <p-inputnumber [(ngModel)]="trip.price" mode="currency" inputId="currency-germany" currency="EUR" locale="de-DE" name="price" class="w-full"></p-inputnumber>
+        <label>Precio</label>
+      </p-floatlabel>
+
+      <p-floatlabel variant="on" class="w-[50%]">
+        <p-inputnumber [(ngModel)]="trip.duration_hours" inputId="mile" suffix=" h" name="durationHours" class="w-full"></p-inputnumber>
+        <label>Duración</label>
+      </p-floatlabel>
+    </div>
+
+    <p-floatlabel variant="on" class="w-full">
+      <textarea pTextarea id="description" [(ngModel)]="trip.description" name="description" autocomplete="off" class="w-full p-2 border rounded" required></textarea>
+      <label for="description">Descripción</label>
+    </p-floatlabel>
+
+    <div class="flex gap-12">
+      <p-floatlabel variant="on" class="w-full">
+        <p-datepicker name="startdate" inputId="startdate" [(ngModel)]="trip.startdate" [showTime]="true" dateFormat="yy-mm-dd" [hourFormat]="String(24)" class="w-full"></p-datepicker>
+        <label>Fecha de Salida</label>
+      </p-floatlabel>
+      <p-floatlabel variant="on" class="w-full">
+        <p-datepicker name="enddate" inputId="enddate" [(ngModel)]="trip.enddate" [showTime]="true" dateFormat="yy-mm-dd" [hourFormat]="String(24)" class="w-full"></p-datepicker>
+        <label>Fecha de llegada</label>
+      </p-floatlabel>
+    </div>
+
+    <div>
+      <p-listbox name="yacht" id="yachtId" [options]="filteredYachts" [(ngModel)]="trip.yacht" optionLabel="model" [filter]="true" required class="w-full mt-7"></p-listbox>
+    </div>
+    <p-button type="submit" label="Save" icon="pi pi-check" iconPos="right" [outlined]="true" class="w-full" />
+  </form>
+</div>
+
