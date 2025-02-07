@@ -250,7 +250,7 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
         value2 = value2?.[field];
       }
 
-      let result = 0;
+      let result: number;
       if (value1 == null && value2 != null) result = -1;
       else if (value1 != null && value2 == null) result = 1;
       else if (typeof value1 === 'string' && typeof value2 === 'string')

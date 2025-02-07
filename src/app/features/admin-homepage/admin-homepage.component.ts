@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {Splitter} from 'primeng/splitter';
-import {HeaderComponent} from '../../../component/header/header.component';
 import {SidebarComponent} from '../../../component/sidebar/sidebar.component';
 
 @Component({
