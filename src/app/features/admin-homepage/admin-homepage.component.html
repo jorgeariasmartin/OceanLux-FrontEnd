@@ -1,0 +1,26 @@
+<app-sidebar></app-sidebar>
+<div class="h-screen">
+  <p-splitter [style]="{ height: '100%' }" styleClass="mb-8 h-full">
+    <ng-template #panel>
+      <div class="flex items-center justify-center h-full w-full bg-cover bg-center text-neutral-50 transition-all duration-300 hover:scale-105 hover:text-white bg-[url('/img-admin-2.jpg')]" style="border: none;">
+        <a href="/adminTrips" class="w-full h-full flex items-center justify-center text-2xl font-bold">
+          <div>Administrar Viajes</div>
+        </a>
+      </div>
+    </ng-template>
+    <ng-template #panel>
+      <div class="flex items-center justify-center h-full w-full bg-cover bg-center transition-all duration-300 hover:scale-105 hover:text-black bg-[url('/img-admin-3.jpg')]" style="border: none;">
+        <a href="https://www.example.com/option2" class="w-full h-full flex items-center justify-center text-2xl font-bold">
+          <div>Administrar Yates</div>
+        </a>
+      </div>
+    </ng-template>
+    <ng-template #panel>
+      <div class="flex items-center justify-center h-full w-full bg-cover bg-center transition-all duration-300 hover:scale-105 hover:text-black bg-[url('/admin-img-3.jpg')]" style="border: none;">
+        <a href="https://www.example.com/option3" class="w-full h-full flex items-center justify-center text-2xl font-bold">
+          <div>Administrar reservas</div>
+        </a>
+      </div>
+    </ng-template>
+  </p-splitter>
+</div>
