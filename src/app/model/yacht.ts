@@ -1,7 +1,7 @@
 export interface Yacht {
   id: number;
-  yachtName: string;
-  yachtModel: string;
+  name: string;
+  model: string;
   image: string;
   description: string;
   capacity: number;
