@@ -73,6 +73,9 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
     if (!this.toast) {
       console.error('ToastComponent is not initialized');
     }
+    if (!this.tripService) {
+      console.error('TripService is not initialized');
+    }
   }
 
   loadYachts(): void {
@@ -196,29 +199,29 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
 
     this.tripService.updateTrip(this.selectedTrip.id!, tripToSend).subscribe({
       next: () => {
-        this.toast.addMessage('success', 'Updated', 'Trip updated successfully');
+        this.toast.addMessage('success', 'Actualizado', 'Viaje actualizado correctamente');
         this.loadTrips();
         this.resetForm();
       },
       error: (error) => {
-        this.toast.addMessage('error', 'Error', 'Error updating the trip');
+        this.toast.addMessage('error', 'Error', 'Error actualizando el viaje');
       }
     });
   }
 
   deleteTrip(trip: Trip): void {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to delete this trip?',
+      message: 'estás seguro de que deseas borrar este viaje?',
       header: 'Confirm Deletion',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.tripService.deleteTrip(trip.id!).subscribe({
           next: () => {
-            this.toast.addMessage('success', 'Deleted', 'Trip deleted successfully');
+            this.toast.addMessage('success', 'Borrado', 'Viaje borrado correctamente');
             this.loadTrips();
           },
           error: (error) => {
-            this.toast.addMessage('error', 'Error', 'Error deleting the trip');
+            this.toast.addMessage('error', 'Error', 'Error al borrar el viaje');
           }
         });
       }
