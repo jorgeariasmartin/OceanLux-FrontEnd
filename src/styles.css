@@ -31,6 +31,10 @@ body::-webkit-scrollbar-track {
   background: var(--sb-track-color);
 }
 
+.text-blue-special {
+  color: #17688D
+}
+
 body::-webkit-scrollbar-thumb {
   background: var(--sb-thumb-color);
   border-radius: 20px;
@@ -49,6 +53,19 @@ body::-webkit-scrollbar-thumb {
 .carousel-scrollbar::-webkit-scrollbar-thumb {
   background: var(--sb-track-color);
   border-radius: 20px;
+}
+
+.p-checkbox .p-checkbox-box {
+  border-color: #102F41 !important;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight {
+  background-color: #102F41 !important;
+  border-color:#102F41 !important;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight .p-checkbox-icon {
+  color: #102F41 !important;
 }
 
 /* Fallback para navegadores que no soportan ::-webkit-scrollbar */
