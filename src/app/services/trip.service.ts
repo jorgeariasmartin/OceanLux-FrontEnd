@@ -7,7 +7,7 @@ import { Trip } from '../model/trip';
   providedIn: 'root'
 })
 export class TripService {
-  private apiUrl = 'http://localhost:8000/trip';
+  private apiUrl = 'http://localhost:8000/api/trip';
   private http = inject(HttpClient);
 
   createTrip(trip: Trip): Observable<Trip> {
