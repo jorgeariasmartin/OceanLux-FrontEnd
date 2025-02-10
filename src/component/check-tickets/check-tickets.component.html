@@ -1,0 +1,39 @@
+<a *ngIf="!(isLoggedIn | async)" class="fixed top-5 right-5 z-50 px-4 py-2 text-primary bg-secondary rounded-lg" routerLink="/logaccount">
+  <i class="pi pi-user pr-2"></i>
+  <span>Iniciar Sesión</span>
+</a>
+
+<div *ngIf="(isLoggedIn | async)" class="fixed top-5 right-5 z-50" (document:click)="closeDropdown($event)">
+  <button id="toggleCart" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-lighter"
+          (click)="toggleCartDropdown()">
+    Tickets
+  </button>
+
+  <div *ngIf="showCartDropdown" id="cartDropdown"
+       class="absolute right-0 mt-2 w-64 bg-white shadow-lg rounded-md overflow-hidden z-10">
+    <div class="p-4 text-gray-700">
+      <p class="font-bold">Carrito</p>
+      <ul class="my-2">
+        <li class="flex justify-between py-1">
+          <span>Paseo Algeciras (X2)</span>
+          <span>1240€</span>
+        </li>
+        <li class="flex justify-between py-1">
+          <span>Torremolinos Tour</span>
+          <span>600€</span>
+        </li>
+        <li class="flex justify-between font-bold border-t pt-2">
+          <span>TOTAL</span>
+          <span>1840€</span>
+        </li>
+      </ul>
+      <button class="w-full mt-2 bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-lighter flex items-center justify-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+        Finalizar compra
+      </button>
+    </div>
+  </div>
+</div>
+
