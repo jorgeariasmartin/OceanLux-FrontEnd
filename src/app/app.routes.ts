@@ -8,9 +8,9 @@ import {AdminHomepageComponent} from './features/admin-homepage/admin-homepage.c
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path:'adminTrips', component: AdminTripsComponent},
+  {path: 'adminTrips', component: AdminTripsComponent},
   {path: 'logaccount', component: ViewLoginRegisterComponent},
   {path: 'home', component: MainPageComponent},
   {path: 'search', component: SearchPageComponent},
-  {path:'adminHome', component: AdminHomepageComponent}
-];
+  {path: 'adminHome', component: AdminHomepageComponent},
+  ];
