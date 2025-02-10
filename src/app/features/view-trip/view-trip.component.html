@@ -1,31 +1,89 @@
 <app-header [showSidebar]="true"/>
-<div class="md:px-[50px] xl:px-[200px] px-4 mb-10 pt-4">
+<div class="md:px-[50px] xl:px-[200px] px-4 mb-10 pt-10">
   <div class="flex flex-col w-full">
     <img src="/gg-placeholder-image.png" alt="Trip Image" class="w-full h-[230px] object-cover rounded-lg">
-    <div class="flex flex-col p-6 gap-10">
-      <h1 class="text-4xl font-bold">Tour Costa del Sol</h1>
-      <div class="flex flex-col gap-5">
-        <span class="text-2xl">Descripción</span>
-        <p class="w-2/3 text-justify">
-          Descubre la magia de la Costa del Sol en un tour inolvidable. Explora playas de arena dorada, encantadores pueblos blancos como Mijas y Nerja, y la vibrante ciudad de Málaga con su rica historia, deliciosa gastronomía y vida cultural. Disfruta del sol mediterráneo mientras te sumerges en paisajes deslumbrantes y experiencias únicas.
-        </p>
+    <div class="flex w-full gap-10">
+      <div class="flex flex-col p-6 gap-10 w-2/3">
+        <h1 class="text-4xl font-bold text-primary">Tour Costa del Sol</h1>
+        <div class="flex flex-col gap-5">
+          <span class="text-2xl text-primary">Descripción</span>
+          <p class="w-full text-justify text-primary">
+            Descubre la magia de la Costa del Sol en un tour inolvidable. Explora playas de arena dorada, encantadores pueblos blancos como Mijas y Nerja, y la vibrante ciudad de Málaga con su rica historia, deliciosa gastronomía y vida cultural. Disfruta del sol mediterráneo mientras te sumerges en paisajes deslumbrantes y experiencias únicas.
+          </p>
+        </div>
+        <div class="flex flex-col gap-3 w-full text-primary items-start">
+          <h2 class="text-3xl">Información del viaje</h2>
+          <div class="grid grid-cols-2 gap-5">
+            <div class="flex justify-center items-center gap-3">
+              <svg width="16" height="16" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.3818 9.52767C20.2698 9.20327 20.0668 8.92309 19.8 8.72491C19.5333 8.52673 19.2157 8.42007 18.89 8.41932H16.9435L16.1497 3.36774H10.9687L11.7624 8.41932H9.80005L9.00634 3.36774H3.82528L4.61899 8.41932H2.38112V13.0499H0.793701V23.5741H22.0119L24.6051 14.8636V13.0499H21.5893L20.3818 9.52767ZM14.805 5.0516L15.3342 8.41932H13.3717L12.8426 5.0516H14.805ZM7.66159 5.0516L8.19075 8.41932H6.22834L5.69924 5.0516H7.66159ZM3.96855 10.1032H18.89L19.9001 13.0499H3.96855V10.1032ZM22.979 14.7338L20.8485 21.8902H2.38112V14.7338H22.979Z" fill="#102F41"/>
+                <path d="M5.55593 16.8386H3.96851V18.5225H5.55593V16.8386Z" fill="#102F41"/>
+                <path d="M8.73086 16.8386H7.14343V18.5225H8.73086V16.8386Z" fill="#102F41"/>
+                <path d="M11.9057 16.8386H10.3182V18.5225H11.9057V16.8386Z" fill="#102F41"/>
+                <path d="M15.0805 16.8386H13.493V18.5225H15.0805V16.8386Z" fill="#102F41"/>
+                <path d="M18.2554 16.8386H16.668V18.5225H18.2554V16.8386Z" fill="#102F41"/>
+              </svg>
+              <label>Modelo del barco:</label>
+              <label class="text-blue-special"> Hola que ase</label>
+            </div>
+            <div class="flex justify-self-start items-center gap-3">
+              <i class="pi pi-clock"></i>
+              <label>Duración:</label>
+              <label class="text-blue-special"> 5 horas</label>
+            </div>
+            <div class="flex justify-self-start items-center gap-3">
+              <i class="pi pi-angle-right"></i>
+              <label>Comienzo:</label>
+              <label class="text-blue-special">Puerto Santa María</label>
+            </div>
+            <div class="flex justify-self-start items-center gap-3">
+              <i class="pi pi-users"></i>
+              <label>Tripulación:</label>
+              <label class="text-blue-special">Capitan y timonel</label>
+            </div>
+            <div class="flex justify-self-start items-center gap-3">
+              <i class="pi pi-user"></i>
+              <label>Pasajeros:</label>
+              <label class="text-blue-special">13</label>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="flex flex-col gap-3">
-        <h2 class="text-3xl">Información del viaje</h2>
-        <div class="flex">
-          <div class="flex justify-center items-center gap-3">
-            <svg width="26" height="27" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20.3818 9.52767C20.2698 9.20327 20.0668 8.92309 19.8 8.72491C19.5333 8.52673 19.2157 8.42007 18.89 8.41932H16.9435L16.1497 3.36774H10.9687L11.7624 8.41932H9.80005L9.00634 3.36774H3.82528L4.61899 8.41932H2.38112V13.0499H0.793701V23.5741H22.0119L24.6051 14.8636V13.0499H21.5893L20.3818 9.52767ZM14.805 5.0516L15.3342 8.41932H13.3717L12.8426 5.0516H14.805ZM7.66159 5.0516L8.19075 8.41932H6.22834L5.69924 5.0516H7.66159ZM3.96855 10.1032H18.89L19.9001 13.0499H3.96855V10.1032ZM22.979 14.7338L20.8485 21.8902H2.38112V14.7338H22.979Z" fill="#102F41"/>
-              <path d="M5.55593 16.8386H3.96851V18.5225H5.55593V16.8386Z" fill="#102F41"/>
-              <path d="M8.73086 16.8386H7.14343V18.5225H8.73086V16.8386Z" fill="#102F41"/>
-              <path d="M11.9057 16.8386H10.3182V18.5225H11.9057V16.8386Z" fill="#102F41"/>
-              <path d="M15.0805 16.8386H13.493V18.5225H15.0805V16.8386Z" fill="#102F41"/>
-              <path d="M18.2554 16.8386H16.668V18.5225H18.2554V16.8386Z" fill="#102F41"/>
-            </svg>
-            <label>Modelo del barco</label>
+      <div class="flex flex-col w-1/3 pt-10 justify-start">
+        <div class="flex flex-col w-full items-start gap-7 justify-start text-primary">
+          <h1 class="text-2xl font-bold">Adicionales</h1>
+          <div class="card flex flex-col justify-start gap-4">
+            <div class="flex items-center">
+              <p-checkbox inputId="Extra1" name="extra" value="Guia" size="large" class="border-alert" [(ngModel)]="extra" />
+              <label class="ml-2"> Guía turística 60 € </label>
+            </div>
+            <div class="flex items-center">
+              <p-checkbox inputId="Extra2" name="extra" value="Catering" size="large" class="text-primary" [(ngModel)]="extra" />
+              <label class="ml-2"> Catering 120 € </label>
+            </div>
+            <div class="flex items-center">
+              <p-checkbox inputId="Extra3" name="extra" value="Pepper" size="large" [(ngModel)]="extra" />
+              <label class="ml-2"> +1 Hora Extra </label>
+            </div>
+          </div>
+          <div class="flex flex-col items-start gap-5 w-full font-semibold">
+            <span>Tickets</span>
+            <p-inputnumber size="small" [(ngModel)]="value" [showButtons]="true" buttonLayout="horizontal" inputId="horizontal" [min]="1" spinnerMode="horizontal" [step]="1" currency="EUR">
+              <ng-template #incrementbuttonicon>
+                <span class="pi pi-plus"></span>
+              </ng-template>
+              <ng-template #decrementbuttonicon>
+                <span class="pi pi-minus"></span>
+              </ng-template>
+            </p-inputnumber>
+          </div>
+          <div class="flex w-full items-center gap-5">
+            <p-button label="Comprar tickets" icon="pi pi-ticket" severity="contrast"></p-button>
+            <span class="font-bold text-xl">Total 1230 €</span>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </div>
