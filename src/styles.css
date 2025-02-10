@@ -59,6 +59,10 @@ body::-webkit-scrollbar-thumb {
   border-color: #102F41 !important;
 }
 
+.custom-inputnumber input {
+  border: 2px solid #102F41 !important;
+}
+
 .p-checkbox .p-checkbox-box.p-highlight {
   background-color: #102F41 !important;
   border-color:#102F41 !important;
