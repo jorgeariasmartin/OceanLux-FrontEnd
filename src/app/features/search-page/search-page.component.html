@@ -12,10 +12,7 @@
 
       <h2 class="text-primary text-xl sm:text-2xl md:text-3xl font-bold">Resultados de: <u class="italic">Algeciras</u></h2>
       <div class="mt-8 flex sm:flex-col gap-8 flex-row flex-wrap justify-center">
-        <app-card-details/>
-        <app-card-details/>
-        <app-card-details/>
-        <app-card-details/>
+        <app-card-details *ngFor="let trip of trips" [trip]="trip"></app-card-details>
       </div>
     </div>
 
