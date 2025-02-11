@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Trip} from '../../app/model/trip';
 
 @Component({
   selector: 'app-card-details',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   templateUrl: './card-details.component.html'
 })
 export class CardDetailsComponent {
-
+  @Input() trip!: Trip;
 }
