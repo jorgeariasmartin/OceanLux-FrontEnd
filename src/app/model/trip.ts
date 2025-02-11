@@ -1,3 +1,5 @@
+import { Yacht } from './yacht';
+
 export interface Trip {
   id?: number;
   name: string;
@@ -6,5 +8,5 @@ export interface Trip {
   description: string;
   startdate: string;
   enddate: string;
-  yacht: { id: number };
+  yacht: Yacht;
 }
