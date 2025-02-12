@@ -44,6 +44,7 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
 
   trip: Trip = {
     name: '',
+    departure: '',
     price: 0,
     duration_hours: 0,
     description: '',
@@ -243,6 +244,7 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
   resetForm(): void {
     this.trip = {
       name: '',
+      departure: '',
       price: 0,
       duration_hours: 0,
       description: '',
