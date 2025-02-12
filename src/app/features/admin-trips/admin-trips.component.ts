@@ -49,8 +49,16 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
     description: '',
     startdate: '',
     enddate: '',
-    yacht: { id: 0 }
+    yacht: {
+      id: 0,
+      name: '',
+      model: '',
+      image: '',
+      description: '',
+      capacity: 0
+    }
   };
+
 
   yachts: Yacht[] = [];
   filteredYachts: Yacht[] = [];
@@ -155,10 +163,14 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
 
     const tripToSend: Trip = {
       ...this.trip,
-      yacht: { id: Number(this.trip.yacht.id) },
+      yacht: {
+        ...this.trip.yacht, // Usa los datos completos del yate seleccionado
+        id: Number(this.trip.yacht.id)
+      },
       startdate: startDate.toISOString(),
       enddate: endDate.toISOString()
     };
+
 
     this.tripService.createTrip(tripToSend).subscribe({
       next: () => {
@@ -192,7 +204,7 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
 
     const tripToSend: Trip = {
       ...this.selectedTrip,
-      yacht: { id: Number(this.selectedTrip.yacht.id) },
+      yacht: { ...this.selectedTrip.yacht },
       startdate: startDate.toISOString(),
       enddate: endDate.toISOString()
     };
@@ -236,7 +248,14 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
       description: '',
       startdate: '',
       enddate: '',
-      yacht: { id: 0 }
+      yacht: {
+        id: 0,
+        name: '',
+        model: '',
+        image: '',
+        description: '',
+        capacity: 0
+      }
     };
     this.selectedTrip = null;
     this.isEditMode = false;
