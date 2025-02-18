@@ -24,10 +24,25 @@ export class ProfileComponent {
     this.authService.getAuthenticatedUser().subscribe({
       next: (data) => {
         this.user = data;
+        console.log('Usuario obtenido', this.user);
       },
       error: (error) => {
         console.error('Error obteniendo el usuario', error);
       }
     });
   }
+
+  getAvatarUrl(username: string): string {
+    if (!username) {
+      // Si el username es undefined o vacío, usamos un valor por defecto (por ejemplo, "XX")
+      return `https://ui-avatars.com/api/?name=XX&background=0D8ABC&color=fff`;
+    }
+
+    // Extraemos las dos primeras letras del username
+    const initials = username.substring(0, 2).toUpperCase();
+
+    // Retorna la URL con las iniciales como parámetro
+    return `https://ui-avatars.com/api/?name=${initials}&background=0D8ABC&color=fff`;
+  }
+
 }
