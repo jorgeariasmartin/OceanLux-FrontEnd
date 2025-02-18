@@ -19,7 +19,7 @@
           <p class="text-primary-light">Desde</p>
           <p class="text-primary text-2xl font-bold">{{ trip.price }}€</p>
         </div>
-        <button class="bg-primary text-secondary py-1.5 w-full rounded-md hover:bg-primary-light transition duration-300">
+        <button routerLink="/trip/{{ trip.id }}" class="bg-primary text-secondary py-1.5 w-full rounded-md hover:bg-primary-light transition duration-300">
           Comprar tickets
         </button>
         </div>
