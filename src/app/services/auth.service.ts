@@ -11,6 +11,7 @@ import { User } from '../model/User';
 export class AuthService {
   private apiUrl = 'http://localhost:8000/api';
   private authStatus = new BehaviorSubject<boolean>(this.hasToken());
+  private currentUserId: number | null = null;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -52,12 +53,47 @@ export class AuthService {
     this.router.navigate(['/logaccount']).then(r => r);
   }
 
+  // Obtener datos del usuario autenticado
   getAuthenticatedUser(): Observable<any> {
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
+      'Authorization': `Bearer ${this.getToken()}`
     });
 
-    return this.http.get<any>(`${this.apiUrl}/user/me`, { headers });
+    return this.http.get<any>(`${this.apiUrl}/user/me`, { headers }).pipe(
+      tap(user => {
+        if (user && user.id) {
+          this.currentUserId = user.id;
+        }
+      })
+    );
   }
 
+  // Método para actualizar el usuario
+  updateUser(user: any): Observable<any> {
+    if (!this.currentUserId) {
+      throw new Error('User ID not available');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.getToken()}`,
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.put<any>(`${this.apiUrl}/user/update/${this.currentUserId}`, user, { headers });
+  }
+
+  changePassword(oldPassword: string, newPassword: string, confirmPassword: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.getToken()}`,
+      'Content-Type': 'application/json'
+    });
+
+    const body = {
+      oldPassword: oldPassword,
+      newPassword: newPassword,
+      confirmPassword: confirmPassword
+    };
+
+    return this.http.put<any>(`${this.apiUrl}/user/change-password`, body, { headers });
+  }
 }
