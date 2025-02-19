@@ -15,6 +15,10 @@ export class TripService {
     return this.http.post<Trip>(`${this.apiUrl}/create`, trip, { headers });
   }
 
+  getTripById(id: number): Observable<Trip> {
+    return this.http.get<Trip>(`${this.apiUrl}/${id}`, { withCredentials: true });
+  }
+
   allTrips(): Observable<Trip[]> {
     return this.http.get<Trip[]>(`${this.apiUrl}/list`);
   }

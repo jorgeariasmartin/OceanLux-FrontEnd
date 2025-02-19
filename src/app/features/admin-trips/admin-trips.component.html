@@ -32,11 +32,11 @@
       <div class="w-full flex flex-col sm:flex-row sm:gap-x-4 sm:gap-y-4">
         <div class="w-full flex flex-col sm:flex-row sm:gap-x-4 sm:gap-y-4">
           <p-floatlabel variant="on" class="w-full sm:w-1/2">
-            <p-datepicker name="startdate" inputId="startdate" [(ngModel)]="trip.startdate" [showTime]="true" dateFormat="yy-mm-dd'T'HH:mm" [hourFormat]="String(24)" class="w-full"></p-datepicker>
+            <p-calendar name="startdate" inputId="startdate" [(ngModel)]="trip.startdate" [showTime]="true" dateFormat="yy-mm-dd'T'HH:mm" [hourFormat]="String(24)" class="w-full"></p-calendar>
             <label>Fecha de Salida</label>
           </p-floatlabel>
           <p-floatlabel variant="on" class="w-full sm:w-1/2">
-            <p-datepicker name="enddate" inputId="enddate" [(ngModel)]="trip.enddate" [showTime]="true" dateFormat="yy-mm-dd'T'HH:mm" [hourFormat]="String(24)" class="w-full"></p-datepicker>
+            <p-calendar name="enddate" inputId="enddate" [(ngModel)]="trip.enddate" [showTime]="true" dateFormat="yy-mm-dd'T'HH:mm" [hourFormat]="String(24)" class="w-full"></p-calendar>
             <label class="text-primary">Fecha de llegada</label>
           </p-floatlabel>
         </div>

@@ -8,9 +8,10 @@
     <div class="grid grid-cols-2">
       <div class="flex flex-col justify-between">
         <p class="text-primary-light">{{ trip.yacht.name }}</p>
-        <div>xº
-<!--      TODO: AÑADIR LUGAR EN BBDD-->
+        <div>
           <p class="text-sm text-primary-light"><strong class="text-primary">Comienzo:</strong> {{ trip.startdate }}</p>
+        <div>
+          <p class="text-sm text-primary-light"><strong class="text-primary">Lugar:</strong> {{ trip.departure }}</p>
           <p class="text-sm text-primary-light"><strong class="text-primary">Duración:</strong> {{ trip.duration_hours }} horas</p>
         </div>
       </div>
@@ -20,7 +21,7 @@
           <p class="text-primary-light">Desde</p>
           <p class="text-primary text-2xl font-bold">{{ trip.price }}€</p>
         </div>
-        <button class="bg-primary text-secondary py-1.5 w-full rounded-md hover:bg-primary-light transition duration-300">
+        <button routerLink="/trip/{{ trip.id }}" class="bg-primary text-secondary py-1.5 w-full rounded-md hover:bg-primary-light transition duration-300">
           Comprar tickets
         </button>
         </div>
