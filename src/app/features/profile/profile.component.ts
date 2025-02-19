@@ -14,7 +14,6 @@ import {ToastModule} from 'primeng/toast';
   selector: 'app-profile',
   imports: [
     HeaderComponent,
-    SearchbarComponent,
     ButtonModule,
     CommonModule,
     DialogModule,
