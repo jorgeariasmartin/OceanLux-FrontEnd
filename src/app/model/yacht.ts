@@ -1,8 +1,8 @@
 export interface Yacht {
-  id: number;
+  id?: number;
   name: string;
   model: string;
-  image: string;
+  photo: string;
   description: string;
-  capacity: number;
+  capacity: number | null;
 }

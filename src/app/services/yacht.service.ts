@@ -8,11 +8,26 @@ import {Yacht} from '../model/yacht';
 })
 export class YachtService {
 
-  private apiUrl = 'http://localhost:8000/yacht/all';
+  private apiUrl = 'http://localhost:8000/api/yacht';
 
   constructor(private http: HttpClient) { }
 
-  getYachts(): Observable<Yacht[]> {
-    return this.http.get<Yacht[]>(this.apiUrl);
+  createYacht(yacht: Yacht): Observable<Yacht> {
+    const headers = { 'Content-Type': 'application/json' };
+    return this.http.post<Yacht>(`${this.apiUrl}/create`, yacht, { headers });
   }
+
+  getYachts(): Observable<Yacht[]> {
+    return this.http.get<Yacht[]>(`${this.apiUrl}/all`);
+  }
+
+  deleteYacht(id: number): Observable<Yacht> {
+    return this.http.delete<Yacht>(`${this.apiUrl}/delete/${id}`);
+  }
+
+  updateYacht(id: number, yacht: Yacht): Observable<Yacht> {
+    const headers = { 'Content-Type': 'application/json' };
+    return this.http.put<Yacht>(`${this.apiUrl}/update/${id}`, yacht, { headers });
+  }
+
 }

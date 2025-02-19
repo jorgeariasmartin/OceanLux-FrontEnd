@@ -55,7 +55,7 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
       id: 0,
       name: '',
       model: '',
-      image: '',
+      photo: '',
       description: '',
       capacity: 0
     }
@@ -252,10 +252,9 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
       startdate: '',
       enddate: '',
       yacht: {
-        id: 0,
         name: '',
         model: '',
-        image: '',
+        photo: '',
         description: '',
         capacity: 0
       }

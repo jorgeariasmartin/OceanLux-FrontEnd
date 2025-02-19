@@ -1,6 +1,6 @@
 <div class="sm:w-full sm:h-[150px] w-[270px] grid grid-cols-3 border-2 border-primary rounded-xl overflow-hidden">
   <div class="sm:col-span-1 col-span-3 h-full overflow-hidden">
-    <img class="w-full h-full object-cover" src="{{ trip.yacht.image }}" alt="yacht">
+    <img class="w-full h-full object-cover" ngSrc="{{ trip.yacht.photo }}" alt="yacht">
   </div>
 
   <div class="sm:col-span-2 col-span-3 p-2">
@@ -8,6 +8,8 @@
     <div class="grid grid-cols-2">
       <div class="flex flex-col justify-between">
         <p class="text-primary-light">{{ trip.yacht.name }}</p>
+        <div>
+          <p class="text-sm text-primary-light"><strong class="text-primary">Comienzo:</strong> {{ trip.startdate }}</p>
         <div>
           <p class="text-sm text-primary-light"><strong class="text-primary">Lugar:</strong> {{ trip.departure }}</p>
           <p class="text-sm text-primary-light"><strong class="text-primary">Duración:</strong> {{ trip.duration_hours }} horas</p>

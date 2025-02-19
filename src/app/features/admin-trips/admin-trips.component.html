@@ -1,4 +1,4 @@
-<div><app-header></app-header></div>
+<app-header></app-header>
 
 <app-toast></app-toast>
 <p-confirmpopup></p-confirmpopup>
@@ -47,6 +47,7 @@
       </div>
       <div class="flex justify-end">
         <p-button type="submit" label="{{ isEditMode ? 'Update' : 'Save' }}" icon="pi pi-check" iconPos="right" [outlined]="true" class="justify-center" />
+
       </div>
     </form>
   </div>
@@ -82,7 +83,7 @@
       <ng-template #body let-trip>
         <tr>
           <td>{{ trip.name }}</td>
-          <td>{{ trip.price | currency: 'USD' }}</td>
+          <td>{{ trip.price | currency: 'EUR' }}</td>
           <td>{{ trip.duration_hours }}</td>
           <td>{{ trip.description }}</td>
           <td>{{ trip.startdate | date: 'shortDate' }}</td>
