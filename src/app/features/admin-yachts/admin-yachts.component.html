@@ -1,0 +1,73 @@
+<app-header></app-header>
+<app-toast></app-toast>
+<p-confirmpopup></p-confirmpopup>
+
+
+<div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">
+  <h2 class="text-2xl font-bold mb-4 text-center">Creación de yates</h2>
+
+  <form (submit)="confirmSubmit($event); $event.preventDefault()" class="space-y-4">
+    <p-floatlabel variant="on" class="w-full">
+      <input pInputText id="name" [(ngModel)]="Yacht.name" name="name" autocomplete="on" class="w-full p-2 border rounded" required />
+      <label>Nombre del yate</label>
+    </p-floatlabel>
+
+    <p-floatlabel variant="on" class="w-[50%]">
+      <input pInputText id="photo" [(ngModel)]="Yacht.photo" name="photo" class="w-full" />
+      <label>Imagen</label>
+    </p-floatlabel>
+
+    <div class="w-full flex gap-x-4">
+      <p-floatlabel variant="on" class="w-[50%]">
+        <input pInputText id="model" [(ngModel)]="Yacht.model" name="model" class="w-full" />
+        <label>Modelo</label>
+      </p-floatlabel>
+    </div>
+
+    <p-floatlabel variant="on" class="w-full">
+      <textarea pTextarea id="description" [(ngModel)]="Yacht.description" name="description" autocomplete="off" class="w-full p-2 border rounded" required></textarea>
+      <label for="description">Descripción</label>
+    </p-floatlabel>
+
+    <div class="w-full flex gap-x-4">
+      <p-floatlabel variant="on" class="w-[50%]">
+        <p-inputNumber id="capacity" [(ngModel)]="Yacht.capacity" name="capacity" class="w-full"></p-inputNumber>
+        <label for="capacity">Capacidad</label>
+      </p-floatlabel>
+
+      <div class="flex justify-end">
+        <p-button #btnSubmit type="submit" label="Guardar" icon="pi pi-check" iconPos="right" [outlined]="true" class="justify-center"></p-button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg mt-8">
+  <p-table #dt [value]="Yachts" (sortFunction)="customSort($event)" [customSort]="true">
+    <ng-template #header>
+      <tr>
+        <th pSortableColumn="name">
+          Nombre <p-sortIcon field="name" />
+        </th>
+        <th pSortableColumn="model">
+          Modelo <p-sortIcon field="model" />
+        </th>
+        <th pSortableColumn="capacity">
+          Capacidad <p-sortIcon field="capacity" />
+        </th>
+        <th>Acciones</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-yacht>
+      <tr>
+        <td>{{ yacht.name }}</td>
+        <td>{{ yacht.model }}</td>
+        <td>{{ yacht.capacity }}</td>
+        <td>
+<!--          <p-button label="Editar" icon="pi pi-pencil" iconPos="right" class="mr-2" (click)="editYacht(yacht)"></p-button>-->
+          <p-button label="Eliminar" icon="pi pi-trash" iconPos="right" (click)="deleteYacht(yacht)"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
