@@ -1,26 +1,153 @@
 <app-header [showSidebar]="true"/>
 <div class="md:px-[50px] xl:px-[200px] px-4 mb-10 pt-4">
-  <div class="flex w-full pt-10">
-    <div class="flex justify-center w-2/3">
-      <img src="/gg-placeholder-image.png" alt="User Image" class="rounded-lg w-2/3">
+  <div *ngIf="user" class="flex w-full pt-10 gap-10">
+    <div class="flex justify-start w-1/3">
+      <!-- Usamos la API de ui-avatars con el nombre del usuario como parámetro -->
+      <img
+        [src]="getAvatarUrl(user.username)"
+        alt="User Image"
+        class="rounded-lg max-w-[320px]"
+      >
     </div>
-    <div class="w-full">
-      <div class="flex gap-3">
-        <label><strong>Nombre: </strong></label>
-        <label>Manuel</label>
+    <div class="w-full flex flex-col">
+      <div class="w-full grid grid-cols-2 gap-3 justify-center items-center">
+        <div class="flex flex-col gap-2">
+          <label><strong>Nombre: </strong></label>
+          <label>{{ user.client?.name }}</label>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label><strong>Apellidos: </strong></label>
+          <label>{{ user.client?.surname }}</label>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label><strong>Numero de teléfono: </strong></label>
+          <label>{{ user.client?.phone_number }}</label>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label><strong>Email: </strong></label>
+          <label>{{ user.email }}</label>
+        </div>
       </div>
-      <div class="flex gap-3">
-        <label><strong>Apellidos: </strong></label>
-        <label>García Badalona</label>
-      </div>
-      <div class="flex gap-3">
-        <label><strong>Fecha de nacimiento: </strong></label>
-        <label>19-08-1999</label>
-      </div>
-      <div class="flex gap-3">
-        <label><strong>Email: </strong></label>
-        <label>manuelgarciagmail.com</label>
+      <div class="flex pt-10 w-full gap-8 justify-start items-center">
+        <p-button icon="pi pi-pencil" label="Editar campos" (click)="showModal()" severity="contrast"></p-button>
+        <p-button icon="pi pi-key" label="Cambiar contraseña" (click)="showChangePasswordModal()" severity="contrast"></p-button>
       </div>
     </div>
   </div>
+  <p-dialog class="text-primary" [(visible)]="displayModal" [modal]="true" [closable]="false" [style]="{width: '50vw'}">
+    <h2 class="mb-2 text-center text-2xl font-bold tracking-tight text-primary">Editar Usuario</h2>
+    <h2 class="mb-9 text-center text-l font-bold tracking-tight text-primary">Actualiza tus datos</h2>
+
+    <div class="w-full p-8 flex flex-col justify-items-center space-y-4 text-primary ">
+      <!-- Nombre de Usuario -->
+      <div class="flex flex-col">
+        <label for="username">Nombre de Usuario</label>
+        <input type="text" id="username" [(ngModel)]="editedUser.username" pInputText />
+      </div>
+
+      <!-- Nombre -->
+      <div class="flex flex-col">
+        <label for="firstname">Nombre</label>
+        <input type="text" id="firstname" [(ngModel)]="editedUser.client.name" pInputText />
+      </div>
+
+      <!-- Apellidos -->
+      <div class="flex flex-col">
+        <label for="surname">Apellidos</label>
+        <input type="text" id="surname" [(ngModel)]="editedUser.client.surname" pInputText />
+      </div>
+
+      <!-- Dirección -->
+      <div class="flex flex-col">
+        <label for="address">Dirección</label>
+        <input type="text" id="address" [(ngModel)]="editedUser.client.address" pInputText />
+      </div>
+
+      <!-- Teléfono -->
+      <div class="flex flex-col">
+        <label for="telephone">Número de Teléfono</label>
+        <input
+          type="number"
+          id="telephone"
+          [(ngModel)]="editedUser.client.phone_number"
+          pInputText
+          (input)="validatePhoneNumber()"
+          [ngClass]="{'ng-invalid ng-dirty border-red-500': phoneValid === false}"
+        />
+        <small class="text-red-500 mt-1" *ngIf="phoneValid === false">
+          Introduce un número de teléfono válido (9-15 dígitos).
+        </small>
+      </div>
+
+      <!-- Email -->
+      <div class="flex flex-col">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="editedUser.email"
+          pInputText
+          (input)="validateEmail()"
+          [ngClass]="{'ng-invalid ng-dirty border-red-500': emailValid === false}"
+        />
+        <small class="text-red-500 mt-1" *ngIf="emailValid === false">
+          Introduce un correo válido.
+        </small>
+      </div>
+
+      <!-- Fecha de Nacimiento -->
+      <div class="flex flex-col">
+        <label for="birthdate">Fecha de nacimiento</label>
+        <input disabled
+          type="date"
+          id="birthdate"
+          [(ngModel)]="editedUser.client.birthdate"
+          pInputText
+          (input)="validateBirthdate()"
+          [ngClass]="{'ng-invalid ng-dirty border-red-500': birthdateValid === false}"
+        />
+        <small class="text-red-500 mt-1" *ngIf="birthdateValid === false">
+          Debes tener al menos 18 años para registrarte.
+        </small>
+      </div>
+      <div class="flex justify-evenly">
+        <button pButton type="button" label="Cancelar" icon="pi pi-times" (click)="hideModal()" class="p-button-text"></button>
+        <button pButton type="button" label="Guardar cambios" icon="pi pi-check" (click)="saveChanges()" class="p-button-text"></button>
+      </div>
+    </div>
+  </p-dialog>
+  <p-dialog class="text-primary" [(visible)]="displayChangePasswordModal" [modal]="true" [closable]="false" [style]="{width: '50vw'}">
+    <h2 class="mb-2 text-center text-2xl font-bold tracking-tight text-primary">Cambiar Contraseña</h2>
+
+    <div class="w-full p-8 flex flex-col justify-items-center space-y-4 text-primary">
+      <div class="flex flex-col">
+        <label for="oldPassword">Contraseña Antigua</label>
+        <input type="password" id="oldPassword" [(ngModel)]="changePasswordData.oldPassword" pInputText />
+      </div>
+
+      <div class="flex flex-col">
+        <label for="newPassword">Nueva Contraseña</label>
+        <input type="password" id="newPassword" [(ngModel)]="changePasswordData.newPassword" pInputText />
+      </div>
+
+      <div class="flex flex-col">
+        <label for="confirmPassword">Confirmar Nueva Contraseña</label>
+        <input type="password" id="confirmPassword" [(ngModel)]="changePasswordData.confirmPassword" pInputText />
+        <small class="text-red-500 mt-1" *ngIf="passwordsMismatch">
+          Las contraseñas no coinciden.
+        </small>
+      </div>
+
+      <div class="flex justify-evenly">
+        <button pButton type="button" label="Cancelar" icon="pi pi-times" (click)="hideChangePasswordModal()" class="p-button-text"></button>
+        <button pButton type="button" label="Guardar Cambios" icon="pi pi-check" (click)="changePassword()" class="p-button-text"></button>
+      </div>
+    </div>
+  </p-dialog>
+
+  <div class="flex flex-col pt-10">
+    <h1 class="text-2xl">Tus reservas: </h1>
+  </div>
+  <p-toast></p-toast>
 </div>
+
