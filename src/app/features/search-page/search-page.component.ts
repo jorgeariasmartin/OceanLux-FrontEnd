@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {HeaderComponent} from '../../../component/header/header.component';
-import {SearchbarComponent} from '../../../component/searchbar/searchbar.component';
-import {CardDetailsComponent} from '../../../component/card-details/card-details.component';
-import {ModalFilterComponent} from '../../../component/modal-filter/modal-filter.component';
-import {Trip} from '../../model/trip';
-import {TripService} from '../../services/trip.service';
-import {NgForOf, NgIf} from '@angular/common';
-import {ActivatedRoute} from '@angular/router';
+import { HeaderComponent } from '../../../component/header/header.component';
+import { SearchbarComponent } from '../../../component/searchbar/searchbar.component';
+import { CardDetailsComponent } from '../../../component/card-details/card-details.component';
+import { ModalFilterComponent } from '../../../component/modal-filter/modal-filter.component';
+import { Trip } from '../../model/trip';
+import { TripService } from '../../services/trip.service';
+import { NgForOf, NgIf } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-search-page',
@@ -16,7 +17,8 @@ import {ActivatedRoute} from '@angular/router';
     CardDetailsComponent,
     ModalFilterComponent,
     NgForOf,
-    NgIf
+    NgIf,
+    FormsModule
   ],
   templateUrl: './search-page.component.html'
 })
@@ -24,6 +26,10 @@ export class SearchPageComponent implements OnInit {
   trips: Trip[] = [];
   allTrips: Trip[] = [];
   searchQuery: string = '';
+  yachtModels: string[] = [];
+  selectedModels: { [key: string]: boolean } = {};
+  selectedPrices: { [key: string]: boolean } = {};
+
 
   constructor(private route: ActivatedRoute, private tripService: TripService) {}
 
@@ -32,28 +38,72 @@ export class SearchPageComponent implements OnInit {
       this.allTrips = trips;
       this.trips = trips;
 
+      this.extractYachtModels();
+
       this.route.queryParams.subscribe(params => {
         if (params['query']) {
           this.onSearch(params['query']);
         }
       });
     });
+  }
 
-    this.route.queryParams.subscribe(params => {
-      if (params['query']) {
-        this.onSearch(params['query']);
+  priceRanges = [
+    { value: "250", label: "Hasta 250€" },
+    { value: "500", label: "Hasta 500€" },
+    { value: "1000", label: "Hasta 1000€" },
+    { value: "2000", label: "Hasta 2000€" }
+  ];
+
+  extractYachtModels() {
+    const modelsSet = new Set<string>();
+    this.allTrips.forEach(trip => {
+      if (trip.yacht?.model) {
+        modelsSet.add(trip.yacht.model);
       }
     });
+    this.yachtModels = Array.from(modelsSet);
+    console.log("Modelos extraídos:", this.yachtModels);
+  }
+
+  onFilterChange() {
+    console.log("Filtros cambiados", this.selectedModels, this.selectedPrices);
+    this.applyFilters();
   }
 
   onSearch(query: string) {
-    const normalizedQuery = query.trim().toLowerCase();
-    this.searchQuery = query;
-
-    this.trips = this.allTrips.filter(trip =>
-      trip.departure.toLowerCase().includes(normalizedQuery) ||
-      trip.name.toLowerCase().includes(normalizedQuery) ||
-      (trip.yacht?.name?.toLowerCase().includes(normalizedQuery))
-    );
+    this.searchQuery = query.trim().toLowerCase();
+    this.applyFilters();
   }
+
+  applyFilters() {
+    this.trips = this.allTrips.filter(trip => {
+      const matchesSearch = this.searchQuery === '' ||
+        trip.departure.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        trip.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        (trip.yacht?.name?.toLowerCase().includes(this.searchQuery.toLowerCase()));
+
+      const selectedModelsArray = Object.keys(this.selectedModels).filter(key => this.selectedModels[key]);
+      const matchesBoatType = selectedModelsArray.length === 0 ||
+        selectedModelsArray.includes(trip.yacht?.model);
+
+      const selectedPriceRangesArray = Object.keys(this.selectedPrices).filter(key => this.selectedPrices[key]);
+      const matchesPrice = selectedPriceRangesArray.length === 0 || selectedPriceRangesArray.some(range => {
+        const [min, max] = range.split('-').map(Number);
+        return max ? (trip.price >= min && trip.price <= max) : trip.price >= min;
+      });
+
+      return matchesSearch && matchesBoatType && matchesPrice;
+    });
+  }
+  onFiltersApplied(filters: { models: string[], prices: string[] }) {
+    this.selectedModels = {};
+    this.selectedPrices = {};
+
+    filters.models.forEach(model => this.selectedModels[model] = true);
+    filters.prices.forEach(price => this.selectedPrices[price] = true);
+
+    this.applyFilters();
+  }
+
 }

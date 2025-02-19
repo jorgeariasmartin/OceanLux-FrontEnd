@@ -14,7 +14,7 @@ export const routes: Routes = [
   {path: 'logaccount', component: ViewLoginRegisterComponent},
   {path: 'home', component: MainPageComponent},
   {path: 'search', component: SearchPageComponent},
-  {path: 'trip/1', component: ViewTripComponent},
+  {path: 'trip/:id', component: ViewTripComponent},
   {path: 'adminHome', component: AdminHomepageComponent},
   {path: 'profile', component: ProfileComponent}
 ];

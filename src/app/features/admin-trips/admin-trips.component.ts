@@ -17,6 +17,7 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ToastComponent } from '../../../component/toast/toast.component';
 import { InputNumber } from 'primeng/inputnumber';
 import { TableModule } from 'primeng/table';
+import {Calendar} from 'primeng/calendar';
 
 @Component({
   selector: 'app-admin-trips',
@@ -24,7 +25,6 @@ import { TableModule } from 'primeng/table';
   imports: [
     CommonModule,
     FormsModule,
-    DatePicker,
     FloatLabel,
     InputText,
     Textarea,
@@ -34,7 +34,8 @@ import { TableModule } from 'primeng/table';
     ConfirmPopupModule,
     ToastComponent,
     InputNumber,
-    TableModule
+    TableModule,
+    Calendar
   ],
   templateUrl: './admin-trips.component.html',
   providers: [ConfirmationService]
