@@ -40,7 +40,7 @@
     Yacht: Yacht = {
       name: '',
       model: '',
-      photo: '',
+      image: '',
       description: '',
       capacity: null
     };
@@ -83,7 +83,7 @@
     }
 
     saveYacht(): void {
-      if (!this.Yacht.name || !this.Yacht.photo || !this.Yacht.description || !this.Yacht.model || !this.Yacht.capacity) {
+      if (!this.Yacht.name || !this.Yacht.image || !this.Yacht.description || !this.Yacht.model || !this.Yacht.capacity) {
         this.toast.addMessage('error', 'Error', 'Todos los campos son obligatorios');
         return;
       }
@@ -93,7 +93,7 @@
           this.Yacht = {
             name: '',
             model: '',
-            photo: '',
+            image: '',
             description: '',
             capacity: null
           };
