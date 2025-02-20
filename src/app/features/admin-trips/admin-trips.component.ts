@@ -35,7 +35,7 @@ import {Calendar} from 'primeng/calendar';
     ToastComponent,
     InputNumber,
     TableModule,
-    Calendar
+    DatePicker
   ],
   templateUrl: './admin-trips.component.html',
   providers: [ConfirmationService]
@@ -55,7 +55,7 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
       id: 0,
       name: '',
       model: '',
-      photo: '',
+      image: '',
       description: '',
       capacity: 0
     }
@@ -254,7 +254,7 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
       yacht: {
         name: '',
         model: '',
-        photo: '',
+        image: '',
         description: '',
         capacity: 0
       }
