@@ -12,6 +12,11 @@
         <label for="name">Nombre del viaje</label>
       </p-floatlabel>
 
+      <p-floatlabel variant="on" class="w-full">
+        <input pInputText id="departure" [(ngModel)]="trip.departure" name="name" autocomplete="on" class="w-full p-2 border rounded" required />
+        <label for="departure">Lugar de salida</label>
+      </p-floatlabel>
+
       <div class="w-full flex flex-col md:flex-row md:gap-x-4 sm:gap-y-4">
         <p-floatlabel variant="on" class="w-full md:w-1/2">
           <p-inputnumber [(ngModel)]="trip.price" mode="currency" inputId="currency-germany" currency="EUR" locale="de-DE" name="price" class="w-full"></p-inputnumber>
@@ -32,11 +37,11 @@
       <div class="w-full flex flex-col sm:flex-row sm:gap-x-4 sm:gap-y-4">
         <div class="w-full flex flex-col sm:flex-row sm:gap-x-4 sm:gap-y-4">
           <p-floatlabel variant="on" class="w-full sm:w-1/2">
-            <p-calendar name="startdate" inputId="startdate" [(ngModel)]="trip.startdate" [showTime]="true" dateFormat="yy-mm-dd'T'HH:mm" [hourFormat]="String(24)" class="w-full"></p-calendar>
+            <p-datePicker name="startdate" inputId="startdate" [(ngModel)]="trip.startdate" [showTime]="true" dateFormat="yy-mm-dd'T'HH:mm" [hourFormat]="String(24)" class="w-full"></p-datePicker>
             <label>Fecha de Salida</label>
           </p-floatlabel>
           <p-floatlabel variant="on" class="w-full sm:w-1/2">
-            <p-calendar name="enddate" inputId="enddate" [(ngModel)]="trip.enddate" [showTime]="true" dateFormat="yy-mm-dd'T'HH:mm" [hourFormat]="String(24)" class="w-full"></p-calendar>
+            <p-datepicker name="enddate" inputId="enddate" [(ngModel)]="trip.enddate" [showTime]="true" dateFormat="yy-mm-dd'T'HH:mm" [hourFormat]="String(24)" class="w-full"></p-datepicker>
             <label class="text-primary">Fecha de llegada</label>
           </p-floatlabel>
         </div>
@@ -58,6 +63,9 @@
         <tr>
           <th pSortableColumn="name">
             Name <p-sortIcon field="name" />
+          </th>
+          <th pSortableColumn="departure">
+            Departure <p-sortIcon field="departure" />
           </th>
           <th pSortableColumn="price">
             Price <p-sortIcon field="price" />
@@ -83,6 +91,7 @@
       <ng-template #body let-trip>
         <tr>
           <td>{{ trip.name }}</td>
+          <td>{{ trip.departure }}</td>
           <td>{{ trip.price | currency: 'EUR' }}</td>
           <td>{{ trip.duration_hours }}</td>
           <td>{{ trip.description }}</td>
