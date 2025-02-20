@@ -1,30 +1,26 @@
 <div class="sm:w-full sm:h-[150px] w-[270px] grid grid-cols-3 border-2 border-primary rounded-xl overflow-hidden">
   <div class="sm:col-span-1 col-span-3 h-full overflow-hidden">
-    <img class="w-full h-full object-cover" ngSrc="{{ trip.yacht.photo }}" alt="yacht">
+    <img class="w-full h-full object-cover" src="{{ trip.yacht.image }}" alt="yacht">
   </div>
-
   <div class="sm:col-span-2 col-span-3 p-2">
     <h3 class="text-primary text-2xl">{{ trip.name }}</h3>
     <div class="grid grid-cols-2">
       <div class="flex flex-col justify-between">
         <p class="text-primary-light">{{ trip.yacht.name }}</p>
         <div>
-          <p class="text-sm text-primary-light"><strong class="text-primary">Comienzo:</strong> {{ trip.startdate }}</p>
-        <div>
           <p class="text-sm text-primary-light"><strong class="text-primary">Lugar:</strong> {{ trip.departure }}</p>
           <p class="text-sm text-primary-light"><strong class="text-primary">Duración:</strong> {{ trip.duration_hours }} horas</p>
         </div>
       </div>
-
       <div class="flex flex-col gap-2 justify-end items-end">
         <div class="text-right">
           <p class="text-primary-light">Desde</p>
           <p class="text-primary text-2xl font-bold">{{ trip.price }}€</p>
         </div>
-        <button routerLink="/trip/{{ trip.id }}" class="bg-primary text-secondary py-1.5 w-full rounded-md hover:bg-primary-light transition duration-300">
+        <a routerLink="/trip/{{ trip.id }}" class="bg-primary text-secondary py-1.5 w-full rounded-md hover:bg-primary-light transition duration-300 text-center">
           Comprar tickets
-        </button>
-        </div>
+        </a>
+      </div>
     </div>
   </div>
 </div>
