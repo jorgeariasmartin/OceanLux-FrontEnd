@@ -2,7 +2,7 @@
 
 <div class="px-4 md:px-[50px] xl:px-[200px] mb-10 pt-10">
   <div class="flex flex-col w-full items-center">
-    <img src="{{ trip.yacht.photo }}" class="w-full h-[230px] object-cover rounded-lg">
+    <img src="{{ trip.yacht.image }}" class="w-full h-[230px] object-cover rounded-lg" alt="">
 
     <!-- Contenedor Principal -->
     <div class="flex flex-col lg:flex-row w-full gap-10 mt-6 items-center lg:items-start justify-center">
@@ -69,7 +69,7 @@
         </div>
 
         <!-- Tickets -->
-        <div class="flex flex-col items-center gap-5 w-full font-semibold text-primary mt-8">
+        <div class="flex flex-col md:items-start items-center gap-5 w-full font-semibold text-primary mt-8">
           <span>Tickets</span>
           <p-inputnumber class="custom-inputnumber w-full md:w-auto" size="small" [(ngModel)]="value" (ngModelChange)="calculateTotal()"
                          [showButtons]="true" buttonLayout="horizontal" inputId="horizontal"
