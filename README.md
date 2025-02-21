@@ -1,59 +1,87 @@
-# OcenanLuxFrontEnd
+![OceanLux Banner](public/banner_readme.png)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
+# OceanLux - Frontend
 
-## Development server
+OceanLux es una aplicación web que permite a los usuarios explorar y comprar tickets para viajes o paseos en barco. Los datos de los viajes se obtienen de una base de datos en PostgreSQL alojada localmente y gestionada por un backend desarrollado en PHP con Symfony.
 
-To start a local development server, run:
+## 📌 Tecnologías utilizadas
 
-```bash
-ng serve
+- **🖥️ Framework:** Angular
+- **📦 Administrador de paquetes:** npm
+- **🎨 Framework de estilos:** Bootstrap
+- **⚙️ Backend:** PHP con Symfony
+- **🗄️ Base de datos:** PostgreSQL
+
+## 🔧 Requisitos previos
+
+Antes de ejecutar el proyecto, asegúrate de tener instalado:
+
+- [Node.js](https://nodejs.org/) y npm
+- [Angular CLI](https://angular.io/cli)
+- Un servidor corriendo el backend de OceanLux con Symfony y PostgreSQL
+
+## 🚀 Instalación y ejecución
+
+### 1️⃣ Clona este repositorio:
+```sh
+git clone https://github.com/tu-usuario/oceanlux-frontend.git
+cd oceanlux-frontend
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+### 2️⃣ Instala las dependencias:
+```sh
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 3️⃣ Configura el proxy para conectar con el backend local:
+Asegúrate de que el archivo `proxy.conf.json` contiene la siguiente configuración:
 
-```bash
-ng generate --help
+```json
+{
+  "/api": {
+    "target": "http://localhost:8000",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
+```
+El backend debe estar corriendo en `http://localhost:8000`.
+
+### 4️⃣ Ejecuta la aplicación en modo desarrollo:
+```sh
+ng serve --proxy-config proxy.conf.json
 ```
 
-## Building
+### 5️⃣ Abre en tu navegador: [http://localhost:4200](http://localhost:4200)
 
-To build the project run:
+## 📂 Estructura del proyecto
 
-```bash
-ng build
+```plaintext
+/oceanlux-frontend
+│── src
+│   ├── app
+│   │   ├── features       # Funcionalidades principales
+│   │   ├── Interceptors   # Interceptores HTTP
+│   │   ├── model          # Modelos de datos
+│   │   ├── services       # Servicios para comunicación con la API
+│   │   ├── app.component.html  # Plantilla principal
+│   │   ├── app.component.ts    # Componente principal
+│   │   ├── app.config.ts       # Configuración de la aplicación
+│   │   ├── app.routes.ts       # Configuración de rutas
+│   │   ├── mytheme.ts          # Configuración de temas
+│   ├── component       # Componentes reutilizables
+│   ├── index.html      # Archivo principal HTML
+│   ├── main.ts         # Punto de entrada de la aplicación
+│   ├── styles.css      # Estilos globales
+│── angular.json       # Configuración de Angular
+│── package.json       # Dependencias y scripts
+│── proxy.conf.json    # Configuración del proxy para la API
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 👨‍💻 Autores
 
-## Running unit tests
+- [mricofer](https://github.com/mricofer)
+- [jorgeariasmartin](https://github.com/jorgeariasmartin)
+- [raulcruzadodelgado1](https://github.com/raulcruzadodelgado1)
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
