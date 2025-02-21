@@ -9,12 +9,22 @@
         Filtros
       </button>
 
-      <h2 class="text-primary text-xl sm:text-2xl md:text-3xl font-bold">
+      <div class="flex justify-between items-center flex-wrap gap-2">
+        <h2 class="text-primary text-xl sm:text-2xl md:text-3xl font-bold">
         <span *ngIf="searchQuery">
           Resultados: <span class="text-primary-lighter"><strong>{{ searchQuery }}</strong></span> ({{ trips.length }})
         </span>
-        <span *ngIf="!searchQuery">Todos los viajes</span>
-      </h2>
+          <span *ngIf="!searchQuery">Todos los viajes</span>
+        </h2>
+
+        <a *ngIf="searchQuery"
+           class="text-alert underline cursor-pointer hover:text-alert-dark transition duration-300 font-light text-lg"
+           (click)="onSearch('')">
+          Borrar busqueda
+        </a>
+      </div>
+
+
       <div *ngIf="trips.length > 0" class="mt-8 flex sm:flex-col gap-8 flex-row flex-wrap justify-center">
         <app-card-details *ngFor="let trip of trips" [trip]="trip"></app-card-details>
       </div>
@@ -33,15 +43,24 @@
       </div>
       <h3 class="text-xl font-semibold mb-2">Rango de Precio</h3>
       <div class="flex flex-col gap-3 mb-8">
-        <label *ngFor="let range of priceRanges" class="flex items-center gap-2 cursor-pointer">
-          <input type="checkbox" [value]="range.value" (change)="onFilterChange()" [(ngModel)]="selectedPrices[range.value]" class="w-5 h-5 border-2 border-gray-400 rounded-sm accent-primary transition">
-          <span class="text-lg">{{ range.label }}</span>
-        </label>
+        <input
+          id="priceRange"
+          type="range"
+          min="0"
+          max="2000"
+          step="50"
+          [style.accent-color]="'#102f41'"
+          [value]="maxPrice"
+          (input)="onPriceChange($event)"
+          class="w-full"
+        >
+        <p class="text-primary text-center">Hasta {{ maxPrice }}€</p>
       </div>
     </div>
     <app-modal-filter #filterModal
                       (filtersApplied)="onFiltersApplied($event)"
                       [yachtModels]="yachtModels"
+                      (priceChanged)="onPriceChanged($event)">
     ></app-modal-filter>
   </div>
 </div>
