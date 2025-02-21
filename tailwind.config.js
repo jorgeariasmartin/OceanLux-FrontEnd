@@ -11,7 +11,8 @@ module.exports = {
         'primary-lighter': '#1C87B5',
         'secondary': '#F2F9FD',
         'gray': '#F1EFEF',
-        'alert': '#DC3545'
+        'alert': '#DC3545',
+        'alert-dark': '#C82333'
       }
     },
   },
