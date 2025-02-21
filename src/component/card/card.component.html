@@ -1,4 +1,4 @@
-<div class="min-h-[415px] max-w-[230px] rounded-xl border-2 border-primary overflow-hidden">
+<div class="max-w-[230px] rounded-xl border-2 border-primary overflow-hidden ">
   <div class="relative w-[230px] h-[230px] overflow-hidden">
     <img src="{{ trip.yacht.image }}" class="w-full h-full object-cover rounded-t-lg">
     <div class="absolute top-2 left-2 bg-opacity-40 bg-white text-primary text-sm font-semibold px-3 py-1 rounded-lg">
@@ -6,9 +6,9 @@
     </div>
   </div>
 
-  <div *ngIf="!shopped" class="px-2 pb-2 flex flex-col min-h-[180px]">
+  <div *ngIf="!shopped" class="px-2 pb-2 flex flex-col">
     <div class="flex-grow">
-      <h2 class="text-2xl font-bold text-primary my-2">{{ trip.name }}</h2>
+      <h2 class="text-xl font-bold text-primary my-2 truncate">{{ trip.name }}</h2>
     </div>
 
     <div>
@@ -27,7 +27,7 @@
 
 
   <div *ngIf="shopped" class="p-2">
-    <h2 class="text-2xl font-bold text-primary mb-2">{{ trip.name }}</h2>
+    <h2 class="text-xl font-bold text-primary mb-2 truncate">{{ trip.name }}</h2>
     <p class="text-sm text-primary-light mb-1"><strong class="text-primary">Lugar:</strong> {{ trip.departure}}</p>
     <p class="text-sm text-primary-light mb-1"><strong class="text-primary">Fecha:</strong> {{ trip.startdate }}</p>
     <p class="text-sm text-alert"><strong class="text-primary">Estado:</strong> Terminado</p>

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output, Input, OnChanges, SimpleChanges } from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {NgForOf, NgIf} from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { NgForOf, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-modal-filter',
@@ -14,18 +14,13 @@ import {NgForOf, NgIf} from '@angular/common';
 })
 export class ModalFilterComponent implements OnChanges {
   @Output() filtersApplied = new EventEmitter<{ models: string[], prices: string[] }>();
+  @Output() priceChanged = new EventEmitter<number>(); // Emitir cambios de precio
   @Input() yachtModels: string[] | null = null;
+  @Input() maxPrice: number = 2000; // Recibir maxPrice desde el padre
 
   showModal = false;
   selectedModels: { [key: string]: boolean } = {};
   selectedPrices: { [key: string]: boolean } = {};
-
-  priceRanges = [
-    { value: "250", label: "Hasta 250€" },
-    { value: "500", label: "Hasta 500€" },
-    { value: "1000", label: "Hasta 1000€" },
-    { value: "2000", label: "Hasta 2000€" }
-  ];
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['yachtModels'] && this.yachtModels) {
@@ -35,11 +30,15 @@ export class ModalFilterComponent implements OnChanges {
 
   openModal() {
     this.showModal = true;
-    console.log("Modelos en el modal al abrir:", this.yachtModels); // Verificar si llegan los datos
   }
 
   closeModal() {
     this.showModal = false;
+  }
+
+  onPriceChange(event: any) {
+    this.maxPrice = event.target.value;
+    this.priceChanged.emit(this.maxPrice);
   }
 
   applyFilters() {

@@ -7,7 +7,7 @@ import { Trip } from '../../model/trip';
 import { TripService } from '../../services/trip.service';
 import { NgForOf, NgIf } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-search-page',
@@ -29,7 +29,7 @@ export class SearchPageComponent implements OnInit {
   yachtModels: string[] = [];
   selectedModels: { [key: string]: boolean } = {};
   selectedPrices: { [key: string]: boolean } = {};
-
+  maxPrice: number = 2000;
 
   constructor(private route: ActivatedRoute, private tripService: TripService) {}
 
@@ -71,6 +71,11 @@ export class SearchPageComponent implements OnInit {
     this.applyFilters();
   }
 
+  onPriceChanged(newMaxPrice: number) {
+    this.maxPrice = newMaxPrice;
+    this.applyFilters();
+  }
+
   onSearch(query: string) {
     this.searchQuery = query.trim().toLowerCase();
     this.applyFilters();
@@ -87,15 +92,17 @@ export class SearchPageComponent implements OnInit {
       const matchesBoatType = selectedModelsArray.length === 0 ||
         selectedModelsArray.includes(trip.yacht?.model);
 
-      const selectedPriceRangesArray = Object.keys(this.selectedPrices).filter(key => this.selectedPrices[key]);
-      const matchesPrice = selectedPriceRangesArray.length === 0 || selectedPriceRangesArray.some(range => {
-        const [min, max] = range.split('-').map(Number);
-        return max ? (trip.price >= min && trip.price <= max) : trip.price >= min;
-      });
+      const matchesPrice = this.maxPrice >= 2000 ? true : trip.price <= this.maxPrice;
 
       return matchesSearch && matchesBoatType && matchesPrice;
     });
   }
+
+  onPriceChange(event: any) {
+    this.maxPrice = event.target.value;
+    this.applyFilters();
+  }
+
   onFiltersApplied(filters: { models: string[], prices: string[] }) {
     this.selectedModels = {};
     this.selectedPrices = {};
@@ -105,5 +112,4 @@ export class SearchPageComponent implements OnInit {
 
     this.applyFilters();
   }
-
 }

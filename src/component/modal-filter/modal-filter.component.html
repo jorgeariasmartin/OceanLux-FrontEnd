@@ -18,10 +18,18 @@
     <h3 class="text-xl font-semibold mb-2">Rango de Precio</h3>
 
     <div class="flex flex-col gap-3 mb-8">
-      <label *ngFor="let range of priceRanges" class="flex items-center gap-2 cursor-pointer">
-        <input type="checkbox" [(ngModel)]="selectedPrices[range.value]" class="w-5 h-5 border-2 border-gray-400 rounded-sm accent-primary transition">
-        <span class="text-lg">{{ range.label }}</span>
-      </label>
+      <input
+        id="priceRange"
+        type="range"
+        min="0"
+        max="2000"
+        step="50"
+        [style.accent-color]="'#102f41'"
+        [value]="maxPrice"
+        (input)="onPriceChange($event)"
+        class="w-full"
+      >
+      <p class="text-primary text-center">Hasta {{ maxPrice }}€</p>
     </div>
 
     <button

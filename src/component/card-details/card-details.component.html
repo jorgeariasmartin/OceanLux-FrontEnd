@@ -1,10 +1,10 @@
-<div class="sm:w-full sm:h-[150px] w-[270px] grid grid-cols-3 border-2 border-primary rounded-xl overflow-hidden">
+<div class="sm:w-full sm:h-[150px] w-[270px] h-[150px] grid grid-cols-3 border-2 border-primary rounded-xl overflow-hidden">
   <div class="sm:col-span-1 col-span-3 h-full overflow-hidden">
     <img class="w-full h-full object-cover" src="{{ trip.yacht.image }}" alt="yacht">
   </div>
-  <div class="sm:col-span-2 col-span-3 p-2">
-    <h3 class="text-primary text-2xl">{{ trip.name }}</h3>
-    <div class="grid grid-cols-2">
+  <div class="sm:col-span-2 col-span-3 p-2 flex flex-col justify-between">
+    <h3 class="text-primary text-2xl line-clamp-1">{{ trip.name }}</h3>
+    <div class="grid grid-cols-2 flex-grow">
       <div class="flex flex-col justify-between">
         <p class="text-primary-light">{{ trip.yacht.name }}</p>
         <div>
