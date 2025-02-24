@@ -9,6 +9,7 @@ export class LoadingService {
 
   loading$ = this.loadingSubject.asObservable();
 
+  // En LoadingService
   loadingOn() {
     this.loadingSubject.next(true);
   }
