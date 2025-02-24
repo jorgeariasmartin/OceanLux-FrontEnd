@@ -126,11 +126,19 @@ export class ProfileComponent {
               this.displayModal = false;
             },
             error: (error) => {
-              this.messageService.add({
-                severity: 'error',
-                summary: 'Error',
-                detail: 'Ocurrió un error al actualizar el usuario.',
-              });
+              if (error.status === 400 && error.error.error === 'El nombre de usuario ya está en uso') {
+                this.messageService.add({
+                  severity: 'error',
+                  summary: 'Error',
+                  detail: 'El nombre de usuario ya está en uso. Elige otro.',
+                });
+              } else {
+                this.messageService.add({
+                  severity: 'error',
+                  summary: 'Error',
+                  detail: 'Ocurrió un error al actualizar el usuario.',
+                });
+              }
               console.error('Error updating user:', error);
             },
           });
@@ -152,6 +160,7 @@ export class ProfileComponent {
       });
     }
   }
+
 // Mostrar el modal de cambiar contraseña
   showChangePasswordModal(): void {
     this.displayChangePasswordModal = true;
