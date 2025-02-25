@@ -72,6 +72,39 @@ body::-webkit-scrollbar-thumb {
   color: #102F41 !important;
 }
 
+.scroll-bookings {
+  max-height: 600px; /* Ajusta según el diseño */
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--sb-thumb-color) var(--sb-track-color); /* Coincide con la barra lateral */
+}
+
+.scroll-bookings::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.scroll-bookings::-webkit-scrollbar-track {
+  background: var(--sb-track-color); /* Color oscuro */
+}
+
+.scroll-bookings::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color); /* Color claro */
+  border-radius: 20px;
+  border: var(--sb-thumb-padding) solid transparent;
+  background-clip: content-box;
+}
+
+/* Quitar las flechas de los inputs numéricos */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Para Firefox */
+}
+
 /* Fallback para navegadores que no soportan ::-webkit-scrollbar */
 @supports not selector(::-webkit-scrollbar) {
   body, .carousel-scrollbar {
