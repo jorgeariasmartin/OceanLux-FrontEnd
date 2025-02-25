@@ -8,6 +8,7 @@ import {ViewTripComponent} from './features/view-trip/view-trip.component';
 import {AdminHomepageComponent} from './features/admin-homepage/admin-homepage.component';
 import {AdminYachtsComponent} from './features/admin-yachts/admin-yachts.component';
 import {ProfileComponent} from './features/profile/profile.component';
+import {CheckoutComponent} from './features/checkout/checkout.component';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -19,5 +20,6 @@ export const routes: Routes = [
   {path:'adminYachts', component: AdminYachtsComponent},
   {path: 'trip/:id', component: ViewTripComponent},
   {path: 'adminHome', component: AdminHomepageComponent},
-  {path: 'profile', component: ProfileComponent}
+  {path: 'profile', component: ProfileComponent},
+  {path: 'checkout', component: CheckoutComponent}
 ];
