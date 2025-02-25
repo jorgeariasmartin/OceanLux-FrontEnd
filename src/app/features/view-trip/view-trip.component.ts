@@ -8,6 +8,8 @@ import { Trip } from '../../model/trip';
 import { TripService } from '../../services/trip.service';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
+import { LoadingService } from '../../services/loading.service';
+import {LoadingComponent} from '../../../component/loading/loading.component';
 
 @Component({
   selector: 'app-view-trip',
@@ -17,7 +19,8 @@ import { switchMap } from 'rxjs';
     Checkbox,
     FormsModule,
     InputNumber,
-    ButtonModule
+    ButtonModule,
+    LoadingComponent
   ],
   templateUrl: './view-trip.component.html'
 })
@@ -35,14 +38,17 @@ export class ViewTripComponent implements OnInit {
   };
   totalPrice: number = this.basePrice;
 
-  constructor(private tripService: TripService, private route: ActivatedRoute) {}
+  constructor(private tripService: TripService, private route: ActivatedRoute, private loadingService: LoadingService) {}
 
   ngOnInit() {
+    this.loadingService.loadingOn();
+
     this.route.paramMap.pipe(
       switchMap(params => {
         const id = Number(params.get('id'));
         if (isNaN(id) || id <= 0) {
           console.error("ID inválido del viaje");
+          this.loadingService.loadingOff();
           return [];
         }
         this.tripId = id;
@@ -54,9 +60,10 @@ export class ViewTripComponent implements OnInit {
         this.basePrice = data.price || 1000;
         this.setMaxTickets();
         this.calculateTotal();
+        this.loadingService.loadingOff();
       },
       error: (err) => {
-        console.error("Error al cargar el viaje:", err);
+        this.loadingService.loadingOff();
       }
     });
   }

@@ -33,12 +33,18 @@ import { Observable } from 'rxjs';
 export class SidebarComponent implements OnInit {
   isSidebarOpen = false;
   isLoading = true;
-  isLoggedIn!: Observable<boolean>; // Estado de autenticación
+  isLoggedIn!: Observable<boolean>;
+  userRole: string | null = null;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.isLoggedIn = this.authService.isAuthenticated(); // Obtenemos el estado de autenticación
+    this.isLoggedIn = this.authService.isAuthenticated();
+    this.authService.getUserRole().subscribe(role => {
+      this.userRole = role;
+
+    });
+
     setTimeout(() => {
       this.isLoading = false;
     }, 1000);

@@ -1,14 +1,15 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable, tap} from 'rxjs';
 import {RouteConfigLoadEnd, RouteConfigLoadStart, Router} from '@angular/router';
-import {AsyncPipe} from '@angular/common';
+import {AsyncPipe, NgIf} from '@angular/common';
 import {LoadingService} from '../../app/services/loading.service';
 
 @Component({
   selector: 'app-loading',
   standalone: true,
   imports: [
-    AsyncPipe
+    AsyncPipe,
+    NgIf
   ],
   templateUrl: './loading.component.html'
 })
