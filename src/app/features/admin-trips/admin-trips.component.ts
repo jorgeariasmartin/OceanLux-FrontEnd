@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, NgForm} from '@angular/forms';
 import { TripService } from '../../services/trip.service';
 import { YachtService } from '../../services/yacht.service';
 import { Trip } from '../../model/trip';
@@ -42,6 +42,8 @@ import {Calendar} from 'primeng/calendar';
 })
 export class AdminTripsComponent implements OnInit, AfterViewInit {
   @ViewChild(ToastComponent) toast!: ToastComponent;
+  @ViewChild('tripForm') tripForm!: NgForm;
+
 
   trip: Trip = {
     name: '',
@@ -143,22 +145,14 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
       return;
     }
 
-    const startDate = new Date(this.trip.startdate);
-    const endDate = new Date(this.trip.enddate);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+    const today = new Date().toISOString().split('T')[0]; // Obtiene "yyyy-MM-dd" del día actual
 
-    if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
-      this.toast.addMessage('error', 'Error', 'Por favor, selecciona ambas fechas.');
+    if (this.trip.enddate < today || this.trip.startdate < today) {
+      this.toast.addMessage('error', 'Error', 'La fecha de llegada o salida no puede ser anterior a hoy.');
       return;
     }
 
-    if (endDate < today || startDate < today) {
-      this.toast.addMessage('error', 'Error', 'La fecha de llegada no puede ser anterior a hoy.');
-      return;
-    }
-
-    if (endDate < startDate) {
+    if (this.trip.enddate < this.trip.startdate) {
       this.toast.addMessage('error', 'Error', 'La fecha de llegada no puede ser anterior a la fecha de salida.');
       return;
     }
@@ -169,10 +163,9 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
         ...this.trip.yacht, // Usa los datos completos del yate seleccionado
         id: Number(this.trip.yacht.id)
       },
-      startdate: startDate.toISOString(),
-      enddate: endDate.toISOString()
+      startdate: this.trip.startdate, // Se mantiene como string
+      enddate: this.trip.enddate // Se mantiene como string
     };
-
 
     this.tripService.createTrip(tripToSend).subscribe({
       next: () => {
@@ -180,36 +173,43 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
         this.loadTrips();
         this.resetForm();
       },
-      error: (error) => {
+      error: () => {
         this.toast.addMessage('error', 'Error', 'Error al crear el viaje');
       }
     });
   }
 
+
   editTrip(trip: Trip): void {
+    console.log('Editando viaje:', trip);
+
     this.selectedTrip = { ...trip };
     this.trip = {
       ...trip,
-      startdate: new Date(trip.startdate).toISOString().slice(0, 16),
-      enddate: new Date(trip.enddate).toISOString().slice(0, 16)
+      startdate: trip.startdate ? trip.startdate.split('T')[0] : '',
+      enddate: trip.enddate ? trip.enddate.split('T')[0] : ''
     };
+
     this.isEditMode = true;
+
+    console.log('Datos en el formulario:', this.trip);
   }
 
-  updateTrip(): void {
-    if (!this.selectedTrip) {
-      return;
-    }
 
-    const startDate = new Date(this.selectedTrip.startdate);
-    const endDate = new Date(this.selectedTrip.enddate);
+  updateTrip(): void {
+    if (!this.selectedTrip) return;
+
+    const startDate = new Date(this.trip.startdate);
+    const endDate = new Date(this.trip.enddate);
 
     const tripToSend: Trip = {
-      ...this.selectedTrip,
-      yacht: { ...this.selectedTrip.yacht },
+      ...this.trip,
       startdate: startDate.toISOString(),
-      enddate: endDate.toISOString()
+      enddate: endDate.toISOString(),
+      yacht: { ...this.trip.yacht }
     };
+
+    console.log('Request payload:', tripToSend); // Log the payload
 
     this.tripService.updateTrip(this.selectedTrip.id!, tripToSend).subscribe({
       next: () => {
@@ -218,9 +218,17 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
         this.resetForm();
       },
       error: (error) => {
-        this.toast.addMessage('error', 'Error', 'Error actualizando el viaje');
+        console.error('Error en updateTrip:', error);
+        this.toast.addMessage('error', 'Error', 'Error al actualizar el viaje');
       }
     });
+  }
+
+
+  formatDate(date: string | Date): string {
+    if (!date) return '';
+    const d = new Date(date);
+    return d.toISOString().split('T')[0]; // ✅ Obtiene solo "YYYY-MM-DD"
   }
 
   deleteTrip(trip: Trip): void {
@@ -252,6 +260,7 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
       startdate: '',
       enddate: '',
       yacht: {
+        id: 0,
         name: '',
         model: '',
         image: '',
@@ -259,9 +268,15 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
         capacity: 0
       }
     };
+
+    if (this.tripForm) {
+      this.tripForm.resetForm(); // Resetea los valores y estados del formulario
+    }
+
     this.selectedTrip = null;
     this.isEditMode = false;
   }
+
 
   customSort(event: any) {
     event.data.sort((a: any, b: any) => {
