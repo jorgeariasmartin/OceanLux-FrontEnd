@@ -159,7 +159,6 @@ export class ViewLoginRegisterComponent implements OnInit {
 
     this.authService.login(this.user).subscribe({
       next: (response) => {
-        console.log('Login exitoso:', response);
         this.router.navigate(['/']); // Redirigir a la página de inicio
       },
       error: (error) => {
