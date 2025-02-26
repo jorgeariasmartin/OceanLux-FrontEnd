@@ -6,52 +6,53 @@
   <div class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg mb-8">
     <h2 class="text-2xl font-bold mb-4 text-center">{{ isEditMode ? 'Edición de Viaje' : 'Creación de Viajes' }}</h2>
 
-    <form (submit)="confirmSubmit($event); $event.preventDefault()" class="space-y-4">
+    <form #tripForm="ngForm" (submit)="confirmSubmit($event); $event.preventDefault()" class="space-y-4">
       <p-floatlabel variant="on" class="w-full">
-        <input pInputText id="name" [(ngModel)]="trip.name" name="name" autocomplete="on" class="w-full p-2 border rounded" required />
+        <input pInputText id="name" [(ngModel)]="trip.name" name="name" autocomplete="on"
+               class="w-full p-2 border rounded" required/>
         <label for="name">Nombre del viaje</label>
       </p-floatlabel>
 
-      <p-floatlabel variant="on" class="w-full">
-        <input pInputText id="departure" [(ngModel)]="trip.departure" name="name" autocomplete="on" class="w-full p-2 border rounded" required />
+        <p-floatlabel variant="on" class="w-full">
+        <input pInputText id="departure" [(ngModel)]="trip.departure" name="departure" autocomplete="on"
+               class="w-full p-2 border rounded" required/>
         <label for="departure">Lugar de salida</label>
       </p-floatlabel>
 
       <div class="w-full flex flex-col md:flex-row md:gap-x-4 sm:gap-y-4">
         <p-floatlabel variant="on" class="w-full md:w-1/2">
-          <p-inputnumber [(ngModel)]="trip.price" mode="currency" inputId="currency-germany" currency="EUR" locale="de-DE" name="price" class="w-full"></p-inputnumber>
+          <p-inputnumber [(ngModel)]="trip.price" mode="currency" inputId="currency-germany" currency="EUR"
+                         locale="de-DE" name="price" class="w-full"></p-inputnumber>
           <label>Precio</label>
         </p-floatlabel>
 
         <p-floatlabel variant="on" class="w-full md:w-1/2">
-          <p-inputnumber [(ngModel)]="trip.duration_hours" inputId="mile" suffix=" h" name="durationHours" class="w-full"></p-inputnumber>
+          <p-inputnumber [(ngModel)]="trip.duration_hours" inputId="mile" suffix=" h" name="durationHours"
+                         class="w-full"></p-inputnumber>
           <label>Duración</label>
         </p-floatlabel>
       </div>
 
       <p-floatlabel variant="on" class="w-full">
-        <textarea pTextarea id="description" [(ngModel)]="trip.description" name="description" autocomplete="off" class="w-full p-2 border rounded" required></textarea>
+        <textarea pTextarea id="description" [(ngModel)]="trip.description" name="description" autocomplete="off"
+                  class="w-full p-2 border rounded" required></textarea>
         <label for="description">Descripción</label>
       </p-floatlabel>
 
       <div class="w-full flex flex-col sm:flex-row sm:gap-x-4 sm:gap-y-4">
         <div class="w-full flex flex-col sm:flex-row sm:gap-x-4 sm:gap-y-4">
-          <p-floatlabel variant="on" class="w-full sm:w-1/2">
-            <p-datePicker name="startdate" inputId="startdate" [(ngModel)]="trip.startdate" [showTime]="true" dateFormat="yy-mm-dd'T'HH:mm" [hourFormat]="String(24)" class="w-full"></p-datePicker>
-            <label>Fecha de Salida</label>
-          </p-floatlabel>
-          <p-floatlabel variant="on" class="w-full sm:w-1/2">
-            <p-datepicker name="enddate" inputId="enddate" [(ngModel)]="trip.enddate" [showTime]="true" dateFormat="yy-mm-dd'T'HH:mm" [hourFormat]="String(24)" class="w-full"></p-datepicker>
-            <label class="text-primary">Fecha de llegada</label>
-          </p-floatlabel>
+          <p-datepicker name="startdate" inputId="startdate" [(ngModel)]="trip.startdate" [showTime]="false"  dateFormat="yy-mm-dd" class="w-full"></p-datepicker>
+          <p-datepicker name="enddate" inputId="enddate" [(ngModel)]="trip.enddate" [showTime]="false" dateFormat="yy-mm-dd" class="w-full"></p-datepicker>
         </div>
       </div>
 
       <div>
-        <p-listbox name="yacht" id="yachtId" [options]="filteredYachts" [(ngModel)]="trip.yacht" optionLabel="model" [filter]="true" required class="w-full mt-7"></p-listbox>
+        <p-listbox name="yacht" id="yachtId" [options]="filteredYachts" [(ngModel)]="trip.yacht" optionLabel="model"
+                   [filter]="true" required class="w-full mt-7"></p-listbox>
       </div>
       <div class="flex justify-end">
-        <p-button type="submit" label="{{ isEditMode ? 'Update' : 'Save' }}" icon="pi pi-check" iconPos="right" [outlined]="true" class="justify-center" />
+        <p-button type="submit" label="{{ isEditMode ? 'Actualizar' : 'Guardar' }}" icon="pi pi-check" iconPos="right"
+                  [outlined]="true" class="justify-center"/>
 
       </div>
     </form>
@@ -62,28 +63,36 @@
       <ng-template #header>
         <tr>
           <th pSortableColumn="name">
-            Name <p-sortIcon field="name" />
+            Name
+            <p-sortIcon field="name"/>
           </th>
           <th pSortableColumn="departure">
-            Departure <p-sortIcon field="departure" />
+            Departure
+            <p-sortIcon field="departure"/>
           </th>
           <th pSortableColumn="price">
-            Price <p-sortIcon field="price" />
+            Price
+            <p-sortIcon field="price"/>
           </th>
           <th pSortableColumn="duration_hours">
-            Duration (Hours) <p-sortIcon field="duration_hours" />
+            Duration (Hours)
+            <p-sortIcon field="duration_hours"/>
           </th>
           <th pSortableColumn="description">
-            Description <p-sortIcon field="description" />
+            Description
+            <p-sortIcon field="description"/>
           </th>
           <th pSortableColumn="startdate">
-            Start Date <p-sortIcon field="startdate" />
+            Start Date
+            <p-sortIcon field="startdate"/>
           </th>
           <th pSortableColumn="enddate">
-            End Date <p-sortIcon field="enddate" />
+            End Date
+            <p-sortIcon field="enddate"/>
           </th>
           <th pSortableColumn="yacht.id">
-            Yacht Model <p-sortIcon field="yacht.id" />
+            Yacht Model
+            <p-sortIcon field="yacht.id"/>
           </th>
           <th>Actions</th>
         </tr>
@@ -99,8 +108,8 @@
           <td>{{ trip.enddate | date: 'shortDate' }}</td>
           <td>{{ trip.yacht.model }}</td>
           <td>
-            <p-button label="Edit" icon="pi pi-pencil" severity="info" class="mr-2" (click)="editTrip(trip)"></p-button>
-            <p-button label="Delete" icon="pi pi-trash" severity="danger" (click)="deleteTrip(trip)"></p-button>
+            <p-button icon="pi pi-pencil" severity="info" class="mr-2" (click)="editTrip(trip)"></p-button>
+            <p-button icon="pi pi-trash" severity="danger" (click)="deleteTrip(trip)"></p-button>
         </tr>
       </ng-template>
     </p-table>
