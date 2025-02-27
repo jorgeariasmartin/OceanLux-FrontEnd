@@ -85,7 +85,13 @@
 
         <!-- Comprar Tickets -->
         <div class="flex flex-col md:flex-row w-full items-center gap-5 mt-6">
-          <p-button label="Comprar tickets" icon="pi pi-ticket" severity="contrast"></p-button>
+          <p-button
+            label="Comprar tickets"
+            icon="pi pi-ticket"
+            severity="contrast"
+            (click)="bookTrip()"
+            [disabled]="isBooking">
+          </p-button>
           <span class="font-bold text-xl text-primary">Total {{ totalPrice }} €</span>
         </div>
       </div>
