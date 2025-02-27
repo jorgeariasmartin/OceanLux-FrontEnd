@@ -28,6 +28,20 @@ export class AuthService {
     );
   }
 
+  getUserId(): Observable<number | null> {
+    if (this.currentUserId !== null) {
+      return new BehaviorSubject<number | null>(this.currentUserId).asObservable();
+    }
+
+    return this.getAuthenticatedUser().pipe(
+      map(user => {
+        this.currentUserId = user.id;
+        return this.currentUserId;
+      })
+    );
+  }
+
+
   register(userData: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/user/create`, userData);
   }
