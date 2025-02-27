@@ -10,14 +10,16 @@
       <p class="font-bold">Carrito</p>
 
       <ul *ngIf="pendingReservations.length > 0" class="my-2">
-        <li *ngFor="let reservation of pendingReservations" class="flex justify-between py-1">
-          <span>Viaje {{ reservation.trip_id }} (x{{ reservation.number_of_guest }})</span>
+        <li *ngFor="let reservation of pendingReservations" class="flex items-center justify-between py-1">
+          <span>{{ reservation.trip?.name }} (x{{ reservation.number_of_guest }})</span>
           <span>{{ reservation.total_price }}€</span>
+          <p-button (click)="deleteReservation(reservation.id)" icon="pi pi-trash" aria-label="Save" size="small" />
         </li>
         <li class="flex justify-between font-bold border-t pt-2">
           <span>TOTAL</span>
           <span>{{ getTotalPrice() }}€</span>
         </li>
+
       </ul>
 
       <p *ngIf="pendingReservations.length === 0" class="text-gray-500 text-center mt-2">No tienes reservas pendientes</p>

@@ -4,6 +4,8 @@ import {AsyncPipe, CommonModule, NgIf} from '@angular/common';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../app/services/auth.service';
 import { ReservationService } from '../../app/services/booking.service';
+import {TripService} from '../../app/services/trip.service';
+import {ButtonModule} from 'primeng/button';
 
 @Component({
   selector: 'app-check-tickets',
@@ -11,7 +13,8 @@ import { ReservationService } from '../../app/services/booking.service';
     RouterLink,
     NgIf,
     AsyncPipe,
-    CommonModule
+    CommonModule,
+    ButtonModule
   ],
   templateUrl: './check-tickets.component.html'
 })
@@ -22,7 +25,7 @@ export class CheckTicketsComponent implements OnInit {
   pendingReservations: any[] = [];
   userId!: number | null;
 
-  constructor(private authService: AuthService, private bookingService: ReservationService) {}
+  constructor(private authService: AuthService, private bookingService: ReservationService, private tripService : TripService) {}
 
   ngOnInit() {
     this.isLoggedIn = this.authService.isAuthenticated();
@@ -62,7 +65,13 @@ export class CheckTicketsComponent implements OnInit {
     this.bookingService.getPendingReservationsByUser(this.userId).subscribe({
       next: (reservations) => {
         this.pendingReservations = reservations;
-        console.log(this.pendingReservations);
+
+        // Para cada reserva, obtener los datos del viaje asociado
+        this.pendingReservations.forEach(reservation => {
+          this.tripService.getTripById(reservation.trip_id).subscribe(trip => {
+            reservation.trip = trip;
+          });
+        });
       },
       error: () => {
         console.error('Error al cargar las reservas pendientes');
@@ -70,6 +79,16 @@ export class CheckTicketsComponent implements OnInit {
     });
   }
 
+  deleteReservation(reservationId: number) {
+    this.bookingService.deleteReservation(reservationId).subscribe({
+      next: () => {
+        this.pendingReservations = this.pendingReservations.filter(res => res.id !== reservationId);
+      },
+      error: () => {
+        console.error('Error al eliminar la reserva');
+      }
+    });
+  }
 
   getTotalPrice(): number {
     return this.pendingReservations.reduce((acc, r) => acc + r.total_price, 0);
