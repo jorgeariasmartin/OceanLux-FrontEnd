@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable, BehaviorSubject, map} from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, BehaviorSubject, map } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { User } from '../model/User';
@@ -28,6 +28,7 @@ export class AuthService {
     );
   }
 
+  // Método para obtener el ID del usuario
   getUserId(): Observable<number | null> {
     if (this.currentUserId !== null) {
       return new BehaviorSubject<number | null>(this.currentUserId).asObservable();
@@ -41,8 +42,9 @@ export class AuthService {
     );
   }
 
-
+  // Método para registrar un nuevo usuario
   register(userData: any): Observable<any> {
+    console.log('Datos enviados al backend:', userData);
     return this.http.post<any>(`${this.apiUrl}/user/create`, userData);
   }
 
@@ -68,7 +70,7 @@ export class AuthService {
     this.router.navigate(['/logaccount']).then(r => r);
   }
 
-  // Obtener datos del usuario autenticado
+  // Método para obtener datos del usuario autenticado
   getAuthenticatedUser(): Observable<any> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.getToken()}`
@@ -78,13 +80,23 @@ export class AuthService {
       tap(user => {
         if (user && user.id) {
           this.currentUserId = user.id;
+          this.currentUserRole.next(user.rol);
         }
       })
     );
   }
 
+
+  // Obtener el rol del usuario
   getUserRole(): Observable<string | null> {
     return this.currentUserRole.asObservable();
+  }
+
+  // Método para verificar si el usuario tiene el rol ROLE_ADMIN
+  isAdmin(): Observable<boolean> {
+    return this.getUserRole().pipe(
+      map(role => role === 'ROLE_ADMIN')
+    );
   }
 
   // Método para actualizar el usuario
@@ -101,6 +113,7 @@ export class AuthService {
     return this.http.put<any>(`${this.apiUrl}/user/update/${this.currentUserId}`, user, { headers });
   }
 
+  // Método para cambiar la contraseña del usuario
   changePassword(oldPassword: string, newPassword: string, confirmPassword: string): Observable<any> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.getToken()}`,
