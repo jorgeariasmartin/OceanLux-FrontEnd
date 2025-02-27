@@ -61,9 +61,17 @@
 
           <div class="flex flex-col">
             <label for="password">Contraseña</label>
-            <p-password [(ngModel)]="userData.password" [toggleMask]="true" [feedback]="true"
-                        id="password" styleClass="w-full" [inputStyle]="{'width':'100%'}"
-                        weakLabel="Fortaleza baja" mediumLabel="Fortaleza media" strongLabel="Fortaleza alta" />
+            <p-password [(ngModel)]="userData.password"
+                        (input)="updatePassword($event)"
+                        [toggleMask]="true"
+                        [feedback]="true"
+                        id="password"
+                        styleClass="w-full"
+                        [inputStyle]="{'width':'100%'}"
+                        weakLabel="Fortaleza baja"
+                        mediumLabel="Fortaleza media"
+                        strongLabel="Fortaleza alta" />
+
           </div>
 
           <div class="flex flex-col">
