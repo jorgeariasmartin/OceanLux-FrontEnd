@@ -9,7 +9,7 @@ import {AdminHomepageComponent} from './features/admin-homepage/admin-homepage.c
 import {AdminYachtsComponent} from './features/admin-yachts/admin-yachts.component';
 import {ProfileComponent} from './features/profile/profile.component';
 import {CheckoutComponent} from './features/checkout/checkout.component';
-import { AdminRoleGuard } from './guards/admin-role.guard';
+import {VerificationComponent} from '../component/verification/verification.component';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -17,10 +17,11 @@ export const routes: Routes = [
   {path: 'logaccount', component: ViewLoginRegisterComponent},
   {path: 'home', component: MainPageComponent},
   {path: 'search', component: SearchPageComponent},
-  { path: 'adminHome', component: AdminHomepageComponent, canActivate: [AdminRoleGuard] },
+  {path:'adminHome', component: AdminHomepageComponent},
   {path:'adminYachts', component: AdminYachtsComponent},
   {path: 'trip/:id', component: ViewTripComponent},
   {path: 'adminHome', component: AdminHomepageComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'checkout', component: CheckoutComponent}
+  {path: 'checkout', component: CheckoutComponent},
+  {path: 'user/verify', component: VerificationComponent}
 ];

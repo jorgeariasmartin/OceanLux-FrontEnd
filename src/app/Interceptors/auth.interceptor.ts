@@ -15,7 +15,7 @@ export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<any>, next: 
 
   console.log('Interceptando:', req.url);
 
-  if (req.url.endsWith('/logaccount') || req.context.get(SkipAuth)) {
+  if (req.url.endsWith('/logaccount') || req.url.endsWith('/send-verification-email') || req.url.includes('/verify') || req.context.get(SkipAuth)) {
     console.log('⏩ Saltando autenticación:', req.url);
     return next(req);
   }
