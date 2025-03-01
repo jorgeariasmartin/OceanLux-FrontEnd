@@ -110,6 +110,10 @@ export class ViewLoginRegisterComponent implements OnInit {
     }
   }
 
+  updatePassword(event: any) {
+    this.userData.password = event.target.value;
+  }
+
   register() {
     if (!this.userData.username || !this.userData.password || !this.userData.email ||
       !this.userData.client.name || !this.userData.client.surname ||
@@ -133,6 +137,7 @@ export class ViewLoginRegisterComponent implements OnInit {
       }
     });
   }
+
 
   resetForm() {
     this.userData = {

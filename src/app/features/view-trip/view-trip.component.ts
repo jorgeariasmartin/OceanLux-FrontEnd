@@ -9,7 +9,10 @@ import { TripService } from '../../services/trip.service';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { LoadingService } from '../../services/loading.service';
-import {LoadingComponent} from '../../../component/loading/loading.component';
+import { LoadingComponent } from '../../../component/loading/loading.component';
+import { MessageService } from 'primeng/api';
+import { ReservationService } from '../../services/booking.service';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-view-trip',
@@ -22,7 +25,8 @@ import {LoadingComponent} from '../../../component/loading/loading.component';
     ButtonModule,
     LoadingComponent
   ],
-  templateUrl: './view-trip.component.html'
+  templateUrl: './view-trip.component.html',
+  providers: [MessageService]
 })
 export class ViewTripComponent implements OnInit {
   trip!: Trip;
@@ -37,8 +41,16 @@ export class ViewTripComponent implements OnInit {
     'Pepper': 150
   };
   totalPrice: number = this.basePrice;
+  isBooking: boolean = false;
 
-  constructor(private tripService: TripService, private route: ActivatedRoute, private loadingService: LoadingService) {}
+  constructor(
+    private tripService: TripService,
+    private route: ActivatedRoute,
+    private loadingService: LoadingService,
+    private bookingService: ReservationService,
+    private messageService: MessageService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.loadingService.loadingOn();
@@ -62,7 +74,7 @@ export class ViewTripComponent implements OnInit {
         this.calculateTotal();
         this.loadingService.loadingOff();
       },
-      error: (err) => {
+      error: () => {
         this.loadingService.loadingOff();
       }
     });
@@ -78,4 +90,49 @@ export class ViewTripComponent implements OnInit {
     let extrasCost = this.extra.reduce((acc, curr) => acc + (this.extrasPrices[curr] || 0), 0);
     this.totalPrice = this.basePrice * this.value + extrasCost;
   }
+
+  bookTrip() {
+    if (this.value > this.maxTickets) {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Número de tickets excede el máximo permitido' });
+      return;
+    }
+
+    this.isBooking = true;
+
+    // Obtén el user_id del AuthService
+    this.authService.getUserId().subscribe({
+      next: (userId) => {
+        if (userId === null) {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo obtener el ID del usuario' });
+          this.isBooking = false;
+          return;
+        }
+
+        const reservation = {
+          trip_id: this.tripId,
+          number_of_guest: this.value,
+          total_price: this.totalPrice,
+          user_id: userId,
+          booking_date: new Date().toISOString().split('T')[0]
+        };
+
+        // Llamamos al servicio para crear la reserva
+        this.bookingService.createReservation(reservation).subscribe({
+          next: () => {
+            this.messageService.add({ severity: 'success', summary: 'Añadido al carrito', detail: 'Tu viaje se ha añadido al carrito' });
+            this.isBooking = false;
+          },
+          error: () => {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Ha ocurrido un error' });
+            this.isBooking = false;
+          }
+        });
+      },
+      error: () => {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo obtener el ID del usuario' });
+        this.isBooking = false;
+      }
+    });
+  }
+
 }
