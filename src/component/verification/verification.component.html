@@ -1,0 +1,39 @@
+<app-header></app-header>
+
+<div class="flex flex-col items-center justify-center h-screen bg-gray-100 text-center">
+  <div class="relative">
+    <div
+      class="w-24 h-24 rounded-full bg-green-500 flex items-center justify-center
+             text-white text-5xl shadow-lg transition-all duration-500
+             transform scale-50 opacity-0"
+      [class.opacity-100]="showAnimation"
+      [class.scale-100]="showAnimation">
+      ✅
+    </div>
+    <div
+      class="absolute inset-0 w-32 h-32 rounded-full border-4 border-green-300
+             animate-ping opacity-50"
+      *ngIf="showAnimation">
+    </div>
+  </div>
+
+  <h2
+    class="mt-6 text-2xl font-semibold text-gray-800 opacity-0 transition-opacity duration-700 delay-300"
+    [class.opacity-100]="showAnimation">
+    ¡Su cuenta ha sido verificada con éxito!
+  </h2>
+
+  <p
+    class="mt-2 text-gray-600 opacity-0 transition-opacity duration-700 delay-500"
+    [class.opacity-100]="showAnimation">
+    Ahora puede disfrutar de todas las funciones de la plataforma.
+  </p>
+
+  <a
+    routerLink="/logaccount"
+    class="mt-6 px-6 py-3 bg-green-500 text-white rounded-lg shadow-md
+           hover:bg-green-600 transition-all duration-300 opacity-0"
+    [class.opacity-100]="showAnimation">
+    Ir a Iniciar Sesión
+  </a>
+</div>
