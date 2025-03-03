@@ -11,7 +11,7 @@ import { switchMap } from 'rxjs';
 import { LoadingService } from '../../services/loading.service';
 import { LoadingComponent } from '../../../component/loading/loading.component';
 import { MessageService } from 'primeng/api';
-import { ReservationService } from '../../services/booking.service';
+import { BookingService } from '../../services/booking.service';
 import {AuthService} from '../../services/auth.service';
 
 @Component({
@@ -47,7 +47,7 @@ export class ViewTripComponent implements OnInit {
     private tripService: TripService,
     private route: ActivatedRoute,
     private loadingService: LoadingService,
-    private bookingService: ReservationService,
+    private bookingService: BookingService,
     private messageService: MessageService,
     private authService: AuthService
   ) {}

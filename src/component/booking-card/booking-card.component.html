@@ -1,26 +1,26 @@
 <div class="p-6 rounded-2xl border-2 border-primary flex justify-between items-center w-full text-primary bg-secondary">
   <div>
-    <h2 class="text-2xl font-bold text-gray-900">Tour por Ibiza</h2>
+    <h2 class="text-2xl font-bold text-gray-900">{{ reservation.trip?.name }}</h2>
     <div class="flex items-center gap-3">
       <i class="pi pi-ticket"></i>
       <label>Tickets:</label>
-      <span class="text-primary-light">3</span>
+      <span class="text-primary-light">{{ reservation.number_of_guest }}</span>
     </div>
     <div class="flex items-center gap-3">
       <i class="pi pi-clock"></i>
       <label>Fecha:</label>
-      <span class="text-primary-light">3 Marzo 2025</span>
+      <span class="text-primary-light">{{ reservation.trip?.date | date:'dd MMMM yyyy' }}</span>
     </div>
     <div class="flex items-center gap-3">
       <svg width="20" height="20" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M20.3818 9.52767C20.2698 9.20327 20.0668 8.92309 19.8 8.72491C19.5333 8.52673 19.2157 8.42007 18.89 8.41932H16.9435L16.1497 3.36774H10.9687L11.7624 8.41932H9.80005L9.00634 3.36774H3.82528L4.61899 8.41932H2.38112V13.0499H0.793701V23.5741H22.0119L24.6051 14.8636V13.0499H21.5893L20.3818 9.52767Z" fill="#102F41"/>
       </svg>
       <label>Salida:</label>
-      <span class="text-primary-light">Puerto narcos</span>
+      <span class="text-primary-light">{{ reservation.trip?.departure }}</span>
     </div>
   </div>
   <div class="text-right">
-    <p class="text-4xl font-bold">300€</p>
-    <button class="text-red-600 underline mt-2">eliminar</button>
+    <p class="text-4xl font-bold">{{ reservation.total_price }}€</p>
+    <button (click)="onDelete()" class="text-red-600 underline mt-2">Eliminar</button>
   </div>
 </div>
