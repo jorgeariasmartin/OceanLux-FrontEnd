@@ -10,15 +10,17 @@ import {AdminYachtsComponent} from './features/admin-yachts/admin-yachts.compone
 import {ProfileComponent} from './features/profile/profile.component';
 import {CheckoutComponent} from './features/checkout/checkout.component';
 import {VerificationComponent} from '../component/verification/verification.component';
+import {AdminBookingComponent} from './features/admin-booking/admin-booking.component';
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path:'adminTrips', component: AdminTripsComponent},
+  {path: 'adminTrips', component: AdminTripsComponent},
+  {path: 'adminBookings', component: AdminBookingComponent},
   {path: 'logaccount', component: ViewLoginRegisterComponent},
   {path: 'home', component: MainPageComponent},
   {path: 'search', component: SearchPageComponent},
-  {path:'adminHome', component: AdminHomepageComponent},
-  {path:'adminYachts', component: AdminYachtsComponent},
+  {path: 'adminHome', component: AdminHomepageComponent},
+  {path: 'adminYachts', component: AdminYachtsComponent},
   {path: 'trip/:id', component: ViewTripComponent},
   {path: 'adminHome', component: AdminHomepageComponent},
   {path: 'profile', component: ProfileComponent},
