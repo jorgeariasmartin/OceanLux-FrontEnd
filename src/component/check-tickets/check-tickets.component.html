@@ -5,16 +5,29 @@
   </button>
 
   <div *ngIf="showCartDropdown" id="cartDropdown"
-       class="absolute right-0 mt-2 w-64 bg-white shadow-lg rounded-md overflow-hidden z-10">
+       class="absolute right-0 mt-2 w-[320px] bg-white shadow-lg rounded-md overflow-hidden z-10">
     <div class="p-4 text-gray-700">
       <p class="font-bold">Carrito</p>
 
       <ul *ngIf="pendingReservations.length > 0" class="my-2">
         <li *ngFor="let reservation of pendingReservations" class="flex items-center justify-between py-1">
-          <span>{{ reservation.trip?.name }} (x{{ reservation.number_of_guest }})</span>
-          <span>{{ reservation.total_price }}€</span>
-          <p-button (click)="deleteReservation(reservation.id)" icon="pi pi-trash" aria-label="Save" size="small" />
+          <div class="flex items-center gap-1 max-w-[calc(100%-100px)] overflow-hidden">
+            <span class="truncate" title="{{ reservation.trip?.name }}">
+              {{ reservation.trip?.name }}
+            </span>
+            <span class="flex-shrink-0">(x{{ reservation.number_of_guest }})</span>
+          </div>
+          <span class="w-20 text-right pr-2">{{ reservation.total_price }}€</span>
+          <button
+            class="w-8 h-8 bg-red-500 text-white flex items-center justify-center rounded hover:bg-red-600"
+            (click)="deleteReservation(reservation.id)"
+            aria-label="Eliminar"
+          >
+            <i class="pi pi-trash"></i>
+          </button>
         </li>
+
+
         <li class="flex justify-between font-bold border-t pt-2">
           <span>TOTAL</span>
           <span>{{ getTotalPrice() }}€</span>
@@ -24,7 +37,7 @@
 
       <p *ngIf="pendingReservations.length === 0" class="text-gray-500 text-center mt-2">No tienes reservas pendientes</p>
 
-      <button *ngIf="pendingReservations.length > 0" class="w-full mt-2 bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-lighter">
+      <button *ngIf="pendingReservations.length > 0" routerLink="/checkout" class="w-full mt-2 bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-lighter">
         Finalizar compra
       </button>
     </div>

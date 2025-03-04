@@ -29,8 +29,12 @@
   <div *ngIf="shopped" class="p-2">
     <h2 class="text-xl font-bold text-primary mb-2 truncate">{{ trip.name }}</h2>
     <p class="text-sm text-primary-light mb-1"><strong class="text-primary">Lugar:</strong> {{ trip.departure}}</p>
-    <p class="text-sm text-primary-light mb-1"><strong class="text-primary">Fecha:</strong> {{ trip.startdate }}</p>
-    <p class="text-sm text-alert"><strong class="text-primary">Estado:</strong> Terminado</p>
+    <p class="text-sm text-primary-light mb-1"><strong class="text-primary">Fecha:</strong> {{ trip.startdate | date:'dd/MM/yyyy'}}</p>
+
+    <p class="text-sm" [ngClass]="{'text-alert': isPastDate(trip.startdate), 'text-success': !isPastDate(trip.startdate)}">
+      <strong class="text-primary">Estado:</strong> {{ isPastDate(trip.startdate) ? 'Terminado' : 'Reservado' }}
+    </p>
+
   </div>
 
 </div>
