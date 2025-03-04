@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import {AsyncPipe, CommonModule, NgIf} from '@angular/common';
+import {CommonModule, NgIf} from '@angular/common';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../app/services/auth.service';
-import { ReservationService } from '../../app/services/booking.service';
+import { BookingService } from '../../app/services/booking.service';
 import {TripService} from '../../app/services/trip.service';
 import {ButtonModule} from 'primeng/button';
 
 @Component({
   selector: 'app-check-tickets',
   imports: [
-    RouterLink,
     NgIf,
-    AsyncPipe,
     CommonModule,
-    ButtonModule
+    ButtonModule,
+    RouterLink
   ],
   templateUrl: './check-tickets.component.html'
 })
@@ -25,7 +24,7 @@ export class CheckTicketsComponent implements OnInit {
   pendingReservations: any[] = [];
   userId!: number | null;
 
-  constructor(private authService: AuthService, private bookingService: ReservationService, private tripService : TripService) {}
+  constructor(private authService: AuthService, private bookingService: BookingService, private tripService : TripService) {}
 
   ngOnInit() {
     this.isLoggedIn = this.authService.isAuthenticated();

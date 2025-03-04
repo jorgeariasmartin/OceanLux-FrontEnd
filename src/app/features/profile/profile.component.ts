@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { HeaderComponent } from '../../../component/header/header.component';
 import { SearchbarComponent } from '../../../component/searchbar/searchbar.component';
 import { ButtonModule } from 'primeng/button';
@@ -9,6 +9,8 @@ import {FormsModule} from '@angular/forms';
 import {InputText} from 'primeng/inputtext';
 import {MessageService} from 'primeng/api';
 import {ToastModule} from 'primeng/toast';
+import {BookingService} from '../../services/booking.service';
+import {CardComponent} from '../../../component/card/card.component';
 
 @Component({
   selector: 'app-profile',
@@ -19,12 +21,13 @@ import {ToastModule} from 'primeng/toast';
     DialogModule,
     FormsModule,
     InputText,
-    ToastModule
+    ToastModule,
+    CardComponent
   ],
   providers: [MessageService],
   templateUrl: './profile.component.html'
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
   user: any;
   displayModal: boolean = false;
   displayChangePasswordModal: boolean = false;
@@ -40,14 +43,18 @@ export class ProfileComponent {
     confirmPassword: ''
   };
   passwordsMismatch: boolean = false;
+  tripsBooked: any[] = [];
 
-  constructor(private authService: AuthService, private messageService: MessageService) {}
+  constructor(private authService: AuthService, private messageService: MessageService, private bookingService: BookingService) {}
 
   ngOnInit(): void {
     this.authService.getAuthenticatedUser().subscribe({
       next: (data) => {
         this.user = data;
         this.editedUser = { ...data };
+        if (this.user?.id) {
+          this.getTripsBooked();
+        }
       },
       error: (error) => {
         console.error('Error obteniendo el usuario', error);
@@ -213,5 +220,28 @@ export class ProfileComponent {
     return isValid;
   }
 
+  getTripsBooked(): void {
+    if (!this.user?.id) return;
 
+    this.bookingService.getConfirmedReservations(this.user.id).subscribe({
+      next: (trips) => {
+        this.tripsBooked = trips;
+
+        // Para cada reserva, obtener los detalles del trip asociado
+        this.tripsBooked.forEach((booking, index) => {
+          this.bookingService.getTripById(booking.trip_id).subscribe({
+            next: (trip) => {
+              this.tripsBooked[index].trip = trip; // Agregar el objeto trip a cada booking
+            },
+            error: (error) => {
+              console.error(`Error obteniendo trip con ID ${booking.trip_id}:`, error);
+            }
+          });
+        });
+      },
+      error: (error) => {
+        console.error('Error obteniendo las reservas:', error);
+      }
+    });
+  }
 }

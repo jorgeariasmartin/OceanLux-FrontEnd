@@ -3,13 +3,15 @@
   import { HttpClient } from '@angular/common/http';
   import {HeaderComponent} from '../header/header.component';
   import {ToastComponent} from '../toast/toast.component';
+  import {NgIf} from '@angular/common';
 
   @Component({
     selector: 'app-verification',
     templateUrl: './verification.component.html',
     imports: [
       HeaderComponent,
-      RouterLink
+      RouterLink,
+      NgIf
     ],
     styleUrls: ['./verification.component.css']
   })
