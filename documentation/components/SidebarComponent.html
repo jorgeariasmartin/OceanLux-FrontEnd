@@ -1,0 +1,923 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ocenan-lux-front-end documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">ocenan-lux-front-end documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  SidebarComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/component/sidebar/sidebar.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente Sidebar para la navegación lateral.
+Permite la visualización dinámica basada en la autenticación y el rol del usuario.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-sidebar</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>NgIf</code>
+                            <code>NgClass</code>
+                            <code>RouterLink</code>
+                            <code>CommonModule</code>
+                            <code>AsyncPipe</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./sidebar.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#isLoading" >isLoading</a>
+                            </li>
+                            <li>
+                                <a href="#isLoggedIn" >isLoggedIn</a>
+                            </li>
+                            <li>
+                                <a href="#isSidebarOpen" >isSidebarOpen</a>
+                            </li>
+                            <li>
+                                <a href="#userRole" >userRole</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#logout" >logout</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#toggleSidebar" >toggleSidebar</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/component/sidebar/sidebar.component.ts:56</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor del componente Sidebar.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio de autenticación para gestionar la sesión del usuario.</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logout"></a>
+                    <span class="name">
+                        <span ><b>logout</b></span>
+                        <a href="#logout"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>logout()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="88"
+                                    class="link-to-prism">src/component/sidebar/sidebar.component.ts:88</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Cierra sesión del usuario a través del servicio de autenticación.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">src/component/sidebar/sidebar.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Inicializa el componente, obteniendo el rol del usuario y simulando un retraso de carga.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleSidebar"></a>
+                    <span class="name">
+                        <span ><b>toggleSidebar</b></span>
+                        <a href="#toggleSidebar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleSidebar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="81"
+                                    class="link-to-prism">src/component/sidebar/sidebar.component.ts:81</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Alterna el estado del sidebar (abierto/cerrado).</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoading"></a>
+                    <span class="name">
+                        <span ><b>isLoading</b></span>
+                        <a href="#isLoading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/component/sidebar/sidebar.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica si el componente está en estado de carga.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoggedIn"></a>
+                    <span class="name">
+                        <span ><b>isLoggedIn</b></span>
+                        <a href="#isLoggedIn"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/component/sidebar/sidebar.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable que indica si el usuario está autenticado.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isSidebarOpen"></a>
+                    <span class="name">
+                        <span ><b>isSidebarOpen</b></span>
+                        <a href="#isSidebarOpen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/component/sidebar/sidebar.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Estado de apertura del sidebar.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userRole"></a>
+                    <span class="name">
+                        <span ><b>userRole</b></span>
+                        <a href="#userRole"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/component/sidebar/sidebar.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Rol del usuario autenticado.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { trigger, style, transition, animate } from &#x27;@angular/animations&#x27;;
+import { NgIf, AsyncPipe, CommonModule } from &#x27;@angular/common&#x27;;
+import { RouterLink } from &#x27;@angular/router&#x27;;
+import { NgClass } from &#x27;@angular/common&#x27;;
+import { AuthService } from &#x27;../../app/services/auth.service&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
+
+/**
+ * Componente Sidebar para la navegación lateral.
+ * Permite la visualización dinámica basada en la autenticación y el rol del usuario.
+ */
+@Component({
+  selector: &#x27;app-sidebar&#x27;,
+  templateUrl: &#x27;./sidebar.component.html&#x27;,
+  animations: [
+    trigger(&#x27;sidebarAnimation&#x27;, [
+      transition(&#x27;:enter&#x27;, [
+        style({ transform: &#x27;translateX(-100%)&#x27; }),
+        animate(&#x27;300ms ease-out&#x27;, style({ transform: &#x27;translateX(0)&#x27; })),
+      ]),
+      transition(&#x27;:leave&#x27;, [
+        animate(&#x27;300ms ease-in&#x27;, style({ transform: &#x27;translateX(-100%)&#x27; })),
+      ]),
+    ]),
+  ],
+  imports: [
+    NgIf,
+    NgClass,
+    RouterLink,
+    CommonModule,
+    AsyncPipe
+  ],
+  standalone: true
+})
+export class SidebarComponent implements OnInit {
+
+  /**
+   * Estado de apertura del sidebar.
+   */
+  isSidebarOpen &#x3D; false;
+
+  /**
+   * Indica si el componente está en estado de carga.
+   */
+  isLoading &#x3D; true;
+
+  /**
+   * Observable que indica si el usuario está autenticado.
+   */
+  isLoggedIn!: Observable&lt;boolean&gt;;
+
+  /**
+   * Rol del usuario autenticado.
+   */
+  userRole: string | null &#x3D; null;
+
+  /**
+   * Constructor del componente Sidebar.
+   * @param authService Servicio de autenticación para gestionar la sesión del usuario.
+   */
+  constructor(private authService: AuthService) {}
+
+  /**
+   * Inicializa el componente, obteniendo el rol del usuario y simulando un retraso de carga.
+   */
+  ngOnInit() {
+    this.isLoggedIn &#x3D; this.authService.isAuthenticated();
+    this.authService.getUserRole().subscribe(role &#x3D;&gt; {
+      this.userRole &#x3D; role;
+    });
+
+    setTimeout(() &#x3D;&gt; {
+      this.isLoading &#x3D; false;
+    }, 1000);
+  }
+
+  /**
+   * Alterna el estado del sidebar (abierto/cerrado).
+   */
+  toggleSidebar() {
+    this.isSidebarOpen &#x3D; !this.isSidebarOpen;
+  }
+
+  /**
+   * Cierra sesión del usuario a través del servicio de autenticación.
+   */
+  logout() {
+    this.authService.logout();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div
+  *ngIf&#x3D;&quot;isSidebarOpen&quot;
+  class&#x3D;&quot;fixed inset-y-0 z-50 flex w-80&quot;
+  [@sidebarAnimation]&#x3D;&quot;isSidebarOpen ? &#x27;open&#x27; : &#x27;closed&#x27;&quot;
+&gt;
+  &lt;!-- Curvy shape --&gt;
+  &lt;svg
+    class&#x3D;&quot;absolute inset-0 w-full h-full text-primary&quot;
+    style&#x3D;&quot;filter: drop-shadow(10px 0 10px #00000030)&quot;
+    preserveAspectRatio&#x3D;&quot;none&quot;
+    viewBox&#x3D;&quot;0 0 309 800&quot;
+    fill&#x3D;&quot;currentColor&quot;
+    opacity&#x3D;&quot;0.8&quot;
+  &gt;
+    &lt;path
+      d&#x3D;&quot;M268.487 0H0V800H247.32C207.957 725 207.975 492.294 268.487 367.647C329 243 314.906 53.4314 268.487 0Z&quot;
+    /&gt;
+  &lt;/svg&gt;
+
+  &lt;!-- Sidebar content --&gt;
+  &lt;div class&#x3D;&quot;z-10 flex flex-col flex-1&quot;&gt;
+    &lt;div class&#x3D;&quot;flex items-center justify-between flex-shrink-0 w-64 p-4&quot;&gt;
+      &lt;a href&#x3D;&quot;#&quot;&gt;
+        &lt;img
+          aria-hidden&#x3D;&quot;true&quot;
+          class&#x3D;&quot;w-16 h-auto&quot;
+          src&#x3D;&quot;/Logo-SVG.svg&quot;
+        /&gt;
+      &lt;/a&gt;
+
+      &lt;button (click)&#x3D;&quot;toggleSidebar()&quot; class&#x3D;&quot;p-1 rounded-lg focus:outline-none focus:ring text&quot;&gt;
+        &lt;svg
+          class&#x3D;&quot;w-6 h-6&quot;
+          aria-hidden&#x3D;&quot;true&quot;
+          xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;
+          fill&#x3D;&quot;none&quot;
+          viewBox&#x3D;&quot;0 0 24 24&quot;
+          stroke&#x3D;&quot;#F2F9FD&quot;
+        &gt;
+          &lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; stroke-width&#x3D;&quot;2&quot; d&#x3D;&quot;M6 18L18 6M6 6l12 12&quot;/&gt;
+        &lt;/svg&gt;
+        &lt;span class&#x3D;&quot;sr-only&quot;&gt;Close sidebar&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Sidebar navigation --&gt;
+    &lt;nav class&#x3D;&quot;flex flex-col flex-1 w-64 p-4 mt-4 text-secondary space-y-4&quot;&gt;
+      &lt;a class&#x3D;&quot;flex items-center space-x-2&quot; routerLink&#x3D;&quot;/home&quot;&gt;
+        &lt;svg
+          class&#x3D;&quot;w-6 h-6&quot;
+          aria-hidden&#x3D;&quot;true&quot;
+          xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;
+          fill&#x3D;&quot;none&quot;
+          viewBox&#x3D;&quot;0 0 24 24&quot;
+          stroke&#x3D;&quot;#F2F9FD&quot;
+        &gt;
+          &lt;path
+            stroke-linecap&#x3D;&quot;round&quot;
+            stroke-linejoin&#x3D;&quot;round&quot;
+            stroke-width&#x3D;&quot;2&quot;
+            d&#x3D;&quot;M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6&quot;
+          /&gt;
+        &lt;/svg&gt;
+        &lt;span class&#x3D;&quot;pt-1&quot;&gt;Inicio&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;a class&#x3D;&quot;flex items-center space-x-2&quot; routerLink&#x3D;&quot;/search&quot;&gt;
+        &lt;div class&#x3D;&quot;h-6 w-6 flex items-center justify-center&quot;&gt;
+          &lt;i class&#x3D;&quot;pi pi-search&quot;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+        &lt;span class&#x3D;&quot;pt-1&quot;&gt;Explorar&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;a class&#x3D;&quot;flex items-center space-x-2&quot; routerLink&#x3D;&quot;/profile&quot;&gt;
+        &lt;div class&#x3D;&quot;h-6 w-6 flex items-center justify-center&quot;&gt;
+          &lt;i class&#x3D;&quot;pi pi-user&quot;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+        &lt;span class&#x3D;&quot;pt-1&quot;&gt;Perfil&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;a *ngIf&#x3D;&quot;userRole &#x3D;&#x3D;&#x3D; &#x27;ROLE_ADMIN&#x27;&quot; class&#x3D;&quot;flex items-center space-x-2&quot; routerLink&#x3D;&quot;/adminHome&quot;&gt;
+        &lt;div class&#x3D;&quot;h-6 w-6 flex items-center justify-center&quot;&gt;
+          &lt;i class&#x3D;&quot;pi pi-user&quot;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+        &lt;span class&#x3D;&quot;pt-1&quot;&gt;Administración&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;div class&#x3D;&quot;flex-shrink-0 p-4&quot;&gt;
+      &lt;button class&#x3D;&quot;flex items-center space-x-2 text-secondary&quot;&gt;
+        &lt;div&gt;
+          &lt;label *ngIf&#x3D;&quot;!(isLoggedIn | async)&quot; class&#x3D;&quot;flex items-center gap-3 cursor-pointer&quot; routerLink&#x3D;&quot;/logaccount&quot;&gt;
+            &lt;i class&#x3D;&quot;pi pi-user&quot;&gt;&lt;/i&gt;
+            &lt;span&gt;Iniciar Sesión&lt;/span&gt;
+          &lt;/label&gt;
+          &lt;label *ngIf&#x3D;&quot;isLoggedIn | async&quot; class&#x3D;&quot;flex items-center gap-3 cursor-pointer&quot; (click)&#x3D;&quot;logout()&quot;&gt;
+            &lt;svg
+              aria-hidden&#x3D;&quot;true&quot;
+              class&#x3D;&quot;w-6 h-6&quot;
+              xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;
+              fill&#x3D;&quot;none&quot;
+              viewBox&#x3D;&quot;0 0 24 24&quot;
+              stroke&#x3D;&quot;#F2F9FD&quot;
+            &gt;
+              &lt;path
+                stroke-linecap&#x3D;&quot;round&quot;
+                stroke-linejoin&#x3D;&quot;round&quot;
+                stroke-width&#x3D;&quot;2&quot;
+                d&#x3D;&quot;M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1&quot;
+              /&gt;
+            &lt;/svg&gt;
+            &lt;span&gt;Cerrar Sesión&lt;/span&gt;
+          &lt;/label&gt;
+        &lt;/div&gt;
+
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;button [ngClass]&#x3D;&quot;{&#x27;hidden&#x27;: isSidebarOpen}&quot; (click)&#x3D;&quot;toggleSidebar()&quot; class&#x3D;&quot;fixed p-2 text-secondary bg-primary rounded-lg top-5 left-5 z-50&quot;&gt;
+  &lt;svg
+    class&#x3D;&quot;w-6 h-6&quot;
+    fill&#x3D;&quot;none&quot;
+    viewBox&#x3D;&quot;0 0 24 24&quot;
+    stroke&#x3D;&quot;currentColor&quot;
+  &gt;
+    &lt;path stroke-linecap&#x3D;&quot;round&quot; stroke-linejoin&#x3D;&quot;round&quot; stroke-width&#x3D;&quot;2&quot; d&#x3D;&quot;M4 6h16M4 12h16M4 18h16&quot;/&gt;
+  &lt;/svg&gt;
+  &lt;span class&#x3D;&quot;sr-only&quot;&gt;Open menu&lt;/span&gt;
+&lt;/button&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div  *ngIf="isSidebarOpen"  class="fixed inset-y-0 z-50 flex w-80"  [@sidebarAnimation]="isSidebarOpen ? \'open\' : \'closed\'">  <!-- Curvy shape -->  <svg    class="absolute inset-0 w-full h-full text-primary"    style="filter: drop-shadow(10px 0 10px #00000030)"    preserveAspectRatio="none"    viewBox="0 0 309 800"    fill="currentColor"    opacity="0.8"  >    <path      d="M268.487 0H0V800H247.32C207.957 725 207.975 492.294 268.487 367.647C329 243 314.906 53.4314 268.487 0Z"    />  </svg>  <!-- Sidebar content -->  <div class="z-10 flex flex-col flex-1">    <div class="flex items-center justify-between flex-shrink-0 w-64 p-4">      <a href="#">        <img          aria-hidden="true"          class="w-16 h-auto"          src="/Logo-SVG.svg"        />      </a>      <button (click)="toggleSidebar()" class="p-1 rounded-lg focus:outline-none focus:ring text">        <svg          class="w-6 h-6"          aria-hidden="true"          xmlns="http://www.w3.org/2000/svg"          fill="none"          viewBox="0 0 24 24"          stroke="#F2F9FD"        >          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>        </svg>        <span class="sr-only">Close sidebar</span>      </button>    </div>    <!-- Sidebar navigation -->    <nav class="flex flex-col flex-1 w-64 p-4 mt-4 text-secondary space-y-4">      <a class="flex items-center space-x-2" routerLink="/home">        <svg          class="w-6 h-6"          aria-hidden="true"          xmlns="http://www.w3.org/2000/svg"          fill="none"          viewBox="0 0 24 24"          stroke="#F2F9FD"        >          <path            stroke-linecap="round"            stroke-linejoin="round"            stroke-width="2"            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"          />        </svg>        <span class="pt-1">Inicio</span>      </a>      <a class="flex items-center space-x-2" routerLink="/search">        <div class="h-6 w-6 flex items-center justify-center">          <i class="pi pi-search"></i>        </div>        <span class="pt-1">Explorar</span>      </a>      <a class="flex items-center space-x-2" routerLink="/profile">        <div class="h-6 w-6 flex items-center justify-center">          <i class="pi pi-user"></i>        </div>        <span class="pt-1">Perfil</span>      </a>      <a *ngIf="userRole === \'ROLE_ADMIN\'" class="flex items-center space-x-2" routerLink="/adminHome">        <div class="h-6 w-6 flex items-center justify-center">          <i class="pi pi-user"></i>        </div>        <span class="pt-1">Administración</span>      </a>    </nav>    <div class="flex-shrink-0 p-4">      <button class="flex items-center space-x-2 text-secondary">        <div>          <label *ngIf="!(isLoggedIn | async)" class="flex items-center gap-3 cursor-pointer" routerLink="/logaccount">            <i class="pi pi-user"></i>            <span>Iniciar Sesión</span>          </label>          <label *ngIf="isLoggedIn | async" class="flex items-center gap-3 cursor-pointer" (click)="logout()">            <svg              aria-hidden="true"              class="w-6 h-6"              xmlns="http://www.w3.org/2000/svg"              fill="none"              viewBox="0 0 24 24"              stroke="#F2F9FD"            >              <path                stroke-linecap="round"                stroke-linejoin="round"                stroke-width="2"                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"              />            </svg>            <span>Cerrar Sesión</span>          </label>        </div>      </button>    </div>  </div></div><button [ngClass]="{\'hidden\': isSidebarOpen}" (click)="toggleSidebar()" class="fixed p-2 text-secondary bg-primary rounded-lg top-5 left-5 z-50">  <svg    class="w-6 h-6"    fill="none"    viewBox="0 0 24 24"    stroke="currentColor"  >    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>  </svg>  <span class="sr-only">Open menu</span></button></div>'
+    var COMPONENTS = [{'name': 'AdminHomepageComponent', 'selector': 'app-admin-homepage'},{'name': 'AdminTripsComponent', 'selector': 'app-admin-trips'},{'name': 'AdminYachtsComponent', 'selector': 'app-admin-yachts'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BookingCardComponent', 'selector': 'app-booking-card'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'CardDetailsComponent', 'selector': 'app-card-details'},{'name': 'CheckoutComponent', 'selector': 'app-checkout'},{'name': 'CheckTicketsComponent', 'selector': 'app-check-tickets'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoadingComponent', 'selector': 'app-loading'},{'name': 'MainPageComponent', 'selector': 'app-main-page'},{'name': 'ModalFilterComponent', 'selector': 'app-modal-filter'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'SearchbarComponent', 'selector': 'app-searchbar'},{'name': 'SearchPageComponent', 'selector': 'app-search-page'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'ToastComponent', 'selector': 'app-toast'},{'name': 'VerificationComponent', 'selector': 'app-verification'},{'name': 'ViewLoginRegisterComponent', 'selector': 'app-view-login-register'},{'name': 'ViewTripComponent', 'selector': 'app-view-trip'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'SidebarComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SidebarComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,15 +1,23 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {SidebarComponent} from '../../../component/sidebar/sidebar.component';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {BookingCardComponent} from '../../../component/booking-card/booking-card.component';
-import {Observable} from 'rxjs';
-import {AuthService} from '../../services/auth.service';
-import {BookingService} from '../../services/booking.service';
-import {TripService} from '../../services/trip.service';
-import {NgForOf} from '@angular/common';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { SidebarComponent } from '../../../component/sidebar/sidebar.component';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { BookingCardComponent } from '../../../component/booking-card/booking-card.component';
+import { Observable } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
+import { BookingService } from '../../services/booking.service';
+import { TripService } from '../../services/trip.service';
+import { NgForOf } from '@angular/common';
 import { ToastComponent } from '../../../component/toast/toast.component';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
+/**
+ * @description
+ * Componente que maneja el proceso de pago de las reservas pendientes de un usuario.
+ * Muestra un formulario para el pago, y permite eliminar reservas o actualizar su estado.
+ *
+ * @exports
+ * - `CheckoutComponent`: Componente principal de la página de pago.
+ */
 @Component({
   selector: 'app-checkout',
   standalone: true,
@@ -23,15 +31,59 @@ import {Router} from '@angular/router';
   templateUrl: './checkout.component.html'
 })
 export class CheckoutComponent implements OnInit {
+  /**
+   * @description
+   * Refencia al componente Toast utilizado para mostrar mensajes al usuario.
+   */
   @ViewChild(ToastComponent) toast!: ToastComponent;
 
+  /**
+   * @description
+   * Formulario reactivo para capturar los datos de pago.
+   */
   paymentForm: FormGroup;
+
+  /**
+   * @description
+   * Observable que indica si el usuario está autenticado.
+   */
   isLoggedIn!: Observable<boolean>;
+
+  /**
+   * @description
+   * Lista de reservas pendientes para el usuario actual.
+   */
   pendingReservations: any[] = [];
+
+  /**
+   * @description
+   * Identificador del usuario actual.
+   */
   userId!: number | null;
+
+  /**
+   * @description
+   * Indicador de carga para mostrar un loader mientras se obtienen datos.
+   */
   isLoading = true;
 
-  constructor(private router: Router, private fb: FormBuilder, private authService: AuthService, private bookingService: BookingService, private tripService: TripService) {
+  /**
+   * @description
+   * Constructor del componente que inyecta los servicios necesarios.
+   *
+   * @param router - Servicio de enrutamiento de Angular.
+   * @param fb - Servicio de FormBuilder para crear el formulario reactivo.
+   * @param authService - Servicio para la autenticación y obtención del ID de usuario.
+   * @param bookingService - Servicio para manejar reservas.
+   * @param tripService - Servicio para obtener información de los viajes.
+   */
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private bookingService: BookingService,
+    private tripService: TripService
+  ) {
     this.paymentForm = this.fb.group({
       cardNumber: ['', [Validators.required, Validators.pattern(/^\d{4} \d{4} \d{4} \d{4}$/)]],
       expDate: ['', [Validators.required, Validators.pattern(/^(0[1-9]|1[0-2])\/\d{2}$/)]],
@@ -40,6 +92,10 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
+  /**
+   * @description
+   * Inicializa el componente. Verifica si el usuario está autenticado y carga las reservas pendientes.
+   */
   ngOnInit() {
     this.isLoggedIn = this.authService.isAuthenticated();
     this.authService.getUserId().subscribe({
@@ -57,6 +113,12 @@ export class CheckoutComponent implements OnInit {
     }, 1000);
   }
 
+  /**
+   * @description
+   * Elimina una reserva pendiente de la lista y realiza la solicitud al servidor.
+   *
+   * @param reservationId - ID de la reserva a eliminar.
+   */
   deleteReservation(reservationId: number) {
     this.bookingService.deleteReservation(reservationId).subscribe({
       next: () => {
@@ -68,12 +130,24 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
+  /**
+   * @description
+   * Formatea el número de la tarjeta de crédito mientras se ingresa.
+   *
+   * @param event - El evento del input del número de tarjeta.
+   */
   formatCardNumber(event: any) {
     let value = event.target.value.replace(/\D/g, '').slice(0, 16);
     value = value.replace(/(\d{4})/g, '$1 ').trim();
     this.paymentForm.patchValue({ cardNumber: value }, { emitEvent: false });
   }
 
+  /**
+   * @description
+   * Formatea la fecha de expiración de la tarjeta de crédito mientras se ingresa.
+   *
+   * @param event - El evento del input de la fecha de expiración.
+   */
   formatExpDate(event: any) {
     let value = event.target.value.replace(/\D/g, '').slice(0, 4);
     if (value.length >= 2) {
@@ -82,12 +156,22 @@ export class CheckoutComponent implements OnInit {
     this.paymentForm.patchValue({ expDate: value }, { emitEvent: false });
   }
 
+  /**
+   * @description
+   * Formatea el código CVC de la tarjeta de crédito mientras se ingresa.
+   *
+   * @param event - El evento del input del código CVC.
+   */
   formatCVC(event: any) {
     let value = event.target.value.replace(/\D/g, '').slice(0, 3);
     this.paymentForm.patchValue({ cvc: value }, { emitEvent: false });
   }
 
-
+  /**
+   * @description
+   * Envía el formulario de pago y procesa la transacción.
+   * Muestra mensajes dependiendo del resultado del pago.
+   */
   submitForm() {
     if (this.paymentForm.valid) {
       this.toast.addMessage('info', 'Procesando pago', 'Por favor, espera...');
@@ -100,7 +184,7 @@ export class CheckoutComponent implements OnInit {
           this.paymentForm.reset();
 
           setTimeout(() => {
-            this.router.navigate(['/profile']); // <-- Redirige a /profile después del pago exitoso
+            this.router.navigate(['/profile']); // Redirige a /profile después del pago exitoso
           }, 1500); // Pequeño delay para mostrar el mensaje
         } else {
           this.toast.addMessage('error', 'Error en el pago', 'No se pudo procesar el pago. Inténtalo de nuevo.');
@@ -112,6 +196,10 @@ export class CheckoutComponent implements OnInit {
     }
   }
 
+  /**
+   * @description
+   * Actualiza el estado de las reservas pendientes a 'completada' después de un pago exitoso.
+   */
   updateReservationStatus() {
     if (!this.pendingReservations.length) return;
 
@@ -128,9 +216,12 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-
-
-
+  /**
+   * @description
+   * Carga las reservas pendientes del usuario desde el servicio de reservas.
+   *
+   * @returns {void}
+   */
   loadPendingReservations() {
     if (!this.userId) return;
 

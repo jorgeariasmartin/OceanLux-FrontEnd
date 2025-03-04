@@ -6,10 +6,13 @@ import { NgClass } from '@angular/common';
 import { AuthService } from '../../app/services/auth.service';
 import { Observable } from 'rxjs';
 
+/**
+ * Componente Sidebar para la navegación lateral.
+ * Permite la visualización dinámica basada en la autenticación y el rol del usuario.
+ */
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css'],
   animations: [
     trigger('sidebarAnimation', [
       transition(':enter', [
@@ -31,18 +34,40 @@ import { Observable } from 'rxjs';
   standalone: true
 })
 export class SidebarComponent implements OnInit {
+
+  /**
+   * Estado de apertura del sidebar.
+   */
   isSidebarOpen = false;
+
+  /**
+   * Indica si el componente está en estado de carga.
+   */
   isLoading = true;
+
+  /**
+   * Observable que indica si el usuario está autenticado.
+   */
   isLoggedIn!: Observable<boolean>;
+
+  /**
+   * Rol del usuario autenticado.
+   */
   userRole: string | null = null;
 
+  /**
+   * Constructor del componente Sidebar.
+   * @param authService Servicio de autenticación para gestionar la sesión del usuario.
+   */
   constructor(private authService: AuthService) {}
 
+  /**
+   * Inicializa el componente, obteniendo el rol del usuario y simulando un retraso de carga.
+   */
   ngOnInit() {
     this.isLoggedIn = this.authService.isAuthenticated();
     this.authService.getUserRole().subscribe(role => {
       this.userRole = role;
-
     });
 
     setTimeout(() => {
@@ -50,10 +75,16 @@ export class SidebarComponent implements OnInit {
     }, 1000);
   }
 
+  /**
+   * Alterna el estado del sidebar (abierto/cerrado).
+   */
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
 
+  /**
+   * Cierra sesión del usuario a través del servicio de autenticación.
+   */
   logout() {
     this.authService.logout();
   }
