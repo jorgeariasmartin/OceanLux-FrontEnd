@@ -42,7 +42,7 @@ export class SidebarComponent implements OnInit {
     this.isLoggedIn = this.authService.isAuthenticated();
     this.authService.getUserRole().subscribe(role => {
       this.userRole = role;
-
+      console.log(this.userRole);
     });
 
     setTimeout(() => {
