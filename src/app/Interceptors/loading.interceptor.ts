@@ -1,6 +1,6 @@
 import { HttpContextToken, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { finalize } from 'rxjs';
+import {catchError, finalize, throwError} from 'rxjs';
 import { LoadingService } from '../services/loading.service';
 
 /**
@@ -25,7 +25,6 @@ export const SkipLoading = new HttpContextToken<boolean>(() => false);
  * loadingInterceptor(req, next);
  */
 export const loadingInterceptor: HttpInterceptorFn = (req, next) => {
-  // Inyección de dependencias
   const loadingService = inject(LoadingService); // Servicio de carga
 
   // Verificar si la solicitud debe omitir el indicador de carga
@@ -33,10 +32,16 @@ export const loadingInterceptor: HttpInterceptorFn = (req, next) => {
     return next(req); // Continuar sin mostrar el indicador de carga
   }
 
-  // Activar el indicador de carga
+  // Activar el indicador de carga antes de la solicitud
   loadingService.loadingOn();
 
   return next(req).pipe(
-    finalize(() => setTimeout(() => loadingService.loadingOff(), 250)) // Desactivar el indicador después de la solicitud
+    finalize(() => {
+      loadingService.loadingOff(); // Desactivar el indicador de carga cuando la solicitud termine
+    }),
+    catchError((error) => {
+      loadingService.loadingOff(); // Asegúrate de desactivar el indicador si ocurre un error
+      return throwError(() => error); // Propagar el error
+    })
   );
 };

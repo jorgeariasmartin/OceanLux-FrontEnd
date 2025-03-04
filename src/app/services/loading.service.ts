@@ -14,6 +14,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class LoadingService {
   /**
    * Comportamiento del estado de carga. Inicialmente está en `false` (no cargando).
@@ -21,6 +22,8 @@ export class LoadingService {
    * Este `BehaviorSubject` emite un valor booleano que indica si la aplicación está en estado de carga.
    */
   private loadingSubject = new BehaviorSubject<boolean>(false);
+
+  private activeRequests = 0;
 
   /**
    * Observable que emite el estado actual de carga (true si está cargando, false si no).
@@ -34,7 +37,10 @@ export class LoadingService {
    * Se usa para indicar que la aplicación está en proceso de carga.
    */
   loadingOn() {
-    this.loadingSubject.next(true);
+    this.activeRequests++;
+    if (this.activeRequests > 0) {
+      this.loadingSubject.next(true);
+    }
   }
 
   /**
@@ -43,6 +49,9 @@ export class LoadingService {
    * Se usa para indicar que la aplicación ha terminado el proceso de carga.
    */
   loadingOff() {
-    this.loadingSubject.next(false);
+    this.activeRequests--;
+    if (this.activeRequests <= 0) {
+      this.loadingSubject.next(false);
+    }
   }
 }
