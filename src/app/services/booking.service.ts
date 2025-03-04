@@ -19,6 +19,10 @@ export class ReservationService {
     return this.http.get<any[]>(`${this.apiUrl}/pending/${userId}`);
   }
 
+  getAllReservations(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/all`);
+  }
+
   deleteReservation(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/delete/${id}`);
   }
