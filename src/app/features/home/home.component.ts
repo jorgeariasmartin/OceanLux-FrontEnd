@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SidebarComponent } from '../../../component/sidebar/sidebar.component';
+import {RouterLink} from '@angular/router';
 
 /**
  * @description
@@ -12,7 +13,8 @@ import { SidebarComponent } from '../../../component/sidebar/sidebar.component';
   selector: 'app-home',
   standalone: true,
   imports: [
-    SidebarComponent
+    SidebarComponent,
+    RouterLink
   ],
   templateUrl: './home.component.html'
 })
