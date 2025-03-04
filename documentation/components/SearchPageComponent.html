@@ -1,0 +1,1552 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ocenan-lux-front-end documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">ocenan-lux-front-end documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  SearchPageComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/search-page/search-page.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente de la página de búsqueda de viajes. Permite buscar, filtrar y ver detalles de los viajes basados en criterios como modelo de yate, precio y nombre.</p>
+<ul>
+<li><code>SearchPageComponent</code>: Componente que gestiona la búsqueda y filtrado de viajes en la interfaz de usuario.</li>
+</ul>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-search-page</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="../components/HeaderComponent.html" target="_self" >HeaderComponent</a></code>
+                                <code><a href="../components/SearchbarComponent.html" target="_self" >SearchbarComponent</a></code>
+                                <code><a href="../components/CardDetailsComponent.html" target="_self" >CardDetailsComponent</a></code>
+                                <code><a href="../components/ModalFilterComponent.html" target="_self" >ModalFilterComponent</a></code>
+                            <code>NgForOf</code>
+                            <code>NgIf</code>
+                            <code>FormsModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./search-page.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#allTrips" >allTrips</a>
+                            </li>
+                            <li>
+                                <a href="#maxPrice" >maxPrice</a>
+                            </li>
+                            <li>
+                                <a href="#priceRanges" >priceRanges</a>
+                            </li>
+                            <li>
+                                <a href="#searchQuery" >searchQuery</a>
+                            </li>
+                            <li>
+                                <a href="#selectedModels" >selectedModels</a>
+                            </li>
+                            <li>
+                                <a href="#selectedPrices" >selectedPrices</a>
+                            </li>
+                            <li>
+                                <a href="#trips" >trips</a>
+                            </li>
+                            <li>
+                                <a href="#yachtModels" >yachtModels</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#applyFilters" >applyFilters</a>
+                            </li>
+                            <li>
+                                <a href="#extractYachtModels" >extractYachtModels</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onFilterChange" >onFilterChange</a>
+                            </li>
+                            <li>
+                                <a href="#onFiltersApplied" >onFiltersApplied</a>
+                            </li>
+                            <li>
+                                <a href="#onPriceChange" >onPriceChange</a>
+                            </li>
+                            <li>
+                                <a href="#onPriceChanged" >onPriceChanged</a>
+                            </li>
+                            <li>
+                                <a href="#onSearch" >onSearch</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(route: ActivatedRoute, tripService: <a href="../injectables/TripService.html" target="_self">TripService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/app/features/search-page/search-page.component.ts:76</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor del componente, que inyecta el servicio <code>TripService</code> y el <code>ActivatedRoute</code> para obtener los viajes y los parámetros de la URL.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Proporciona acceso a los parámetros de la ruta y a la consulta de búsqueda.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>tripService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TripService.html" target="_self" >TripService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Servicio que obtiene los viajes disponibles.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="applyFilters"></a>
+                    <span class="name">
+                        <span ><b>applyFilters</b></span>
+                        <a href="#applyFilters"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>applyFilters()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="168"
+                                    class="link-to-prism">src/app/features/search-page/search-page.component.ts:168</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Aplica los filtros de búsqueda y precio a los viajes.
+Actualiza la lista de <code>trips</code> con los viajes que cumplen con los criterios de búsqueda y filtro.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="extractYachtModels"></a>
+                    <span class="name">
+                        <span ><b>extractYachtModels</b></span>
+                        <a href="#extractYachtModels"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>extractYachtModels()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="123"
+                                    class="link-to-prism">src/app/features/search-page/search-page.component.ts:123</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Extrae los modelos de los yates de los viajes disponibles y los guarda en el array <code>yachtModels</code>.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/features/search-page/search-page.component.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Método del ciclo de vida de Angular que se llama cuando el componente se inicializa.
+Carga todos los viajes disponibles desde el servicio y extrae los modelos de yates.
+Además, suscribe a los parámetros de consulta de la URL para realizar una búsqueda inicial si es necesario.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFilterChange"></a>
+                    <span class="name">
+                        <span ><b>onFilterChange</b></span>
+                        <a href="#onFilterChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onFilterChange()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="137"
+                                    class="link-to-prism">src/app/features/search-page/search-page.component.ts:137</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Se llama cuando hay un cambio en los filtros de la página. Aplica los filtros a los viajes.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFiltersApplied"></a>
+                    <span class="name">
+                        <span ><b>onFiltersApplied</b></span>
+                        <a href="#onFiltersApplied"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onFiltersApplied(filters: literal type)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="205"
+                                    class="link-to-prism">src/app/features/search-page/search-page.component.ts:205</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Se llama cuando se aplican nuevos filtros desde el modal de filtros.
+Actualiza los modelos y precios seleccionados y aplica los filtros.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>filters</td>
+                                            <td>
+                                                        <code>literal type</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Objeto que contiene los filtros aplicados por el usuario.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onPriceChange"></a>
+                    <span class="name">
+                        <span ><b>onPriceChange</b></span>
+                        <a href="#onPriceChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onPriceChange(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="191"
+                                    class="link-to-prism">src/app/features/search-page/search-page.component.ts:191</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Se llama cuando cambia el valor del filtro de precio a través de un control de entrada.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>El evento que contiene el nuevo valor del filtro de precio.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onPriceChanged"></a>
+                    <span class="name">
+                        <span ><b>onPriceChanged</b></span>
+                        <a href="#onPriceChanged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onPriceChanged(newMaxPrice: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="147"
+                                    class="link-to-prism">src/app/features/search-page/search-page.component.ts:147</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Se llama cuando se cambia el precio máximo. Actualiza el filtro de precio y aplica los filtros.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>newMaxPrice</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>El nuevo precio máximo seleccionado.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSearch"></a>
+                    <span class="name">
+                        <span ><b>onSearch</b></span>
+                        <a href="#onSearch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSearch(query: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="158"
+                                    class="link-to-prism">src/app/features/search-page/search-page.component.ts:158</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Se llama cuando se realiza una búsqueda. Filtra los viajes según el texto de búsqueda.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>query</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>La cadena de texto de búsqueda.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="allTrips"></a>
+                    <span class="name">
+                        <span ><b>allTrips</b></span>
+                        <a href="#allTrips"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Trip.html" target="_self" >Trip[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/features/search-page/search-page.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista completa de viajes que se obtienen del servicio <code>TripService</code>.
+Esta lista se utiliza para aplicar los filtros y realizar la búsqueda.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="maxPrice"></a>
+                    <span class="name">
+                        <span ><b>maxPrice</b></span>
+                        <a href="#maxPrice"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>2000</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/app/features/search-page/search-page.component.ts:76</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Precio máximo seleccionado para filtrar los viajes por precio.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="priceRanges"></a>
+                    <span class="name">
+                        <span ><b>priceRanges</b></span>
+                        <a href="#priceRanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { value: &quot;250&quot;, label: &quot;Hasta 250€&quot; },
+    { value: &quot;500&quot;, label: &quot;Hasta 500€&quot; },
+    { value: &quot;1000&quot;, label: &quot;Hasta 1000€&quot; },
+    { value: &quot;2000&quot;, label: &quot;Hasta 2000€&quot; }
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/app/features/search-page/search-page.component.ts:112</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Rango de precios disponibles para filtrar los viajes.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchQuery"></a>
+                    <span class="name">
+                        <span ><b>searchQuery</b></span>
+                        <a href="#searchQuery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/features/search-page/search-page.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Consulta de búsqueda que se obtiene desde los parámetros de la URL o el formulario de búsqueda.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedModels"></a>
+                    <span class="name">
+                        <span ><b>selectedModels</b></span>
+                        <a href="#selectedModels"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/features/search-page/search-page.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Diccionario de modelos seleccionados para el filtrado.
+La clave es el modelo del yate, y el valor es un booleano que indica si está seleccionado o no.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedPrices"></a>
+                    <span class="name">
+                        <span ><b>selectedPrices</b></span>
+                        <a href="#selectedPrices"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/features/search-page/search-page.component.ts:70</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Diccionario de rangos de precio seleccionados para el filtrado.
+La clave es el rango de precio, y el valor es un booleano que indica si está seleccionado o no.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="trips"></a>
+                    <span class="name">
+                        <span ><b>trips</b></span>
+                        <a href="#trips"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Trip.html" target="_self" >Trip[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/features/search-page/search-page.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de viajes filtrados que se muestran en la interfaz de usuario.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="yachtModels"></a>
+                    <span class="name">
+                        <span ><b>yachtModels</b></span>
+                        <a href="#yachtModels"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/features/search-page/search-page.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Modelos de yates disponibles para filtrar.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { HeaderComponent } from &#x27;../../../component/header/header.component&#x27;;
+import { SearchbarComponent } from &#x27;../../../component/searchbar/searchbar.component&#x27;;
+import { CardDetailsComponent } from &#x27;../../../component/card-details/card-details.component&#x27;;
+import { ModalFilterComponent } from &#x27;../../../component/modal-filter/modal-filter.component&#x27;;
+import { Trip } from &#x27;../../model/trip&#x27;;
+import { TripService } from &#x27;../../services/trip.service&#x27;;
+import { NgForOf, NgIf } from &#x27;@angular/common&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+
+/**
+ * @description
+ * Componente de la página de búsqueda de viajes. Permite buscar, filtrar y ver detalles de los viajes basados en criterios como modelo de yate, precio y nombre.
+ *
+ * @exports
+ * - &#x60;SearchPageComponent&#x60;: Componente que gestiona la búsqueda y filtrado de viajes en la interfaz de usuario.
+ */
+@Component({
+  selector: &#x27;app-search-page&#x27;,
+  imports: [
+    HeaderComponent,
+    SearchbarComponent,
+    CardDetailsComponent,
+    ModalFilterComponent,
+    NgForOf,
+    NgIf,
+    FormsModule
+  ],
+  templateUrl: &#x27;./search-page.component.html&#x27;
+})
+export class SearchPageComponent implements OnInit {
+  /**
+   * @description
+   * Lista de viajes filtrados que se muestran en la interfaz de usuario.
+   */
+  trips: Trip[] &#x3D; [];
+
+  /**
+   * @description
+   * Lista completa de viajes que se obtienen del servicio &#x60;TripService&#x60;.
+   * Esta lista se utiliza para aplicar los filtros y realizar la búsqueda.
+   */
+  allTrips: Trip[] &#x3D; [];
+
+  /**
+   * @description
+   * Consulta de búsqueda que se obtiene desde los parámetros de la URL o el formulario de búsqueda.
+   */
+  searchQuery: string &#x3D; &#x27;&#x27;;
+
+  /**
+   * @description
+   * Modelos de yates disponibles para filtrar.
+   */
+  yachtModels: string[] &#x3D; [];
+
+  /**
+   * @description
+   * Diccionario de modelos seleccionados para el filtrado.
+   * La clave es el modelo del yate, y el valor es un booleano que indica si está seleccionado o no.
+   */
+  selectedModels: { [key: string]: boolean } &#x3D; {};
+
+  /**
+   * @description
+   * Diccionario de rangos de precio seleccionados para el filtrado.
+   * La clave es el rango de precio, y el valor es un booleano que indica si está seleccionado o no.
+   */
+  selectedPrices: { [key: string]: boolean } &#x3D; {};
+
+  /**
+   * @description
+   * Precio máximo seleccionado para filtrar los viajes por precio.
+   */
+  maxPrice: number &#x3D; 2000;
+
+  /**
+   * @description
+   * Constructor del componente, que inyecta el servicio &#x60;TripService&#x60; y el &#x60;ActivatedRoute&#x60; para obtener los viajes y los parámetros de la URL.
+   *
+   * @param route - Proporciona acceso a los parámetros de la ruta y a la consulta de búsqueda.
+   * @param tripService - Servicio que obtiene los viajes disponibles.
+   */
+  constructor(private route: ActivatedRoute, private tripService: TripService) {}
+
+  /**
+   * @description
+   * Método del ciclo de vida de Angular que se llama cuando el componente se inicializa.
+   * Carga todos los viajes disponibles desde el servicio y extrae los modelos de yates.
+   * Además, suscribe a los parámetros de consulta de la URL para realizar una búsqueda inicial si es necesario.
+   */
+  ngOnInit() {
+    this.tripService.allTrips().subscribe(trips &#x3D;&gt; {
+      this.allTrips &#x3D; trips;
+      this.trips &#x3D; trips;
+
+      this.extractYachtModels();
+
+      this.route.queryParams.subscribe(params &#x3D;&gt; {
+        if (params[&#x27;query&#x27;]) {
+          this.onSearch(params[&#x27;query&#x27;]);
+        }
+      });
+    });
+  }
+
+  /**
+   * @description
+   * Rango de precios disponibles para filtrar los viajes.
+   */
+  priceRanges &#x3D; [
+    { value: &quot;250&quot;, label: &quot;Hasta 250€&quot; },
+    { value: &quot;500&quot;, label: &quot;Hasta 500€&quot; },
+    { value: &quot;1000&quot;, label: &quot;Hasta 1000€&quot; },
+    { value: &quot;2000&quot;, label: &quot;Hasta 2000€&quot; }
+  ];
+
+  /**
+   * @description
+   * Extrae los modelos de los yates de los viajes disponibles y los guarda en el array &#x60;yachtModels&#x60;.
+   */
+  extractYachtModels() {
+    const modelsSet &#x3D; new Set&lt;string&gt;();
+    this.allTrips.forEach(trip &#x3D;&gt; {
+      if (trip.yacht?.model) {
+        modelsSet.add(trip.yacht.model);
+      }
+    });
+    this.yachtModels &#x3D; Array.from(modelsSet);
+  }
+
+  /**
+   * @description
+   * Se llama cuando hay un cambio en los filtros de la página. Aplica los filtros a los viajes.
+   */
+  onFilterChange() {
+    this.applyFilters();
+  }
+
+  /**
+   * @description
+   * Se llama cuando se cambia el precio máximo. Actualiza el filtro de precio y aplica los filtros.
+   *
+   * @param newMaxPrice - El nuevo precio máximo seleccionado.
+   */
+  onPriceChanged(newMaxPrice: number) {
+    this.maxPrice &#x3D; newMaxPrice;
+    this.applyFilters();
+  }
+
+  /**
+   * @description
+   * Se llama cuando se realiza una búsqueda. Filtra los viajes según el texto de búsqueda.
+   *
+   * @param query - La cadena de texto de búsqueda.
+   */
+  onSearch(query: string) {
+    this.searchQuery &#x3D; query.trim().toLowerCase();
+    this.applyFilters();
+  }
+
+  /**
+   * @description
+   * Aplica los filtros de búsqueda y precio a los viajes.
+   * Actualiza la lista de &#x60;trips&#x60; con los viajes que cumplen con los criterios de búsqueda y filtro.
+   */
+  applyFilters() {
+    this.trips &#x3D; this.allTrips.filter(trip &#x3D;&gt; {
+      const matchesSearch &#x3D; this.searchQuery &#x3D;&#x3D;&#x3D; &#x27;&#x27; ||
+        trip.departure.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        trip.name.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+        (trip.yacht?.name?.toLowerCase().includes(this.searchQuery.toLowerCase()));
+
+      const selectedModelsArray &#x3D; Object.keys(this.selectedModels).filter(key &#x3D;&gt; this.selectedModels[key]);
+      const matchesBoatType &#x3D; selectedModelsArray.length &#x3D;&#x3D;&#x3D; 0 ||
+        selectedModelsArray.includes(trip.yacht?.model);
+
+      const matchesPrice &#x3D; this.maxPrice &gt;&#x3D; 2000 ? true : trip.price &lt;&#x3D; this.maxPrice;
+
+      return matchesSearch &amp;&amp; matchesBoatType &amp;&amp; matchesPrice;
+    });
+  }
+
+  /**
+   * @description
+   * Se llama cuando cambia el valor del filtro de precio a través de un control de entrada.
+   *
+   * @param event - El evento que contiene el nuevo valor del filtro de precio.
+   */
+  onPriceChange(event: any) {
+    this.maxPrice &#x3D; event.target.value;
+    this.applyFilters();
+  }
+
+  /**
+   * @description
+   * Se llama cuando se aplican nuevos filtros desde el modal de filtros.
+   * Actualiza los modelos y precios seleccionados y aplica los filtros.
+   *
+   * @param filters - Objeto que contiene los filtros aplicados por el usuario.
+   * @param filters.models - Lista de modelos seleccionados.
+   * @param filters.prices - Lista de precios seleccionados.
+   */
+  onFiltersApplied(filters: { models: string[], prices: string[] }) {
+    this.selectedModels &#x3D; {};
+    this.selectedPrices &#x3D; {};
+
+    filters.models.forEach(model &#x3D;&gt; this.selectedModels[model] &#x3D; true);
+    filters.prices.forEach(price &#x3D;&gt; this.selectedPrices[price] &#x3D; true);
+
+    this.applyFilters();
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-header [showSidebar]&#x3D;&quot;true&quot;/&gt;
+&lt;div class&#x3D;&quot;md:px-[50px] xl:px-[200px] px-4 mb-10 pt-4&quot;&gt;
+  &lt;app-searchbar (searchEvent)&#x3D;&quot;onSearch($event)&quot;/&gt;
+  &lt;div class&#x3D;&quot;grid grid-cols-3 gap-8 sm:mt-8 mt-2&quot;&gt;
+    &lt;div class&#x3D;&quot;md:col-span-2 col-span-3&quot;&gt;
+      &lt;button class&#x3D;&quot;md:hidden border-primary border-2 inline mb-4 text-primary py-1.5 w-full rounded-md
+      hover:border-primary-light hover:text-secondary hover:bg-primary-light transition duration-300&quot;
+              (click)&#x3D;&quot;filterModal.openModal()&quot;&gt;
+        Filtros
+      &lt;/button&gt;
+
+      &lt;div class&#x3D;&quot;flex justify-between items-center flex-wrap gap-2&quot;&gt;
+        &lt;h2 class&#x3D;&quot;text-primary text-xl sm:text-2xl md:text-3xl font-bold&quot;&gt;
+        &lt;span *ngIf&#x3D;&quot;searchQuery&quot;&gt;
+          Resultados: &lt;span class&#x3D;&quot;text-primary-lighter&quot;&gt;&lt;strong&gt;{{ searchQuery }}&lt;/strong&gt;&lt;/span&gt; ({{ trips.length }})
+        &lt;/span&gt;
+          &lt;span *ngIf&#x3D;&quot;!searchQuery&quot;&gt;Todos los viajes&lt;/span&gt;
+        &lt;/h2&gt;
+
+        &lt;a *ngIf&#x3D;&quot;searchQuery&quot;
+           class&#x3D;&quot;text-alert underline cursor-pointer hover:text-alert-dark transition duration-300 font-light text-lg&quot;
+           (click)&#x3D;&quot;onSearch(&#x27;&#x27;)&quot;&gt;
+          Borrar busqueda
+        &lt;/a&gt;
+      &lt;/div&gt;
+
+
+      &lt;div *ngIf&#x3D;&quot;trips.length &gt; 0&quot; class&#x3D;&quot;mt-8 flex sm:flex-col gap-8 flex-row flex-wrap justify-center&quot;&gt;
+        &lt;app-card-details *ngFor&#x3D;&quot;let trip of trips&quot; [trip]&#x3D;&quot;trip&quot;&gt;&lt;/app-card-details&gt;
+      &lt;/div&gt;
+      &lt;div *ngIf&#x3D;&quot;trips.length &#x3D;&#x3D;&#x3D; 0&quot; class&#x3D;&quot;mt-6 p-4 py-8 border-2 rounded-xl text-center border-alert text-alert font-bold text-xl w-full&quot;&gt;
+        No se encuentran resultados con tu búsqueda.
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;text-primary bg-gray-50 rounded-xl shadow-sm w-48 md:inline hidden&quot;&gt;
+      &lt;h2 class&#x3D;&quot;text-3xl font-bold mb-4&quot;&gt;Filtros&lt;/h2&gt;
+      &lt;h3 class&#x3D;&quot;text-xl font-semibold mb-2&quot;&gt;Tipo de barco&lt;/h3&gt;
+      &lt;div class&#x3D;&quot;flex flex-col gap-3 mb-8&quot;&gt;
+        &lt;label *ngFor&#x3D;&quot;let model of yachtModels&quot; class&#x3D;&quot;flex items-center gap-2 cursor-pointer&quot;&gt;
+          &lt;input type&#x3D;&quot;checkbox&quot; [value]&#x3D;&quot;model&quot; (change)&#x3D;&quot;onFilterChange()&quot; [(ngModel)]&#x3D;&quot;selectedModels[model]&quot; class&#x3D;&quot;w-5 h-5 border-2 border-gray-400 rounded-sm accent-primary&quot;&gt;
+          &lt;span class&#x3D;&quot;text-lg&quot;&gt;{{ model }}&lt;/span&gt;
+        &lt;/label&gt;
+      &lt;/div&gt;
+      &lt;h3 class&#x3D;&quot;text-xl font-semibold mb-2&quot;&gt;Rango de Precio&lt;/h3&gt;
+      &lt;div class&#x3D;&quot;flex flex-col gap-3 mb-8&quot;&gt;
+        &lt;input
+          id&#x3D;&quot;priceRange&quot;
+          type&#x3D;&quot;range&quot;
+          min&#x3D;&quot;0&quot;
+          max&#x3D;&quot;2000&quot;
+          step&#x3D;&quot;50&quot;
+          [style.accent-color]&#x3D;&quot;&#x27;#102f41&#x27;&quot;
+          [value]&#x3D;&quot;maxPrice&quot;
+          (input)&#x3D;&quot;onPriceChange($event)&quot;
+          class&#x3D;&quot;w-full&quot;
+        &gt;
+        &lt;p class&#x3D;&quot;text-primary text-center&quot;&gt;Hasta {{ maxPrice }}€&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;app-modal-filter #filterModal
+                      (filtersApplied)&#x3D;&quot;onFiltersApplied($event)&quot;
+                      [yachtModels]&#x3D;&quot;yachtModels&quot;
+                      (priceChanged)&#x3D;&quot;onPriceChanged($event)&quot;&gt;
+    &gt;&lt;/app-modal-filter&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-header [showSidebar]="true"/><div class="md:px-[50px] xl:px-[200px] px-4 mb-10 pt-4">  <app-searchbar (searchEvent)="onSearch($event)"/>  <div class="grid grid-cols-3 gap-8 sm:mt-8 mt-2">    <div class="md:col-span-2 col-span-3">      <button class="md:hidden border-primary border-2 inline mb-4 text-primary py-1.5 w-full rounded-md      hover:border-primary-light hover:text-secondary hover:bg-primary-light transition duration-300"              (click)="filterModal.openModal()">        Filtros      </button>      <div class="flex justify-between items-center flex-wrap gap-2">        <h2 class="text-primary text-xl sm:text-2xl md:text-3xl font-bold">        <span *ngIf="searchQuery">          Resultados: <span class="text-primary-lighter"><strong>{{ searchQuery }}</strong></span> ({{ trips.length }})        </span>          <span *ngIf="!searchQuery">Todos los viajes</span>        </h2>        <a *ngIf="searchQuery"           class="text-alert underline cursor-pointer hover:text-alert-dark transition duration-300 font-light text-lg"           (click)="onSearch(\'\')">          Borrar busqueda        </a>      </div>      <div *ngIf="trips.length > 0" class="mt-8 flex sm:flex-col gap-8 flex-row flex-wrap justify-center">        <app-card-details *ngFor="let trip of trips" [trip]="trip"></app-card-details>      </div>      <div *ngIf="trips.length === 0" class="mt-6 p-4 py-8 border-2 rounded-xl text-center border-alert text-alert font-bold text-xl w-full">        No se encuentran resultados con tu búsqueda.      </div>    </div>    <div class="text-primary bg-gray-50 rounded-xl shadow-sm w-48 md:inline hidden">      <h2 class="text-3xl font-bold mb-4">Filtros</h2>      <h3 class="text-xl font-semibold mb-2">Tipo de barco</h3>      <div class="flex flex-col gap-3 mb-8">        <label *ngFor="let model of yachtModels" class="flex items-center gap-2 cursor-pointer">          <input type="checkbox" [value]="model" (change)="onFilterChange()" [(ngModel)]="selectedModels[model]" class="w-5 h-5 border-2 border-gray-400 rounded-sm accent-primary">          <span class="text-lg">{{ model }}</span>        </label>      </div>      <h3 class="text-xl font-semibold mb-2">Rango de Precio</h3>      <div class="flex flex-col gap-3 mb-8">        <input          id="priceRange"          type="range"          min="0"          max="2000"          step="50"          [style.accent-color]="\'#102f41\'"          [value]="maxPrice"          (input)="onPriceChange($event)"          class="w-full"        >        <p class="text-primary text-center">Hasta {{ maxPrice }}€</p>      </div>    </div>    <app-modal-filter #filterModal                      (filtersApplied)="onFiltersApplied($event)"                      [yachtModels]="yachtModels"                      (priceChanged)="onPriceChanged($event)">    ></app-modal-filter>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AdminHomepageComponent', 'selector': 'app-admin-homepage'},{'name': 'AdminTripsComponent', 'selector': 'app-admin-trips'},{'name': 'AdminYachtsComponent', 'selector': 'app-admin-yachts'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BookingCardComponent', 'selector': 'app-booking-card'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'CardDetailsComponent', 'selector': 'app-card-details'},{'name': 'CheckoutComponent', 'selector': 'app-checkout'},{'name': 'CheckTicketsComponent', 'selector': 'app-check-tickets'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoadingComponent', 'selector': 'app-loading'},{'name': 'MainPageComponent', 'selector': 'app-main-page'},{'name': 'ModalFilterComponent', 'selector': 'app-modal-filter'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'SearchbarComponent', 'selector': 'app-searchbar'},{'name': 'SearchPageComponent', 'selector': 'app-search-page'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'ToastComponent', 'selector': 'app-toast'},{'name': 'VerificationComponent', 'selector': 'app-verification'},{'name': 'ViewLoginRegisterComponent', 'selector': 'app-view-login-register'},{'name': 'ViewTripComponent', 'selector': 'app-view-trip'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'SearchPageComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SearchPageComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

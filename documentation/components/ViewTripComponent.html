@@ -1,0 +1,1383 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ocenan-lux-front-end documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">ocenan-lux-front-end documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ViewTripComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/view-trip/view-trip.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente que gestiona la vista de un viaje individual, mostrando detalles del viaje y permitiendo a los usuarios realizar reservas.</p>
+<ul>
+<li><code>ViewTripComponent</code>: Componente que maneja la visualización y reserva de un viaje.</li>
+</ul>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                            <code>MessageService</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-view-trip</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="../components/HeaderComponent.html" target="_self" >HeaderComponent</a></code>
+                            <code>Checkbox</code>
+                            <code>FormsModule</code>
+                            <code>InputNumber</code>
+                            <code>ButtonModule</code>
+                                <code><a href="../components/LoadingComponent.html" target="_self" >LoadingComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./view-trip.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#basePrice" >basePrice</a>
+                            </li>
+                            <li>
+                                <a href="#extra" >extra</a>
+                            </li>
+                            <li>
+                                <a href="#extrasPrices" >extrasPrices</a>
+                            </li>
+                            <li>
+                                <a href="#isBooking" >isBooking</a>
+                            </li>
+                            <li>
+                                <a href="#maxTickets" >maxTickets</a>
+                            </li>
+                            <li>
+                                <a href="#totalPrice" >totalPrice</a>
+                            </li>
+                            <li>
+                                <a href="#trip" >trip</a>
+                            </li>
+                            <li>
+                                <a href="#tripId" >tripId</a>
+                            </li>
+                            <li>
+                                <a href="#value" >value</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#bookTrip" >bookTrip</a>
+                            </li>
+                            <li>
+                                <a href="#calculateTotal" >calculateTotal</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#setMaxTickets" >setMaxTickets</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(tripService: <a href="../injectables/TripService.html" target="_self">TripService</a>, route: ActivatedRoute, loadingService: <a href="../injectables/LoadingService.html" target="_self">LoadingService</a>, bookingService: <a href="../injectables/BookingService.html" target="_self">BookingService</a>, messageService: MessageService, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/app/features/view-trip/view-trip.component.ts:96</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor que inyecta los servicios necesarios: <code>TripService</code>, <code>ActivatedRoute</code>, <code>LoadingService</code>, <code>BookingService</code>, <code>MessageService</code>, y <code>AuthService</code>.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>tripService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TripService.html" target="_self" >TripService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Servicio que gestiona los viajes.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Proporciona acceso a los parámetros de la ruta activa.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>loadingService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/LoadingService.html" target="_self" >LoadingService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Servicio para mostrar y ocultar la pantalla de carga.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>bookingService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BookingService.html" target="_self" >BookingService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Servicio que gestiona las reservas de los viajes.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>messageService</td>
+                                                  
+                                                        <td>
+                                                                    <code>MessageService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Servicio para mostrar mensajes emergentes.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Servicio que gestiona la autenticación del usuario.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="bookTrip"></a>
+                    <span class="name">
+                        <span ><b>bookTrip</b></span>
+                        <a href="#bookTrip"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>bookTrip()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="175"
+                                    class="link-to-prism">src/app/features/view-trip/view-trip.component.ts:175</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Método que maneja la reserva del viaje. Verifica si el número de tickets no excede el máximo permitido y luego realiza la reserva llamando al servicio <code>BookingService</code>.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calculateTotal"></a>
+                    <span class="name">
+                        <span ><b>calculateTotal</b></span>
+                        <a href="#calculateTotal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>calculateTotal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="164"
+                                    class="link-to-prism">src/app/features/view-trip/view-trip.component.ts:164</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Calcula el precio total del viaje, teniendo en cuenta el número de tickets seleccionados y los extras.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="122"
+                                    class="link-to-prism">src/app/features/view-trip/view-trip.component.ts:122</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Método de inicialización del componente que obtiene los datos del viaje desde el servicio <code>TripService</code> basado en el ID extraído de los parámetros de la ruta.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setMaxTickets"></a>
+                    <span class="name">
+                        <span ><b>setMaxTickets</b></span>
+                        <a href="#setMaxTickets"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setMaxTickets()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="154"
+                                    class="link-to-prism">src/app/features/view-trip/view-trip.component.ts:154</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Establece el número máximo de tickets disponibles en base a la capacidad del yate. Si la capacidad es mayor a 25, se limita al 25% de la capacidad total.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="basePrice"></a>
+                    <span class="name">
+                        <span ><b>basePrice</b></span>
+                        <a href="#basePrice"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1000</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/features/view-trip/view-trip.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Precio base del viaje, que puede ser modificado según el viaje.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="extra"></a>
+                    <span class="name">
+                        <span ><b>extra</b></span>
+                        <a href="#extra"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/features/view-trip/view-trip.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de extras seleccionados por el usuario para el viaje.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="extrasPrices"></a>
+                    <span class="name">
+                        <span ><b>extrasPrices</b></span>
+                        <a href="#extrasPrices"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    &#x27;Guia&#x27;: 60,
+    &#x27;Catering&#x27;: 120,
+    &#x27;Pepper&#x27;: 150
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/features/view-trip/view-trip.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Precios de los extras disponibles para el viaje.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isBooking"></a>
+                    <span class="name">
+                        <span ><b>isBooking</b></span>
+                        <a href="#isBooking"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/app/features/view-trip/view-trip.component.ts:96</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Estado que indica si la reserva está en proceso o no.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="maxTickets"></a>
+                    <span class="name">
+                        <span ><b>maxTickets</b></span>
+                        <a href="#maxTickets"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/features/view-trip/view-trip.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Número máximo de tickets disponibles para la reserva en base a la capacidad del yate.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="totalPrice"></a>
+                    <span class="name">
+                        <span ><b>totalPrice</b></span>
+                        <a href="#totalPrice"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.basePrice</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">src/app/features/view-trip/view-trip.component.ts:90</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Precio total del viaje, calculado según el número de tickets y los extras seleccionados.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="trip"></a>
+                    <span class="name">
+                        <span ><b>trip</b></span>
+                        <a href="#trip"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Trip.html" target="_self" >Trip</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/features/view-trip/view-trip.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Viaje actual que se muestra en la vista. Se obtiene a través de una solicitud al servicio <code>TripService</code>.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tripId"></a>
+                    <span class="name">
+                        <span ><b>tripId</b></span>
+                        <a href="#tripId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/features/view-trip/view-trip.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>ID del viaje actual extraído de los parámetros de la URL.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="value"></a>
+                    <span class="name">
+                        <span ><b>value</b></span>
+                        <a href="#value"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/features/view-trip/view-trip.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Número de tickets seleccionados por el usuario para la reserva.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { HeaderComponent } from &#x27;../../../component/header/header.component&#x27;;
+import { Checkbox } from &#x27;primeng/checkbox&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { InputNumber } from &#x27;primeng/inputnumber&#x27;;
+import { ButtonModule } from &#x27;primeng/button&#x27;;
+import { Trip } from &#x27;../../model/trip&#x27;;
+import { TripService } from &#x27;../../services/trip.service&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { switchMap } from &#x27;rxjs&#x27;;
+import { LoadingService } from &#x27;../../services/loading.service&#x27;;
+import { LoadingComponent } from &#x27;../../../component/loading/loading.component&#x27;;
+import { MessageService } from &#x27;primeng/api&#x27;;
+import { BookingService } from &#x27;../../services/booking.service&#x27;;
+import { AuthService } from &#x27;../../services/auth.service&#x27;;
+
+/**
+ * @description
+ * Componente que gestiona la vista de un viaje individual, mostrando detalles del viaje y permitiendo a los usuarios realizar reservas.
+ *
+ * @exports
+ * - &#x60;ViewTripComponent&#x60;: Componente que maneja la visualización y reserva de un viaje.
+ */
+@Component({
+  selector: &#x27;app-view-trip&#x27;,
+  standalone: true,
+  imports: [
+    HeaderComponent,
+    Checkbox,
+    FormsModule,
+    InputNumber,
+    ButtonModule,
+    LoadingComponent
+  ],
+  templateUrl: &#x27;./view-trip.component.html&#x27;,
+  providers: [MessageService]
+})
+export class ViewTripComponent implements OnInit {
+
+  /**
+   * @description
+   * Viaje actual que se muestra en la vista. Se obtiene a través de una solicitud al servicio &#x60;TripService&#x60;.
+   */
+  trip!: Trip;
+
+  /**
+   * @description
+   * ID del viaje actual extraído de los parámetros de la URL.
+   */
+  tripId!: number;
+
+  /**
+   * @description
+   * Lista de extras seleccionados por el usuario para el viaje.
+   */
+  extra: string[] &#x3D; [];
+
+  /**
+   * @description
+   * Número de tickets seleccionados por el usuario para la reserva.
+   */
+  value: number &#x3D; 1;
+
+  /**
+   * @description
+   * Precio base del viaje, que puede ser modificado según el viaje.
+   */
+  basePrice: number &#x3D; 1000;
+
+  /**
+   * @description
+   * Número máximo de tickets disponibles para la reserva en base a la capacidad del yate.
+   */
+  maxTickets: number &#x3D; 1;
+
+  /**
+   * @description
+   * Precios de los extras disponibles para el viaje.
+   */
+  extrasPrices: { [key: string]: number } &#x3D; {
+    &#x27;Guia&#x27;: 60,
+    &#x27;Catering&#x27;: 120,
+    &#x27;Pepper&#x27;: 150
+  };
+
+  /**
+   * @description
+   * Precio total del viaje, calculado según el número de tickets y los extras seleccionados.
+   */
+  totalPrice: number &#x3D; this.basePrice;
+
+  /**
+   * @description
+   * Estado que indica si la reserva está en proceso o no.
+   */
+  isBooking: boolean &#x3D; false;
+
+  /**
+   * @description
+   * Constructor que inyecta los servicios necesarios: &#x60;TripService&#x60;, &#x60;ActivatedRoute&#x60;, &#x60;LoadingService&#x60;, &#x60;BookingService&#x60;, &#x60;MessageService&#x60;, y &#x60;AuthService&#x60;.
+   *
+   * @param tripService - Servicio que gestiona los viajes.
+   * @param route - Proporciona acceso a los parámetros de la ruta activa.
+   * @param loadingService - Servicio para mostrar y ocultar la pantalla de carga.
+   * @param bookingService - Servicio que gestiona las reservas de los viajes.
+   * @param messageService - Servicio para mostrar mensajes emergentes.
+   * @param authService - Servicio que gestiona la autenticación del usuario.
+   */
+  constructor(
+    private tripService: TripService,
+    private route: ActivatedRoute,
+    private loadingService: LoadingService,
+    private bookingService: BookingService,
+    private messageService: MessageService,
+    private authService: AuthService
+  ) {}
+
+  /**
+   * @description
+   * Método de inicialización del componente que obtiene los datos del viaje desde el servicio &#x60;TripService&#x60; basado en el ID extraído de los parámetros de la ruta.
+   */
+  ngOnInit() {
+    this.loadingService.loadingOn();
+
+    this.route.paramMap.pipe(
+      switchMap(params &#x3D;&gt; {
+        const id &#x3D; Number(params.get(&#x27;id&#x27;));
+        if (isNaN(id) || id &lt;&#x3D; 0) {
+          console.error(&quot;ID inválido del viaje&quot;);
+          this.loadingService.loadingOff();
+          return [];
+        }
+        this.tripId &#x3D; id;
+        return this.tripService.getTripById(this.tripId);
+      })
+    ).subscribe({
+      next: (data) &#x3D;&gt; {
+        this.trip &#x3D; data;
+        this.basePrice &#x3D; data.price || 1000;
+        this.setMaxTickets();
+        this.calculateTotal();
+        this.loadingService.loadingOff();
+      },
+      error: () &#x3D;&gt; {
+        this.loadingService.loadingOff();
+      }
+    });
+  }
+
+  /**
+   * @description
+   * Establece el número máximo de tickets disponibles en base a la capacidad del yate. Si la capacidad es mayor a 25, se limita al 25% de la capacidad total.
+   */
+  setMaxTickets() {
+    if (this.trip?.yacht?.capacity) {
+      this.maxTickets &#x3D; this.trip.yacht.capacity &gt; 25 ? Math.floor(this.trip.yacht.capacity * 0.25) : this.trip.yacht.capacity;
+    }
+  }
+
+  /**
+   * @description
+   * Calcula el precio total del viaje, teniendo en cuenta el número de tickets seleccionados y los extras.
+   */
+  calculateTotal() {
+    let extrasCost &#x3D; this.extra.reduce((acc, curr) &#x3D;&gt; acc + (this.extrasPrices[curr] || 0), 0);
+    this.totalPrice &#x3D; this.basePrice * this.value + extrasCost;
+  }
+
+  /**
+   * @description
+   * Método que maneja la reserva del viaje. Verifica si el número de tickets no excede el máximo permitido y luego realiza la reserva llamando al servicio &#x60;BookingService&#x60;.
+   *
+   * @returns {void}
+   */
+  bookTrip() {
+    if (this.value &gt; this.maxTickets) {
+      this.messageService.add({ severity: &#x27;error&#x27;, summary: &#x27;Error&#x27;, detail: &#x27;Número de tickets excede el máximo permitido&#x27; });
+      return;
+    }
+
+    this.isBooking &#x3D; true;
+
+    // Obtén el user_id del AuthService
+    this.authService.getUserId().subscribe({
+      next: (userId) &#x3D;&gt; {
+        if (userId &#x3D;&#x3D;&#x3D; null) {
+          this.messageService.add({ severity: &#x27;error&#x27;, summary: &#x27;Error&#x27;, detail: &#x27;No se pudo obtener el ID del usuario&#x27; });
+          this.isBooking &#x3D; false;
+          return;
+        }
+
+        const reservation &#x3D; {
+          trip_id: this.tripId,
+          number_of_guest: this.value,
+          total_price: this.totalPrice,
+          user_id: userId,
+          booking_date: new Date().toISOString().split(&#x27;T&#x27;)[0]
+        };
+
+        // Llamamos al servicio para crear la reserva
+        this.bookingService.createReservation(reservation).subscribe({
+          next: () &#x3D;&gt; {
+            this.messageService.add({ severity: &#x27;success&#x27;, summary: &#x27;Añadido al carrito&#x27;, detail: &#x27;Tu viaje se ha añadido al carrito&#x27; });
+            this.isBooking &#x3D; false;
+          },
+          error: () &#x3D;&gt; {
+            this.messageService.add({ severity: &#x27;error&#x27;, summary: &#x27;Error&#x27;, detail: &#x27;Ha ocurrido un error&#x27; });
+            this.isBooking &#x3D; false;
+          }
+        });
+      },
+      error: () &#x3D;&gt; {
+        this.messageService.add({ severity: &#x27;error&#x27;, summary: &#x27;Error&#x27;, detail: &#x27;No se pudo obtener el ID del usuario&#x27; });
+        this.isBooking &#x3D; false;
+      }
+    });
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-header [showSidebar]&#x3D;&quot;true&quot; /&gt;
+
+&lt;div class&#x3D;&quot;px-4 md:px-[50px] xl:px-[200px] mb-10 pt-10&quot;&gt;
+  &lt;div class&#x3D;&quot;flex flex-col w-full items-center&quot;&gt;
+    &lt;img src&#x3D;&quot;{{ trip.yacht.image }}&quot; class&#x3D;&quot;w-full h-[230px] object-cover rounded-lg&quot; alt&#x3D;&quot;&quot;&gt;
+
+    &lt;!-- Contenedor Principal --&gt;
+    &lt;div class&#x3D;&quot;flex flex-col lg:flex-row w-full gap-10 mt-6 items-center lg:items-start justify-center&quot;&gt;
+
+      &lt;!-- Sección Izquierda --&gt;
+      &lt;div class&#x3D;&quot;flex flex-col p-6 gap-6 w-full lg:w-2/3 text-center lg:text-left items-center lg:items-start&quot;&gt;
+        &lt;h1 class&#x3D;&quot;text-2xl sm:text-3xl md:text-4xl font-bold text-primary&quot;&gt;{{ trip.name }}&lt;/h1&gt;
+
+        &lt;div class&#x3D;&quot;flex flex-col gap-4&quot;&gt;
+          &lt;span class&#x3D;&quot;text-xl md:text-2xl text-primary&quot;&gt;Descripción&lt;/span&gt;
+          &lt;p class&#x3D;&quot;w-full text-justify text-primary&quot;&gt;{{ trip.description }}&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Información del Viaje --&gt;
+        &lt;div class&#x3D;&quot;flex flex-col gap-4 w-full text-primary items-center lg:items-start&quot;&gt;
+          &lt;h2 class&#x3D;&quot;text-2xl md:text-3xl&quot;&gt;Información del viaje&lt;/h2&gt;
+
+          &lt;div class&#x3D;&quot;grid grid-cols-1 md:grid-cols-2 gap-6 mt-4&quot;&gt;
+            &lt;div class&#x3D;&quot;flex items-center gap-3&quot;&gt;
+              &lt;svg width&#x3D;&quot;20&quot; height&#x3D;&quot;20&quot; viewBox&#x3D;&quot;0 0 26 27&quot; fill&#x3D;&quot;none&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot;&gt;
+                &lt;path d&#x3D;&quot;M20.3818 9.52767C20.2698 9.20327 20.0668 8.92309 19.8 8.72491C19.5333 8.52673 19.2157 8.42007 18.89 8.41932H16.9435L16.1497 3.36774H10.9687L11.7624 8.41932H9.80005L9.00634 3.36774H3.82528L4.61899 8.41932H2.38112V13.0499H0.793701V23.5741H22.0119L24.6051 14.8636V13.0499H21.5893L20.3818 9.52767Z&quot; fill&#x3D;&quot;#102F41&quot;/&gt;
+              &lt;/svg&gt;
+              &lt;label&gt;Modelo del barco:&lt;/label&gt;
+              &lt;span class&#x3D;&quot;text-primary-light&quot;&gt;{{ trip.yacht.model }}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;flex items-center gap-3&quot;&gt;
+              &lt;i class&#x3D;&quot;pi pi-clock&quot;&gt;&lt;/i&gt;
+              &lt;label&gt;Duración:&lt;/label&gt;
+              &lt;span class&#x3D;&quot;text-primary-light&quot;&gt;{{ trip.duration_hours }} horas&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;flex items-center gap-3&quot;&gt;
+              &lt;i class&#x3D;&quot;pi pi-angle-right&quot;&gt;&lt;/i&gt;
+              &lt;label&gt;Embarque:&lt;/label&gt;
+              &lt;span class&#x3D;&quot;text-primary-light&quot;&gt;{{ trip.departure }}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;flex items-center gap-3&quot;&gt;
+              &lt;i class&#x3D;&quot;pi pi-user&quot;&gt;&lt;/i&gt;
+              &lt;label&gt;Pasajeros:&lt;/label&gt;
+              &lt;span class&#x3D;&quot;text-primary-light&quot;&gt;{{ trip.yacht.capacity }}&lt;/span&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Sección Derecha (Adicionales y Tickets) --&gt;
+      &lt;div class&#x3D;&quot;flex flex-col w-full lg:w-1/3 pt-6 lg:pt-10 items-center&quot;&gt;
+        &lt;div class&#x3D;&quot;flex flex-col w-full items-center lg:items-start gap-6 text-primary&quot;&gt;
+          &lt;h1 class&#x3D;&quot;text-2xl font-bold&quot;&gt;Adicionales&lt;/h1&gt;
+
+          &lt;div class&#x3D;&quot;card flex flex-col gap-4&quot;&gt;
+            &lt;div class&#x3D;&quot;flex items-center&quot;&gt;
+              &lt;p-checkbox inputId&#x3D;&quot;guia&quot; name&#x3D;&quot;extra&quot; value&#x3D;&quot;Guia&quot; size&#x3D;&quot;large&quot; [(ngModel)]&#x3D;&quot;extra&quot; (ngModelChange)&#x3D;&quot;calculateTotal()&quot; /&gt;
+              &lt;label class&#x3D;&quot;ml-2&quot;&gt;Guía 60 €&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;flex items-center&quot;&gt;
+              &lt;p-checkbox inputId&#x3D;&quot;catering&quot; name&#x3D;&quot;extra&quot; value&#x3D;&quot;Catering&quot; size&#x3D;&quot;large&quot; [(ngModel)]&#x3D;&quot;extra&quot; (ngModelChange)&#x3D;&quot;calculateTotal()&quot; /&gt;
+              &lt;label class&#x3D;&quot;ml-2&quot;&gt;Catering 120 €&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;flex items-center&quot;&gt;
+              &lt;p-checkbox inputId&#x3D;&quot;pepper&quot; name&#x3D;&quot;extra&quot; value&#x3D;&quot;Pepper&quot; size&#x3D;&quot;large&quot; [(ngModel)]&#x3D;&quot;extra&quot; (ngModelChange)&#x3D;&quot;calculateTotal()&quot; /&gt;
+              &lt;label class&#x3D;&quot;ml-2&quot;&gt;+1 Hora 80 €&lt;/label&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Tickets --&gt;
+        &lt;div class&#x3D;&quot;flex flex-col md:items-start items-center gap-5 w-full font-semibold text-primary mt-8&quot;&gt;
+          &lt;span&gt;Tickets&lt;/span&gt;
+          &lt;p-inputnumber class&#x3D;&quot;custom-inputnumber w-full md:w-auto&quot; size&#x3D;&quot;small&quot; [(ngModel)]&#x3D;&quot;value&quot; (ngModelChange)&#x3D;&quot;calculateTotal()&quot;
+                         [showButtons]&#x3D;&quot;true&quot; buttonLayout&#x3D;&quot;horizontal&quot; inputId&#x3D;&quot;horizontal&quot;
+                         [min]&#x3D;&quot;1&quot; [max]&#x3D;&quot;maxTickets&quot; spinnerMode&#x3D;&quot;horizontal&quot; [step]&#x3D;&quot;1&quot;&gt;
+            &lt;ng-template pTemplate&#x3D;&quot;incrementbuttonicon&quot;&gt;
+              &lt;span class&#x3D;&quot;pi pi-plus text-primary&quot;&gt;&lt;/span&gt;
+            &lt;/ng-template&gt;
+            &lt;ng-template pTemplate&#x3D;&quot;decrementbuttonicon&quot;&gt;
+              &lt;span class&#x3D;&quot;pi pi-minus text-primary&quot;&gt;&lt;/span&gt;
+            &lt;/ng-template&gt;
+          &lt;/p-inputnumber&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Comprar Tickets --&gt;
+        &lt;div class&#x3D;&quot;flex flex-col md:flex-row w-full items-center gap-5 mt-6&quot;&gt;
+          &lt;p-button
+            label&#x3D;&quot;Comprar tickets&quot;
+            icon&#x3D;&quot;pi pi-ticket&quot;
+            severity&#x3D;&quot;contrast&quot;
+            (click)&#x3D;&quot;bookTrip()&quot;
+            [disabled]&#x3D;&quot;isBooking&quot;&gt;
+          &lt;/p-button&gt;
+          &lt;span class&#x3D;&quot;font-bold text-xl text-primary&quot;&gt;Total {{ totalPrice }} €&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;app-loading&gt;&lt;/app-loading&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-header [showSidebar]="true" /><div class="px-4 md:px-[50px] xl:px-[200px] mb-10 pt-10">  <div class="flex flex-col w-full items-center">    <img src="{{ trip.yacht.image }}" class="w-full h-[230px] object-cover rounded-lg" alt="">    <!-- Contenedor Principal -->    <div class="flex flex-col lg:flex-row w-full gap-10 mt-6 items-center lg:items-start justify-center">      <!-- Sección Izquierda -->      <div class="flex flex-col p-6 gap-6 w-full lg:w-2/3 text-center lg:text-left items-center lg:items-start">        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">{{ trip.name }}</h1>        <div class="flex flex-col gap-4">          <span class="text-xl md:text-2xl text-primary">Descripción</span>          <p class="w-full text-justify text-primary">{{ trip.description }}</p>        </div>        <!-- Información del Viaje -->        <div class="flex flex-col gap-4 w-full text-primary items-center lg:items-start">          <h2 class="text-2xl md:text-3xl">Información del viaje</h2>          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">            <div class="flex items-center gap-3">              <svg width="20" height="20" viewBox="0 0 26 27" fill="none" xmlns="http://www.w3.org/2000/svg">                <path d="M20.3818 9.52767C20.2698 9.20327 20.0668 8.92309 19.8 8.72491C19.5333 8.52673 19.2157 8.42007 18.89 8.41932H16.9435L16.1497 3.36774H10.9687L11.7624 8.41932H9.80005L9.00634 3.36774H3.82528L4.61899 8.41932H2.38112V13.0499H0.793701V23.5741H22.0119L24.6051 14.8636V13.0499H21.5893L20.3818 9.52767Z" fill="#102F41"/>              </svg>              <label>Modelo del barco:</label>              <span class="text-primary-light">{{ trip.yacht.model }}</span>            </div>            <div class="flex items-center gap-3">              <i class="pi pi-clock"></i>              <label>Duración:</label>              <span class="text-primary-light">{{ trip.duration_hours }} horas</span>            </div>            <div class="flex items-center gap-3">              <i class="pi pi-angle-right"></i>              <label>Embarque:</label>              <span class="text-primary-light">{{ trip.departure }}</span>            </div>            <div class="flex items-center gap-3">              <i class="pi pi-user"></i>              <label>Pasajeros:</label>              <span class="text-primary-light">{{ trip.yacht.capacity }}</span>            </div>          </div>        </div>      </div>      <!-- Sección Derecha (Adicionales y Tickets) -->      <div class="flex flex-col w-full lg:w-1/3 pt-6 lg:pt-10 items-center">        <div class="flex flex-col w-full items-center lg:items-start gap-6 text-primary">          <h1 class="text-2xl font-bold">Adicionales</h1>          <div class="card flex flex-col gap-4">            <div class="flex items-center">              <p-checkbox inputId="guia" name="extra" value="Guia" size="large" [(ngModel)]="extra" (ngModelChange)="calculateTotal()" />              <label class="ml-2">Guía 60 €</label>            </div>            <div class="flex items-center">              <p-checkbox inputId="catering" name="extra" value="Catering" size="large" [(ngModel)]="extra" (ngModelChange)="calculateTotal()" />              <label class="ml-2">Catering 120 €</label>            </div>            <div class="flex items-center">              <p-checkbox inputId="pepper" name="extra" value="Pepper" size="large" [(ngModel)]="extra" (ngModelChange)="calculateTotal()" />              <label class="ml-2">+1 Hora 80 €</label>            </div>          </div>        </div>        <!-- Tickets -->        <div class="flex flex-col md:items-start items-center gap-5 w-full font-semibold text-primary mt-8">          <span>Tickets</span>          <p-inputnumber class="custom-inputnumber w-full md:w-auto" size="small" [(ngModel)]="value" (ngModelChange)="calculateTotal()"                         [showButtons]="true" buttonLayout="horizontal" inputId="horizontal"                         [min]="1" [max]="maxTickets" spinnerMode="horizontal" [step]="1">            <ng-template pTemplate="incrementbuttonicon">              <span class="pi pi-plus text-primary"></span>            </ng-template>            <ng-template pTemplate="decrementbuttonicon">              <span class="pi pi-minus text-primary"></span>            </ng-template>          </p-inputnumber>        </div>        <!-- Comprar Tickets -->        <div class="flex flex-col md:flex-row w-full items-center gap-5 mt-6">          <p-button            label="Comprar tickets"            icon="pi pi-ticket"            severity="contrast"            (click)="bookTrip()"            [disabled]="isBooking">          </p-button>          <span class="font-bold text-xl text-primary">Total {{ totalPrice }} €</span>        </div>      </div>    </div>  </div></div><app-loading></app-loading></div>'
+    var COMPONENTS = [{'name': 'AdminHomepageComponent', 'selector': 'app-admin-homepage'},{'name': 'AdminTripsComponent', 'selector': 'app-admin-trips'},{'name': 'AdminYachtsComponent', 'selector': 'app-admin-yachts'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BookingCardComponent', 'selector': 'app-booking-card'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'CardDetailsComponent', 'selector': 'app-card-details'},{'name': 'CheckoutComponent', 'selector': 'app-checkout'},{'name': 'CheckTicketsComponent', 'selector': 'app-check-tickets'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoadingComponent', 'selector': 'app-loading'},{'name': 'MainPageComponent', 'selector': 'app-main-page'},{'name': 'ModalFilterComponent', 'selector': 'app-modal-filter'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'SearchbarComponent', 'selector': 'app-searchbar'},{'name': 'SearchPageComponent', 'selector': 'app-search-page'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'ToastComponent', 'selector': 'app-toast'},{'name': 'VerificationComponent', 'selector': 'app-verification'},{'name': 'ViewLoginRegisterComponent', 'selector': 'app-view-login-register'},{'name': 'ViewTripComponent', 'selector': 'app-view-trip'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ViewTripComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ViewTripComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

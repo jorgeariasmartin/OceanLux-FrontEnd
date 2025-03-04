@@ -1,12 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import {CommonModule, NgIf} from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../app/services/auth.service';
 import { BookingService } from '../../app/services/booking.service';
-import {TripService} from '../../app/services/trip.service';
-import {ButtonModule} from 'primeng/button';
+import { TripService } from '../../app/services/trip.service';
+import { ButtonModule } from 'primeng/button';
 
+/**
+ * Componente que permite al usuario revisar sus reservas pendientes,
+ * con la opción de eliminarlas, ver detalles del viaje y calcular el total de las reservas.
+ *
+ * @example
+ * <app-check-tickets></app-check-tickets>
+ */
 @Component({
   selector: 'app-check-tickets',
   imports: [
@@ -18,15 +25,46 @@ import {ButtonModule} from 'primeng/button';
   templateUrl: './check-tickets.component.html'
 })
 export class CheckTicketsComponent implements OnInit {
+  /**
+   * Determina si el menú desplegable de reservas está visible.
+   */
   showCartDropdown = false;
+
+  /**
+   * Indica si los datos están cargando.
+   */
   isLoading = true;
+
+  /**
+   * Observable que indica si el usuario está autenticado.
+   */
   isLoggedIn!: Observable<boolean>;
+
+  /**
+   * Lista de reservas pendientes del usuario.
+   */
   pendingReservations: any[] = [];
+
+  /**
+   * ID del usuario autenticado.
+   */
   userId!: number | null;
 
-  constructor(private authService: AuthService, private bookingService: BookingService, private tripService : TripService) {}
+  /**
+   * Constructor que inyecta los servicios necesarios.
+   *
+   * @param authService Servicio que gestiona la autenticación.
+   * @param bookingService Servicio que gestiona las reservas.
+   * @param tripService Servicio que gestiona los viajes.
+   */
+  constructor(private authService: AuthService, private bookingService: BookingService, private tripService: TripService) {}
 
+  /**
+   * Método de inicialización del componente. Verifica si el usuario está autenticado,
+   * obtiene su ID y carga las reservas pendientes si es necesario.
+   */
   ngOnInit() {
+    // Verifica si el usuario está autenticado
     this.isLoggedIn = this.authService.isAuthenticated();
 
     // Obtener el ID del usuario autenticado
@@ -42,15 +80,24 @@ export class CheckTicketsComponent implements OnInit {
       }
     });
 
+    // Simula el proceso de carga
     setTimeout(() => {
       this.isLoading = false;
     }, 1000);
   }
 
+  /**
+   * Alterna la visibilidad del menú desplegable de reservas.
+   */
   toggleCartDropdown() {
     this.showCartDropdown = !this.showCartDropdown;
   }
 
+  /**
+   * Cierra el menú desplegable si se hace clic fuera del área del carrito.
+   *
+   * @param event Evento de clic.
+   */
   closeDropdown(event: Event) {
     const clickedElement = event.target as HTMLElement;
     if (!clickedElement.closest('#cartDropdown') && !clickedElement.closest('#toggleCart')) {
@@ -58,6 +105,10 @@ export class CheckTicketsComponent implements OnInit {
     }
   }
 
+  /**
+   * Carga las reservas pendientes del usuario.
+   * Obtiene las reservas pendientes y, para cada una, obtiene los detalles del viaje asociado.
+   */
   loadPendingReservations() {
     if (!this.userId) return;
 
@@ -78,6 +129,11 @@ export class CheckTicketsComponent implements OnInit {
     });
   }
 
+  /**
+   * Elimina una reserva pendiente.
+   *
+   * @param reservationId ID de la reserva que se desea eliminar.
+   */
   deleteReservation(reservationId: number) {
     this.bookingService.deleteReservation(reservationId).subscribe({
       next: () => {
@@ -89,6 +145,11 @@ export class CheckTicketsComponent implements OnInit {
     });
   }
 
+  /**
+   * Calcula el precio total de todas las reservas pendientes.
+   *
+   * @returns El precio total de las reservas.
+   */
   getTotalPrice(): number {
     return this.pendingReservations.reduce((acc, r) => acc + r.total_price, 0);
   }

@@ -1,0 +1,2116 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ocenan-lux-front-end documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">ocenan-lux-front-end documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ProfileComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/profile/profile.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente que gestiona la visualización y edición del perfil del usuario, así como la gestión de sus reservas y la posibilidad de cambiar la contraseña.</p>
+<ul>
+<li><code>ProfileComponent</code>: Componente para mostrar y editar el perfil del usuario, incluyendo la gestión de reservas y cambio de contraseña.</li>
+</ul>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                            <code>MessageService</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-profile</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="../components/HeaderComponent.html" target="_self" >HeaderComponent</a></code>
+                            <code>ButtonModule</code>
+                            <code>CommonModule</code>
+                            <code>DialogModule</code>
+                            <code>FormsModule</code>
+                            <code>InputText</code>
+                            <code>ToastModule</code>
+                                <code><a href="../components/CardComponent.html" target="_self" >CardComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./profile.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#birthdateValid" >birthdateValid</a>
+                            </li>
+                            <li>
+                                <a href="#changePasswordData" >changePasswordData</a>
+                            </li>
+                            <li>
+                                <a href="#displayChangePasswordModal" >displayChangePasswordModal</a>
+                            </li>
+                            <li>
+                                <a href="#displayModal" >displayModal</a>
+                            </li>
+                            <li>
+                                <a href="#dniValid" >dniValid</a>
+                            </li>
+                            <li>
+                                <a href="#editedUser" >editedUser</a>
+                            </li>
+                            <li>
+                                <a href="#emailValid" >emailValid</a>
+                            </li>
+                            <li>
+                                <a href="#errorMessage" >errorMessage</a>
+                            </li>
+                            <li>
+                                <a href="#passwordsMismatch" >passwordsMismatch</a>
+                            </li>
+                            <li>
+                                <a href="#phoneValid" >phoneValid</a>
+                            </li>
+                            <li>
+                                <a href="#tripsBooked" >tripsBooked</a>
+                            </li>
+                            <li>
+                                <a href="#user" >user</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#changePassword" >changePassword</a>
+                            </li>
+                            <li>
+                                <a href="#getAvatarUrl" >getAvatarUrl</a>
+                            </li>
+                            <li>
+                                <a href="#getTripsBooked" >getTripsBooked</a>
+                            </li>
+                            <li>
+                                <a href="#hideChangePasswordModal" >hideChangePasswordModal</a>
+                            </li>
+                            <li>
+                                <a href="#hideModal" >hideModal</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#saveChanges" >saveChanges</a>
+                            </li>
+                            <li>
+                                <a href="#showChangePasswordModal" >showChangePasswordModal</a>
+                            </li>
+                            <li>
+                                <a href="#showModal" >showModal</a>
+                            </li>
+                            <li>
+                                <a href="#validateBirthdate" >validateBirthdate</a>
+                            </li>
+                            <li>
+                                <a href="#validateEmail" >validateEmail</a>
+                            </li>
+                            <li>
+                                <a href="#validateForm" >validateForm</a>
+                            </li>
+                            <li>
+                                <a href="#validatePassWordForm" >validatePassWordForm</a>
+                            </li>
+                            <li>
+                                <a href="#validatePhoneNumber" >validatePhoneNumber</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, messageService: MessageService, bookingService: <a href="../injectables/BookingService.html" target="_self">BookingService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/app/features/profile/profile.component.ts:97</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor que inyecta los servicios necesarios: <code>AuthService</code>, <code>MessageService</code> y <code>BookingService</code>.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Servicio que gestiona la autenticación del usuario.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>messageService</td>
+                                                  
+                                                        <td>
+                                                                    <code>MessageService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Servicio para mostrar mensajes emergentes.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>bookingService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/BookingService.html" target="_self" >BookingService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Servicio que gestiona las reservas de los viajes.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changePassword"></a>
+                    <span class="name">
+                        <span ><b>changePassword</b></span>
+                        <a href="#changePassword"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>changePassword()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="299"
+                                    class="link-to-prism">src/app/features/profile/profile.component.ts:299</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Cambia la contraseña del usuario después de validar el formulario de cambio de contraseña.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAvatarUrl"></a>
+                    <span class="name">
+                        <span ><b>getAvatarUrl</b></span>
+                        <a href="#getAvatarUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAvatarUrl(username: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="216"
+                                    class="link-to-prism">src/app/features/profile/profile.component.ts:216</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene la URL para el avatar del usuario usando sus iniciales.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>username</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Nombre de usuario del usuario autenticado.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>La URL generada para el avatar.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTripsBooked"></a>
+                    <span class="name">
+                        <span ><b>getTripsBooked</b></span>
+                        <a href="#getTripsBooked"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTripsBooked()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="349"
+                                    class="link-to-prism">src/app/features/profile/profile.component.ts:349</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene las reservas confirmadas del usuario autenticado.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hideChangePasswordModal"></a>
+                    <span class="name">
+                        <span ><b>hideChangePasswordModal</b></span>
+                        <a href="#hideChangePasswordModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>hideChangePasswordModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="291"
+                                    class="link-to-prism">src/app/features/profile/profile.component.ts:291</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Oculta el modal para cambiar la contraseña.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hideModal"></a>
+                    <span class="name">
+                        <span ><b>hideModal</b></span>
+                        <a href="#hideModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>hideModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="140"
+                                    class="link-to-prism">src/app/features/profile/profile.component.ts:140</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Oculta el modal de edición del perfil.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="113"
+                                    class="link-to-prism">src/app/features/profile/profile.component.ts:113</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Método que se ejecuta al inicializar el componente. Obtiene la información del usuario autenticado y, si está disponible, carga sus viajes reservados.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveChanges"></a>
+                    <span class="name">
+                        <span ><b>saveChanges</b></span>
+                        <a href="#saveChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>saveChanges()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="228"
+                                    class="link-to-prism">src/app/features/profile/profile.component.ts:228</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Guarda los cambios realizados en el perfil del usuario si el formulario es válido.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showChangePasswordModal"></a>
+                    <span class="name">
+                        <span ><b>showChangePasswordModal</b></span>
+                        <a href="#showChangePasswordModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showChangePasswordModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="281"
+                                    class="link-to-prism">src/app/features/profile/profile.component.ts:281</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Muestra el modal para cambiar la contraseña del usuario.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showModal"></a>
+                    <span class="name">
+                        <span ><b>showModal</b></span>
+                        <a href="#showModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="132"
+                                    class="link-to-prism">src/app/features/profile/profile.component.ts:132</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Muestra el modal de edición del perfil.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validateBirthdate"></a>
+                    <span class="name">
+                        <span ><b>validateBirthdate</b></span>
+                        <a href="#validateBirthdate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validateBirthdate()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="198"
+                                    class="link-to-prism">src/app/features/profile/profile.component.ts:198</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Valida la fecha de nacimiento del usuario.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p><code>true</code> si la edad del usuario es mayor de 18 años, <code>false</code> si no lo es.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validateEmail"></a>
+                    <span class="name">
+                        <span ><b>validateEmail</b></span>
+                        <a href="#validateEmail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validateEmail()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="186"
+                                    class="link-to-prism">src/app/features/profile/profile.component.ts:186</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Valida la dirección de correo electrónico ingresada por el usuario.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p><code>true</code> si el correo es válido, <code>false</code> si no lo es.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validateForm"></a>
+                    <span class="name">
+                        <span ><b>validateForm</b></span>
+                        <a href="#validateForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validateForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="150"
+                                    class="link-to-prism">src/app/features/profile/profile.component.ts:150</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Valida los datos del formulario antes de guardarlos.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p><code>true</code> si el formulario es válido, <code>false</code> si contiene errores.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validatePassWordForm"></a>
+                    <span class="name">
+                        <span ><b>validatePassWordForm</b></span>
+                        <a href="#validatePassWordForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validatePassWordForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="332"
+                                    class="link-to-prism">src/app/features/profile/profile.component.ts:332</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Valida el formulario de cambio de contraseña para asegurarse de que las contraseñas coinciden.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p><code>true</code> si las contraseñas coinciden, <code>false</code> si no lo hacen.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validatePhoneNumber"></a>
+                    <span class="name">
+                        <span ><b>validatePhoneNumber</b></span>
+                        <a href="#validatePhoneNumber"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validatePhoneNumber()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="174"
+                                    class="link-to-prism">src/app/features/profile/profile.component.ts:174</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Valida el número de teléfono ingresado por el usuario.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p><code>true</code> si el teléfono es válido, <code>false</code> si no lo es.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="birthdateValid"></a>
+                    <span class="name">
+                        <span ><b>birthdateValid</b></span>
+                        <a href="#birthdateValid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/features/profile/profile.component.ts:69</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changePasswordData"></a>
+                    <span class="name">
+                        <span ><b>changePasswordData</b></span>
+                        <a href="#changePasswordData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    oldPassword: &#x27;&#x27;,
+    newPassword: &#x27;&#x27;,
+    confirmPassword: &#x27;&#x27;
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/features/profile/profile.component.ts:81</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Datos para el cambio de contraseña, incluyendo la contraseña anterior, nueva y confirmación.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayChangePasswordModal"></a>
+                    <span class="name">
+                        <span ><b>displayChangePasswordModal</b></span>
+                        <a href="#displayChangePasswordModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/features/profile/profile.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Controla la visibilidad del modal de cambio de contraseña.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayModal"></a>
+                    <span class="name">
+                        <span ><b>displayModal</b></span>
+                        <a href="#displayModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/features/profile/profile.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Controla la visibilidad del modal de edición del perfil.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dniValid"></a>
+                    <span class="name">
+                        <span ><b>dniValid</b></span>
+                        <a href="#dniValid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/features/profile/profile.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Validación del número de teléfono ingresado.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editedUser"></a>
+                    <span class="name">
+                        <span ><b>editedUser</b></span>
+                        <a href="#editedUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/features/profile/profile.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Datos del usuario que se están editando en el modal.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="emailValid"></a>
+                    <span class="name">
+                        <span ><b>emailValid</b></span>
+                        <a href="#emailValid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/features/profile/profile.component.ts:68</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="errorMessage"></a>
+                    <span class="name">
+                        <span ><b>errorMessage</b></span>
+                        <a href="#errorMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/features/profile/profile.component.ts:75</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mensaje de error en caso de que ocurra un problema con los datos del perfil.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="passwordsMismatch"></a>
+                    <span class="name">
+                        <span ><b>passwordsMismatch</b></span>
+                        <a href="#passwordsMismatch"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/app/features/profile/profile.component.ts:91</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Controla la validación de las contraseñas coincidentes.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="phoneValid"></a>
+                    <span class="name">
+                        <span ><b>phoneValid</b></span>
+                        <a href="#phoneValid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/features/profile/profile.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="tripsBooked"></a>
+                    <span class="name">
+                        <span ><b>tripsBooked</b></span>
+                        <a href="#tripsBooked"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/app/features/profile/profile.component.ts:97</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de los viajes reservados por el usuario.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="user"></a>
+                    <span class="name">
+                        <span ><b>user</b></span>
+                        <a href="#user"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/features/profile/profile.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Información del usuario autenticado obtenida a través del servicio <code>AuthService</code>.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { HeaderComponent } from &#x27;../../../component/header/header.component&#x27;;
+import { ButtonModule } from &#x27;primeng/button&#x27;;
+import { AuthService } from &#x27;../../services/auth.service&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { DialogModule } from &#x27;primeng/dialog&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { InputText } from &#x27;primeng/inputtext&#x27;;
+import { MessageService } from &#x27;primeng/api&#x27;;
+import { ToastModule } from &#x27;primeng/toast&#x27;;
+import { BookingService } from &#x27;../../services/booking.service&#x27;;
+import { CardComponent } from &#x27;../../../component/card/card.component&#x27;;
+
+/**
+ * @description
+ * Componente que gestiona la visualización y edición del perfil del usuario, así como la gestión de sus reservas y la posibilidad de cambiar la contraseña.
+ *
+ * @exports
+ * - &#x60;ProfileComponent&#x60;: Componente para mostrar y editar el perfil del usuario, incluyendo la gestión de reservas y cambio de contraseña.
+ */
+@Component({
+  selector: &#x27;app-profile&#x27;,
+  imports: [
+    HeaderComponent,
+    ButtonModule,
+    CommonModule,
+    DialogModule,
+    FormsModule,
+    InputText,
+    ToastModule,
+    CardComponent
+  ],
+  providers: [MessageService],
+  templateUrl: &#x27;./profile.component.html&#x27;
+})
+export class ProfileComponent implements OnInit {
+
+  /**
+   * @description
+   * Información del usuario autenticado obtenida a través del servicio &#x60;AuthService&#x60;.
+   */
+  user: any;
+
+  /**
+   * @description
+   * Controla la visibilidad del modal de edición del perfil.
+   */
+  displayModal: boolean &#x3D; false;
+
+  /**
+   * @description
+   * Controla la visibilidad del modal de cambio de contraseña.
+   */
+  displayChangePasswordModal: boolean &#x3D; false;
+
+  /**
+   * @description
+   * Datos del usuario que se están editando en el modal.
+   */
+  editedUser: any &#x3D; {};
+
+  /**
+   * @description
+   * Validación del número de teléfono ingresado.
+   */
+  dniValid: boolean &#x3D; true;
+  phoneValid: boolean &#x3D; true;
+  emailValid: boolean &#x3D; true;
+  birthdateValid: boolean &#x3D; true;
+
+  /**
+   * @description
+   * Mensaje de error en caso de que ocurra un problema con los datos del perfil.
+   */
+  errorMessage: string &#x3D; &#x27;&#x27;;
+
+  /**
+   * @description
+   * Datos para el cambio de contraseña, incluyendo la contraseña anterior, nueva y confirmación.
+   */
+  changePasswordData: any &#x3D; {
+    oldPassword: &#x27;&#x27;,
+    newPassword: &#x27;&#x27;,
+    confirmPassword: &#x27;&#x27;
+  };
+
+  /**
+   * @description
+   * Controla la validación de las contraseñas coincidentes.
+   */
+  passwordsMismatch: boolean &#x3D; false;
+
+  /**
+   * @description
+   * Lista de los viajes reservados por el usuario.
+   */
+  tripsBooked: any[] &#x3D; [];
+
+  /**
+   * @description
+   * Constructor que inyecta los servicios necesarios: &#x60;AuthService&#x60;, &#x60;MessageService&#x60; y &#x60;BookingService&#x60;.
+   *
+   * @param authService - Servicio que gestiona la autenticación del usuario.
+   * @param messageService - Servicio para mostrar mensajes emergentes.
+   * @param bookingService - Servicio que gestiona las reservas de los viajes.
+   */
+  constructor(private authService: AuthService, private messageService: MessageService, private bookingService: BookingService) {}
+
+  /**
+   * @description
+   * Método que se ejecuta al inicializar el componente. Obtiene la información del usuario autenticado y, si está disponible, carga sus viajes reservados.
+   */
+  ngOnInit(): void {
+    this.authService.getAuthenticatedUser().subscribe({
+      next: (data) &#x3D;&gt; {
+        this.user &#x3D; data;
+        this.editedUser &#x3D; { ...data };
+        if (this.user?.id) {
+          this.getTripsBooked();
+        }
+      },
+      error: (error) &#x3D;&gt; {
+        console.error(&#x27;Error obteniendo el usuario&#x27;, error);
+      }
+    });
+  }
+
+  /**
+   * @description
+   * Muestra el modal de edición del perfil.
+   */
+  showModal(): void {
+    this.displayModal &#x3D; true;
+  }
+
+  /**
+   * @description
+   * Oculta el modal de edición del perfil.
+   */
+  hideModal(): void {
+    this.displayModal &#x3D; false;
+  }
+
+  /**
+   * @description
+   * Valida los datos del formulario antes de guardarlos.
+   *
+   * @returns &#x60;true&#x60; si el formulario es válido, &#x60;false&#x60; si contiene errores.
+   */
+  validateForm(): boolean {
+    let isValid &#x3D; true;
+
+    if (!this.validatePhoneNumber()) {
+      isValid &#x3D; false;
+    }
+
+    if (!this.validateEmail()) {
+      isValid &#x3D; false;
+    }
+
+    if (!this.validateBirthdate()) {
+      isValid &#x3D; false;
+    }
+
+    return isValid;
+  }
+
+  /**
+   * @description
+   * Valida el número de teléfono ingresado por el usuario.
+   *
+   * @returns &#x60;true&#x60; si el teléfono es válido, &#x60;false&#x60; si no lo es.
+   */
+  validatePhoneNumber(): boolean {
+    const phonePattern &#x3D; /^[0-9]{9,15}$/;
+    this.phoneValid &#x3D; phonePattern.test(this.editedUser.client.phone_number);
+    return this.phoneValid;
+  }
+
+  /**
+   * @description
+   * Valida la dirección de correo electrónico ingresada por el usuario.
+   *
+   * @returns &#x60;true&#x60; si el correo es válido, &#x60;false&#x60; si no lo es.
+   */
+  validateEmail(): boolean {
+    const emailPattern &#x3D; /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    this.emailValid &#x3D; emailPattern.test(this.editedUser.email);
+    return this.emailValid;
+  }
+
+  /**
+   * @description
+   * Valida la fecha de nacimiento del usuario.
+   *
+   * @returns &#x60;true&#x60; si la edad del usuario es mayor de 18 años, &#x60;false&#x60; si no lo es.
+   */
+  validateBirthdate(): boolean {
+    const today &#x3D; new Date();
+    const birthdate &#x3D; new Date(this.editedUser.client.birthdate);
+    const age &#x3D; today.getFullYear() - birthdate.getFullYear();
+    const m &#x3D; today.getMonth() - birthdate.getMonth();
+    const birthdateValid &#x3D; age &gt; 18 || (age &#x3D;&#x3D;&#x3D; 18 &amp;&amp; m &gt;&#x3D; 0);
+    this.birthdateValid &#x3D; birthdateValid;
+    return birthdateValid;
+  }
+
+  /**
+   * @description
+   * Obtiene la URL para el avatar del usuario usando sus iniciales.
+   *
+   * @param username - Nombre de usuario del usuario autenticado.
+   *
+   * @returns La URL generada para el avatar.
+   */
+  getAvatarUrl(username: string): string {
+    if (!username) {
+      return &#x60;https://ui-avatars.com/api/?name&#x3D;XX&amp;background&#x3D;0D8ABC&amp;color&#x3D;fff&#x60;;
+    }
+    const initials &#x3D; username.substring(0, 2).toUpperCase();
+    return &#x60;https://ui-avatars.com/api/?name&#x3D;${initials}&amp;background&#x3D;0D8ABC&amp;color&#x3D;fff&#x60;;
+  }
+
+  /**
+   * @description
+   * Guarda los cambios realizados en el perfil del usuario si el formulario es válido.
+   */
+  saveChanges(): void {
+    if (this.validateForm()) {
+      this.authService.getAuthenticatedUser().subscribe({
+        next: () &#x3D;&gt; {
+          this.authService.updateUser(this.editedUser).subscribe({
+            next: (response) &#x3D;&gt; {
+              this.messageService.add({
+                severity: &#x27;success&#x27;,
+                summary: &#x27;Éxito&#x27;,
+                detail: &#x27;Usuario actualizado correctamente.&#x27;,
+              });
+              this.displayModal &#x3D; false;
+            },
+            error: (error) &#x3D;&gt; {
+              if (error.status &#x3D;&#x3D;&#x3D; 400 &amp;&amp; error.error.error &#x3D;&#x3D;&#x3D; &#x27;El nombre de usuario ya está en uso&#x27;) {
+                this.messageService.add({
+                  severity: &#x27;error&#x27;,
+                  summary: &#x27;Error&#x27;,
+                  detail: &#x27;El nombre de usuario ya está en uso. Elige otro.&#x27;,
+                });
+              } else {
+                this.messageService.add({
+                  severity: &#x27;error&#x27;,
+                  summary: &#x27;Error&#x27;,
+                  detail: &#x27;Ocurrió un error al actualizar el usuario.&#x27;,
+                });
+              }
+              console.error(&#x27;Error updating user:&#x27;, error);
+            },
+          });
+        },
+        error: (error) &#x3D;&gt; {
+          this.messageService.add({
+            severity: &#x27;error&#x27;,
+            summary: &#x27;Error&#x27;,
+            detail: &#x27;No se pudo obtener la información del usuario.&#x27;,
+          });
+          console.error(&#x27;Error getting user:&#x27;, error);
+        },
+      });
+    } else {
+      this.messageService.add({
+        severity: &#x27;error&#x27;,
+        summary: &#x27;Formulario inválido&#x27;,
+        detail: &#x27;Por favor, corrige los errores en el formulario antes de guardar.&#x27;,
+      });
+    }
+  }
+
+  /**
+   * @description
+   * Muestra el modal para cambiar la contraseña del usuario.
+   */
+  showChangePasswordModal(): void {
+    this.displayChangePasswordModal &#x3D; true;
+    this.changePasswordData &#x3D; { oldPassword: &#x27;&#x27;, newPassword: &#x27;&#x27;, confirmPassword: &#x27;&#x27; };
+    this.passwordsMismatch &#x3D; false;
+  }
+
+  /**
+   * @description
+   * Oculta el modal para cambiar la contraseña.
+   */
+  hideChangePasswordModal(): void {
+    this.displayChangePasswordModal &#x3D; false;
+  }
+
+  /**
+   * @description
+   * Cambia la contraseña del usuario después de validar el formulario de cambio de contraseña.
+   */
+  changePassword(): void {
+    if (!this.validatePassWordForm()) {
+      return;
+    }
+
+    const { oldPassword, newPassword, confirmPassword } &#x3D; this.changePasswordData;
+
+    this.authService.changePassword(oldPassword, newPassword, confirmPassword).subscribe({
+      next: (response) &#x3D;&gt; {
+        this.messageService.add({
+          severity: &#x27;success&#x27;,
+          summary: &#x27;Contraseña cambiada&#x27;,
+          detail: &#x27;Tu contraseña ha sido cambiada correctamente.&#x27;,
+        });
+        this.hideChangePasswordModal();
+      },
+      error: (error) &#x3D;&gt; {
+        this.messageService.add({
+          severity: &#x27;error&#x27;,
+          summary: &#x27;Error&#x27;,
+          detail: &#x27;Hubo un error al cambiar la contraseña.&#x27;,
+        });
+        console.error(&#x27;Error cambiando la contraseña:&#x27;, error);
+      }
+    });
+  }
+
+  /**
+   * @description
+   * Valida el formulario de cambio de contraseña para asegurarse de que las contraseñas coinciden.
+   *
+   * @returns &#x60;true&#x60; si las contraseñas coinciden, &#x60;false&#x60; si no lo hacen.
+   */
+  validatePassWordForm(): boolean {
+    let isValid &#x3D; true;
+
+    if (this.changePasswordData.newPassword !&#x3D;&#x3D; this.changePasswordData.confirmPassword) {
+      isValid &#x3D; false;
+      this.passwordsMismatch &#x3D; true;
+    } else {
+      this.passwordsMismatch &#x3D; false;
+    }
+
+    return isValid;
+  }
+
+  /**
+   * @description
+   * Obtiene las reservas confirmadas del usuario autenticado.
+   */
+  getTripsBooked(): void {
+    if (!this.user?.id) return;
+
+    this.bookingService.getConfirmedReservations(this.user.id).subscribe({
+      next: (trips) &#x3D;&gt; {
+        this.tripsBooked &#x3D; trips;
+
+        this.tripsBooked.forEach((booking, index) &#x3D;&gt; {
+          this.bookingService.getTripById(booking.trip_id).subscribe({
+            next: (trip) &#x3D;&gt; {
+              this.tripsBooked[index].trip &#x3D; trip;
+            },
+            error: (error) &#x3D;&gt; {
+              console.error(&#x60;Error obteniendo trip con ID ${booking.trip_id}:&#x60;, error);
+            }
+          });
+        });
+      },
+      error: (error) &#x3D;&gt; {
+        console.error(&#x27;Error obteniendo las reservas:&#x27;, error);
+      }
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;app-header [showSidebar]&#x3D;&quot;true&quot;/&gt;
+&lt;div class&#x3D;&quot;md:px-[50px] xl:px-[200px] px-4 mb-10 pt-4&quot;&gt;
+  &lt;div *ngIf&#x3D;&quot;user&quot; class&#x3D;&quot;flex w-full pt-10 gap-10&quot;&gt;
+    &lt;div class&#x3D;&quot;flex justify-start w-1/3&quot;&gt;
+      &lt;!-- Usamos la API de ui-avatars con el nombre del usuario como parámetro --&gt;
+      &lt;img
+        [src]&#x3D;&quot;getAvatarUrl(user.username)&quot;
+        alt&#x3D;&quot;User Image&quot;
+        class&#x3D;&quot;rounded-lg max-w-[320px]&quot;
+      &gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;w-full flex flex-col&quot;&gt;
+      &lt;div class&#x3D;&quot;w-full grid grid-cols-2 gap-3 justify-center items-center&quot;&gt;
+        &lt;div class&#x3D;&quot;flex flex-col gap-2&quot;&gt;
+          &lt;label&gt;&lt;strong&gt;Nombre: &lt;/strong&gt;&lt;/label&gt;
+          &lt;label&gt;{{ user.client?.name }}&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;flex flex-col gap-2&quot;&gt;
+          &lt;label&gt;&lt;strong&gt;Apellidos: &lt;/strong&gt;&lt;/label&gt;
+          &lt;label&gt;{{ user.client?.surname }}&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;flex flex-col gap-2&quot;&gt;
+          &lt;label&gt;&lt;strong&gt;Numero de teléfono: &lt;/strong&gt;&lt;/label&gt;
+          &lt;label&gt;{{ user.client?.phone_number }}&lt;/label&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;flex flex-col gap-2&quot;&gt;
+          &lt;label&gt;&lt;strong&gt;Email: &lt;/strong&gt;&lt;/label&gt;
+          &lt;label&gt;{{ user.email }}&lt;/label&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;flex pt-10 w-full gap-8 justify-start items-center&quot;&gt;
+        &lt;p-button icon&#x3D;&quot;pi pi-pencil&quot; label&#x3D;&quot;Editar campos&quot; (click)&#x3D;&quot;showModal()&quot; severity&#x3D;&quot;contrast&quot;&gt;&lt;/p-button&gt;
+        &lt;p-button icon&#x3D;&quot;pi pi-key&quot; label&#x3D;&quot;Cambiar contraseña&quot; (click)&#x3D;&quot;showChangePasswordModal()&quot; severity&#x3D;&quot;contrast&quot;&gt;&lt;/p-button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;p-dialog class&#x3D;&quot;text-primary&quot; [(visible)]&#x3D;&quot;displayModal&quot; [modal]&#x3D;&quot;true&quot; [closable]&#x3D;&quot;false&quot; [style]&#x3D;&quot;{width: &#x27;50vw&#x27;}&quot;&gt;
+    &lt;h2 class&#x3D;&quot;mb-2 text-center text-2xl font-bold tracking-tight text-primary&quot;&gt;Editar Usuario&lt;/h2&gt;
+    &lt;h2 class&#x3D;&quot;mb-9 text-center text-l font-bold tracking-tight text-primary&quot;&gt;Actualiza tus datos&lt;/h2&gt;
+
+    &lt;div class&#x3D;&quot;w-full p-8 flex flex-col justify-items-center space-y-4 text-primary &quot;&gt;
+      &lt;!-- Nombre de Usuario --&gt;
+      &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+        &lt;label for&#x3D;&quot;username&quot;&gt;Nombre de Usuario&lt;/label&gt;
+        &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;username&quot; [(ngModel)]&#x3D;&quot;editedUser.username&quot; pInputText /&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Nombre --&gt;
+      &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+        &lt;label for&#x3D;&quot;firstname&quot;&gt;Nombre&lt;/label&gt;
+        &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;firstname&quot; [(ngModel)]&#x3D;&quot;editedUser.client.name&quot; pInputText /&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Apellidos --&gt;
+      &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+        &lt;label for&#x3D;&quot;surname&quot;&gt;Apellidos&lt;/label&gt;
+        &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;surname&quot; [(ngModel)]&#x3D;&quot;editedUser.client.surname&quot; pInputText /&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Dirección --&gt;
+      &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+        &lt;label for&#x3D;&quot;address&quot;&gt;Dirección&lt;/label&gt;
+        &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;address&quot; [(ngModel)]&#x3D;&quot;editedUser.client.address&quot; pInputText /&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Teléfono --&gt;
+      &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+        &lt;label for&#x3D;&quot;telephone&quot;&gt;Número de Teléfono&lt;/label&gt;
+        &lt;input
+          type&#x3D;&quot;number&quot;
+          id&#x3D;&quot;telephone&quot;
+          [(ngModel)]&#x3D;&quot;editedUser.client.phone_number&quot;
+          pInputText
+          (input)&#x3D;&quot;validatePhoneNumber()&quot;
+          [ngClass]&#x3D;&quot;{&#x27;ng-invalid ng-dirty border-red-500&#x27;: phoneValid &#x3D;&#x3D;&#x3D; false}&quot;
+        /&gt;
+        &lt;small class&#x3D;&quot;text-red-500 mt-1&quot; *ngIf&#x3D;&quot;phoneValid &#x3D;&#x3D;&#x3D; false&quot;&gt;
+          Introduce un número de teléfono válido (9-15 dígitos).
+        &lt;/small&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Email --&gt;
+      &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+        &lt;label for&#x3D;&quot;email&quot;&gt;Email&lt;/label&gt;
+        &lt;input
+          type&#x3D;&quot;email&quot;
+          id&#x3D;&quot;email&quot;
+          [(ngModel)]&#x3D;&quot;editedUser.email&quot;
+          pInputText
+          (input)&#x3D;&quot;validateEmail()&quot;
+          [ngClass]&#x3D;&quot;{&#x27;ng-invalid ng-dirty border-red-500&#x27;: emailValid &#x3D;&#x3D;&#x3D; false}&quot;
+        /&gt;
+        &lt;small class&#x3D;&quot;text-red-500 mt-1&quot; *ngIf&#x3D;&quot;emailValid &#x3D;&#x3D;&#x3D; false&quot;&gt;
+          Introduce un correo válido.
+        &lt;/small&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Fecha de Nacimiento --&gt;
+      &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+        &lt;label for&#x3D;&quot;birthdate&quot;&gt;Fecha de nacimiento&lt;/label&gt;
+        &lt;input disabled
+          type&#x3D;&quot;date&quot;
+          id&#x3D;&quot;birthdate&quot;
+          [(ngModel)]&#x3D;&quot;editedUser.client.birthdate&quot;
+          pInputText
+          (input)&#x3D;&quot;validateBirthdate()&quot;
+          [ngClass]&#x3D;&quot;{&#x27;ng-invalid ng-dirty border-red-500&#x27;: birthdateValid &#x3D;&#x3D;&#x3D; false}&quot;
+        /&gt;
+        &lt;small class&#x3D;&quot;text-red-500 mt-1&quot; *ngIf&#x3D;&quot;birthdateValid &#x3D;&#x3D;&#x3D; false&quot;&gt;
+          Debes tener al menos 18 años para registrarte.
+        &lt;/small&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;flex justify-evenly&quot;&gt;
+        &lt;button pButton type&#x3D;&quot;button&quot; label&#x3D;&quot;Cancelar&quot; icon&#x3D;&quot;pi pi-times&quot; (click)&#x3D;&quot;hideModal()&quot; class&#x3D;&quot;p-button-text&quot;&gt;&lt;/button&gt;
+        &lt;button pButton type&#x3D;&quot;button&quot; label&#x3D;&quot;Guardar cambios&quot; icon&#x3D;&quot;pi pi-check&quot; (click)&#x3D;&quot;saveChanges()&quot; class&#x3D;&quot;p-button-text&quot;&gt;&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/p-dialog&gt;
+  &lt;p-dialog class&#x3D;&quot;text-primary&quot; [(visible)]&#x3D;&quot;displayChangePasswordModal&quot; [modal]&#x3D;&quot;true&quot; [closable]&#x3D;&quot;false&quot; [style]&#x3D;&quot;{width: &#x27;50vw&#x27;}&quot;&gt;
+    &lt;h2 class&#x3D;&quot;mb-2 text-center text-2xl font-bold tracking-tight text-primary&quot;&gt;Cambiar Contraseña&lt;/h2&gt;
+
+    &lt;div class&#x3D;&quot;w-full p-8 flex flex-col justify-items-center space-y-4 text-primary&quot;&gt;
+      &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+        &lt;label for&#x3D;&quot;oldPassword&quot;&gt;Contraseña Antigua&lt;/label&gt;
+        &lt;input type&#x3D;&quot;password&quot; id&#x3D;&quot;oldPassword&quot; [(ngModel)]&#x3D;&quot;changePasswordData.oldPassword&quot; pInputText /&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+        &lt;label for&#x3D;&quot;newPassword&quot;&gt;Nueva Contraseña&lt;/label&gt;
+        &lt;input type&#x3D;&quot;password&quot; id&#x3D;&quot;newPassword&quot; [(ngModel)]&#x3D;&quot;changePasswordData.newPassword&quot; pInputText /&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+        &lt;label for&#x3D;&quot;confirmPassword&quot;&gt;Confirmar Nueva Contraseña&lt;/label&gt;
+        &lt;input type&#x3D;&quot;password&quot; id&#x3D;&quot;confirmPassword&quot; [(ngModel)]&#x3D;&quot;changePasswordData.confirmPassword&quot; pInputText /&gt;
+        &lt;small class&#x3D;&quot;text-red-500 mt-1&quot; *ngIf&#x3D;&quot;passwordsMismatch&quot;&gt;
+          Las contraseñas no coinciden.
+        &lt;/small&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;flex justify-evenly&quot;&gt;
+        &lt;button pButton type&#x3D;&quot;button&quot; label&#x3D;&quot;Cancelar&quot; icon&#x3D;&quot;pi pi-times&quot; (click)&#x3D;&quot;hideChangePasswordModal()&quot; class&#x3D;&quot;p-button-text&quot;&gt;&lt;/button&gt;
+        &lt;button pButton type&#x3D;&quot;button&quot; label&#x3D;&quot;Guardar Cambios&quot; icon&#x3D;&quot;pi pi-check&quot; (click)&#x3D;&quot;changePassword()&quot; class&#x3D;&quot;p-button-text&quot;&gt;&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/p-dialog&gt;
+
+  &lt;div class&#x3D;&quot;flex flex-col pt-10&quot;&gt;
+    &lt;h1 class&#x3D;&quot;text-2xl&quot;&gt;Tus reservas: &lt;/h1&gt;
+    &lt;div class&#x3D;&quot;flex overflow-x-auto snap-x snap-mandatory sm:gap-10 gap-16 py-4 carousel-scrollbar&quot;&gt;
+      &lt;app-card *ngFor&#x3D;&quot;let booking of tripsBooked&quot; [trip]&#x3D;&quot;booking.trip&quot; [shopped]&#x3D;&quot;true&quot;&gt;&lt;/app-card&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;p-toast&gt;&lt;/p-toast&gt;
+&lt;/div&gt;
+
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><app-header [showSidebar]="true"/><div class="md:px-[50px] xl:px-[200px] px-4 mb-10 pt-4">  <div *ngIf="user" class="flex w-full pt-10 gap-10">    <div class="flex justify-start w-1/3">      <!-- Usamos la API de ui-avatars con el nombre del usuario como parámetro -->      <img        [src]="getAvatarUrl(user.username)"        alt="User Image"        class="rounded-lg max-w-[320px]"      >    </div>    <div class="w-full flex flex-col">      <div class="w-full grid grid-cols-2 gap-3 justify-center items-center">        <div class="flex flex-col gap-2">          <label><strong>Nombre: </strong></label>          <label>{{ user.client?.name }}</label>        </div>        <div class="flex flex-col gap-2">          <label><strong>Apellidos: </strong></label>          <label>{{ user.client?.surname }}</label>        </div>        <div class="flex flex-col gap-2">          <label><strong>Numero de teléfono: </strong></label>          <label>{{ user.client?.phone_number }}</label>        </div>        <div class="flex flex-col gap-2">          <label><strong>Email: </strong></label>          <label>{{ user.email }}</label>        </div>      </div>      <div class="flex pt-10 w-full gap-8 justify-start items-center">        <p-button icon="pi pi-pencil" label="Editar campos" (click)="showModal()" severity="contrast"></p-button>        <p-button icon="pi pi-key" label="Cambiar contraseña" (click)="showChangePasswordModal()" severity="contrast"></p-button>      </div>    </div>  </div>  <p-dialog class="text-primary" [(visible)]="displayModal" [modal]="true" [closable]="false" [style]="{width: \'50vw\'}">    <h2 class="mb-2 text-center text-2xl font-bold tracking-tight text-primary">Editar Usuario</h2>    <h2 class="mb-9 text-center text-l font-bold tracking-tight text-primary">Actualiza tus datos</h2>    <div class="w-full p-8 flex flex-col justify-items-center space-y-4 text-primary ">      <!-- Nombre de Usuario -->      <div class="flex flex-col">        <label for="username">Nombre de Usuario</label>        <input type="text" id="username" [(ngModel)]="editedUser.username" pInputText />      </div>      <!-- Nombre -->      <div class="flex flex-col">        <label for="firstname">Nombre</label>        <input type="text" id="firstname" [(ngModel)]="editedUser.client.name" pInputText />      </div>      <!-- Apellidos -->      <div class="flex flex-col">        <label for="surname">Apellidos</label>        <input type="text" id="surname" [(ngModel)]="editedUser.client.surname" pInputText />      </div>      <!-- Dirección -->      <div class="flex flex-col">        <label for="address">Dirección</label>        <input type="text" id="address" [(ngModel)]="editedUser.client.address" pInputText />      </div>      <!-- Teléfono -->      <div class="flex flex-col">        <label for="telephone">Número de Teléfono</label>        <input          type="number"          id="telephone"          [(ngModel)]="editedUser.client.phone_number"          pInputText          (input)="validatePhoneNumber()"          [ngClass]="{\'ng-invalid ng-dirty border-red-500\': phoneValid === false}"        />        <small class="text-red-500 mt-1" *ngIf="phoneValid === false">          Introduce un número de teléfono válido (9-15 dígitos).        </small>      </div>      <!-- Email -->      <div class="flex flex-col">        <label for="email">Email</label>        <input          type="email"          id="email"          [(ngModel)]="editedUser.email"          pInputText          (input)="validateEmail()"          [ngClass]="{\'ng-invalid ng-dirty border-red-500\': emailValid === false}"        />        <small class="text-red-500 mt-1" *ngIf="emailValid === false">          Introduce un correo válido.        </small>      </div>      <!-- Fecha de Nacimiento -->      <div class="flex flex-col">        <label for="birthdate">Fecha de nacimiento</label>        <input disabled          type="date"          id="birthdate"          [(ngModel)]="editedUser.client.birthdate"          pInputText          (input)="validateBirthdate()"          [ngClass]="{\'ng-invalid ng-dirty border-red-500\': birthdateValid === false}"        />        <small class="text-red-500 mt-1" *ngIf="birthdateValid === false">          Debes tener al menos 18 años para registrarte.        </small>      </div>      <div class="flex justify-evenly">        <button pButton type="button" label="Cancelar" icon="pi pi-times" (click)="hideModal()" class="p-button-text"></button>        <button pButton type="button" label="Guardar cambios" icon="pi pi-check" (click)="saveChanges()" class="p-button-text"></button>      </div>    </div>  </p-dialog>  <p-dialog class="text-primary" [(visible)]="displayChangePasswordModal" [modal]="true" [closable]="false" [style]="{width: \'50vw\'}">    <h2 class="mb-2 text-center text-2xl font-bold tracking-tight text-primary">Cambiar Contraseña</h2>    <div class="w-full p-8 flex flex-col justify-items-center space-y-4 text-primary">      <div class="flex flex-col">        <label for="oldPassword">Contraseña Antigua</label>        <input type="password" id="oldPassword" [(ngModel)]="changePasswordData.oldPassword" pInputText />      </div>      <div class="flex flex-col">        <label for="newPassword">Nueva Contraseña</label>        <input type="password" id="newPassword" [(ngModel)]="changePasswordData.newPassword" pInputText />      </div>      <div class="flex flex-col">        <label for="confirmPassword">Confirmar Nueva Contraseña</label>        <input type="password" id="confirmPassword" [(ngModel)]="changePasswordData.confirmPassword" pInputText />        <small class="text-red-500 mt-1" *ngIf="passwordsMismatch">          Las contraseñas no coinciden.        </small>      </div>      <div class="flex justify-evenly">        <button pButton type="button" label="Cancelar" icon="pi pi-times" (click)="hideChangePasswordModal()" class="p-button-text"></button>        <button pButton type="button" label="Guardar Cambios" icon="pi pi-check" (click)="changePassword()" class="p-button-text"></button>      </div>    </div>  </p-dialog>  <div class="flex flex-col pt-10">    <h1 class="text-2xl">Tus reservas: </h1>    <div class="flex overflow-x-auto snap-x snap-mandatory sm:gap-10 gap-16 py-4 carousel-scrollbar">      <app-card *ngFor="let booking of tripsBooked" [trip]="booking.trip" [shopped]="true"></app-card>    </div>  </div>  <p-toast></p-toast></div></div>'
+    var COMPONENTS = [{'name': 'AdminHomepageComponent', 'selector': 'app-admin-homepage'},{'name': 'AdminTripsComponent', 'selector': 'app-admin-trips'},{'name': 'AdminYachtsComponent', 'selector': 'app-admin-yachts'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BookingCardComponent', 'selector': 'app-booking-card'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'CardDetailsComponent', 'selector': 'app-card-details'},{'name': 'CheckoutComponent', 'selector': 'app-checkout'},{'name': 'CheckTicketsComponent', 'selector': 'app-check-tickets'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoadingComponent', 'selector': 'app-loading'},{'name': 'MainPageComponent', 'selector': 'app-main-page'},{'name': 'ModalFilterComponent', 'selector': 'app-modal-filter'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'SearchbarComponent', 'selector': 'app-searchbar'},{'name': 'SearchPageComponent', 'selector': 'app-search-page'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'ToastComponent', 'selector': 'app-toast'},{'name': 'VerificationComponent', 'selector': 'app-verification'},{'name': 'ViewLoginRegisterComponent', 'selector': 'app-view-login-register'},{'name': 'ViewTripComponent', 'selector': 'app-view-trip'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ProfileComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ProfileComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

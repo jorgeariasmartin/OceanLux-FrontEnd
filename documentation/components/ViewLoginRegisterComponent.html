@@ -1,0 +1,1880 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ocenan-lux-front-end documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">ocenan-lux-front-end documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ViewLoginRegisterComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/view-login-register/view-login-register.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente de la vista de inicio de sesión y registro. Permite a los usuarios iniciar sesión o registrarse proporcionando información como nombre, correo electrónico, contraseña, etc.</p>
+<ul>
+<li><code>ViewLoginRegisterComponent</code>: Componente que gestiona el inicio de sesión y el registro de usuarios.</li>
+</ul>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                            <code>MessageService</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-view-login-register</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>RouterModule</code>
+                                <code><a href="../components/SidebarComponent.html" target="_self" >SidebarComponent</a></code>
+                            <code>FormsModule</code>
+                            <code>SelectButtonModule</code>
+                            <code>NgIf</code>
+                            <code>Password</code>
+                            <code>Button</code>
+                            <code>InputText</code>
+                            <code>HttpClientModule</code>
+                            <code>NgClass</code>
+                            <code>Toast</code>
+                            <code>ToastModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./view-login-register.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#activeForm" >activeForm</a>
+                            </li>
+                            <li>
+                                <a href="#birthdateValid" >birthdateValid</a>
+                            </li>
+                            <li>
+                                <a href="#dniValid" >dniValid</a>
+                            </li>
+                            <li>
+                                <a href="#emailValid" >emailValid</a>
+                            </li>
+                            <li>
+                                <a href="#errorMessage" >errorMessage</a>
+                            </li>
+                            <li>
+                                <a href="#phoneValid" >phoneValid</a>
+                            </li>
+                            <li>
+                                <a href="#stateOptions" >stateOptions</a>
+                            </li>
+                            <li>
+                                <a href="#user" >user</a>
+                            </li>
+                            <li>
+                                <a href="#userData" >userData</a>
+                            </li>
+                            <li>
+                                <a href="#verificationMessage" >verificationMessage</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#login" >login</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#register" >register</a>
+                            </li>
+                            <li>
+                                <a href="#resetForm" >resetForm</a>
+                            </li>
+                            <li>
+                                <a href="#sendVerificationEmail" >sendVerificationEmail</a>
+                            </li>
+                            <li>
+                                <a href="#updatePassword" >updatePassword</a>
+                            </li>
+                            <li>
+                                <a href="#validateBirthdate" >validateBirthdate</a>
+                            </li>
+                            <li>
+                                <a href="#validateDNI" >validateDNI</a>
+                            </li>
+                            <li>
+                                <a href="#validateEmail" >validateEmail</a>
+                            </li>
+                            <li>
+                                <a href="#validatePhoneNumber" >validatePhoneNumber</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, router: Router, messageService: MessageService, emailService: <a href="../injectables/EmailService.html" target="_self">EmailService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:106</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor que inyecta los servicios necesarios, como <code>AuthService</code>, <code>Router</code>, <code>MessageService</code> y <code>EmailService</code>.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Servicio que gestiona la autenticación de usuarios.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>El router de Angular que permite redirigir al usuario después del inicio de sesión.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>messageService</td>
+                                                  
+                                                        <td>
+                                                                    <code>MessageService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Servicio que muestra mensajes emergentes de éxito o error.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>emailService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/EmailService.html" target="_self" >EmailService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Servicio que gestiona el envío de correos electrónicos, como el correo de verificación.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="login"></a>
+                    <span class="name">
+                        <span ><b>login</b></span>
+                        <a href="#login"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>login()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="271"
+                                    class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:271</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Inicia sesión con el usuario proporcionado. Si el inicio de sesión falla, muestra un mensaje de error.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="123"
+                                    class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:123</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Método de inicialización del componente. No realiza ninguna acción adicional en este caso.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="register"></a>
+                    <span class="name">
+                        <span ><b>register</b></span>
+                        <a href="#register"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>register()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="204"
+                                    class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:204</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Registra un nuevo usuario en la plataforma. Si la información está incompleta, muestra un mensaje de error.
+Luego, envía un correo de verificación al usuario si el registro es exitoso.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resetForm"></a>
+                    <span class="name">
+                        <span ><b>resetForm</b></span>
+                        <a href="#resetForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>resetForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="251"
+                                    class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:251</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Restablece el formulario de registro a su estado inicial.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sendVerificationEmail"></a>
+                    <span class="name">
+                        <span ><b>sendVerificationEmail</b></span>
+                        <a href="#sendVerificationEmail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>sendVerificationEmail(userId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="240"
+                                    class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:240</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Envía un correo electrónico de verificación al usuario después de un registro exitoso.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>userId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>El ID del usuario para enviar el correo de verificación.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updatePassword"></a>
+                    <span class="name">
+                        <span ><b>updatePassword</b></span>
+                        <a href="#updatePassword"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updatePassword(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="195"
+                                    class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:195</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Actualiza la contraseña del usuario cuando cambia en el formulario.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>El evento que contiene el nuevo valor de la contraseña.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validateBirthdate"></a>
+                    <span class="name">
+                        <span ><b>validateBirthdate</b></span>
+                        <a href="#validateBirthdate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validateBirthdate()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="169"
+                                    class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:169</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Valida la fecha de nacimiento del usuario. Asegura que la edad sea mayor o igual a 18 años.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validateDNI"></a>
+                    <span class="name">
+                        <span ><b>validateDNI</b></span>
+                        <a href="#validateDNI"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validateDNI()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="158"
+                                    class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:158</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Valida el DNI utilizando una expresión regular.
+El DNI debe tener 8 dígitos seguidos de una letra.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validateEmail"></a>
+                    <span class="name">
+                        <span ><b>validateEmail</b></span>
+                        <a href="#validateEmail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validateEmail()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="146"
+                                    class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:146</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Valida el correo electrónico utilizando una expresión regular.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validatePhoneNumber"></a>
+                    <span class="name">
+                        <span ><b>validatePhoneNumber</b></span>
+                        <a href="#validatePhoneNumber"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validatePhoneNumber()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="129"
+                                    class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:129</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Valida el número de teléfono utilizando una expresión regular. El número debe ser entre 9 y 15 dígitos.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activeForm"></a>
+                    <span class="name">
+                        <span ><b>activeForm</b></span>
+                        <a href="#activeForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;login&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:88</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Forma activa, ya sea &#39;login&#39; (inicio de sesión) o &#39;register&#39; (registro).</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="birthdateValid"></a>
+                    <span class="name">
+                        <span ><b>birthdateValid</b></span>
+                        <a href="#birthdateValid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>boolean | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:81</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dniValid"></a>
+                    <span class="name">
+                        <span ><b>dniValid</b></span>
+                        <a href="#dniValid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>boolean | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="emailValid"></a>
+                    <span class="name">
+                        <span ><b>emailValid</b></span>
+                        <a href="#emailValid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>boolean | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:79</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Validaciones de los campos de correo electrónico, DNI, fecha de nacimiento y número de teléfono.
+Los valores pueden ser <code>true</code>, <code>false</code>, o <code>null</code> si no hay un valor para validar.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="errorMessage"></a>
+                    <span class="name">
+                        <span ><b>errorMessage</b></span>
+                        <a href="#errorMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:100</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mensaje de error cuando el inicio de sesión falla.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="phoneValid"></a>
+                    <span class="name">
+                        <span ><b>phoneValid</b></span>
+                        <a href="#phoneValid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>boolean | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:82</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="stateOptions"></a>
+                    <span class="name">
+                        <span ><b>stateOptions</b></span>
+                        <a href="#stateOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { label: &#x27;Iniciar sesión&#x27;, value: &#x27;login&#x27; },
+    { label: &#x27;Registrarse&#x27;, value: &#x27;register&#x27; },
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Opciones para el selector de estado que permite al usuario elegir entre &#39;Iniciar sesión&#39; y &#39;Registrarse&#39;.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="user"></a>
+                    <span class="name">
+                        <span ><b>user</b></span>
+                        <a href="#user"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/User.html" target="_self" >User</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{ username: &#x27;&#x27;, password: &#x27;&#x27; }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:94</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Datos del usuario para el inicio de sesión.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userData"></a>
+                    <span class="name">
+                        <span ><b>userData</b></span>
+                        <a href="#userData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    username: &#x27;&#x27;,
+    password: &#x27;&#x27;,
+    email: &#x27;&#x27;,
+    client: {
+      name: &#x27;&#x27;,
+      surname: &#x27;&#x27;,
+      birthdate: &#x27;&#x27;,
+      dni: &#x27;&#x27;,
+      address: &#x27;&#x27;,
+      phone_number: null
+    }
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Datos del usuario para el registro o inicio de sesión. Contiene el nombre de usuario, la contraseña, el correo electrónico y la información adicional del cliente.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="verificationMessage"></a>
+                    <span class="name">
+                        <span ><b>verificationMessage</b></span>
+                        <a href="#verificationMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/app/features/view-login-register/view-login-register.component.ts:106</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mensaje de verificación cuando el registro es exitoso.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { Router, RouterModule } from &#x27;@angular/router&#x27;;
+import { SidebarComponent } from &#x27;../../../component/sidebar/sidebar.component&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+import { SelectButtonModule } from &#x27;primeng/selectbutton&#x27;;
+import { NgClass, NgIf } from &#x27;@angular/common&#x27;;
+import { Password } from &#x27;primeng/password&#x27;;
+import { Button } from &#x27;primeng/button&#x27;;
+import { InputNumber } from &#x27;primeng/inputnumber&#x27;;
+import { AuthService } from &#x27;../../services/auth.service&#x27;;
+import { HttpClientModule } from &#x27;@angular/common/http&#x27;;
+import { User } from &#x27;../../model/User&#x27;;
+import { MessageService } from &#x27;primeng/api&#x27;;
+import { Toast, ToastModule } from &#x27;primeng/toast&#x27;;
+import { EmailService } from &#x27;../../services/email.service&#x27;;
+import { InputText } from &#x27;primeng/inputtext&#x27;;
+
+/**
+ * @description
+ * Componente de la vista de inicio de sesión y registro. Permite a los usuarios iniciar sesión o registrarse proporcionando información como nombre, correo electrónico, contraseña, etc.
+ *
+ * @exports
+ * - &#x60;ViewLoginRegisterComponent&#x60;: Componente que gestiona el inicio de sesión y el registro de usuarios.
+ */
+@Component({
+  selector: &#x27;app-view-login-register&#x27;,
+  standalone: true,
+  imports: [
+    RouterModule,
+    SidebarComponent,
+    FormsModule,
+    SelectButtonModule,
+    NgIf,
+    Password,
+    Button,
+    InputText,
+    HttpClientModule,
+    NgClass,
+    Toast,
+    ToastModule
+  ],
+  providers: [MessageService],
+  templateUrl: &#x27;./view-login-register.component.html&#x27;,
+})
+export class ViewLoginRegisterComponent implements OnInit {
+
+  /**
+   * @description
+   * Opciones para el selector de estado que permite al usuario elegir entre &#x27;Iniciar sesión&#x27; y &#x27;Registrarse&#x27;.
+   */
+  stateOptions: any[] &#x3D; [
+    { label: &#x27;Iniciar sesión&#x27;, value: &#x27;login&#x27; },
+    { label: &#x27;Registrarse&#x27;, value: &#x27;register&#x27; },
+  ];
+
+  /**
+   * @description
+   * Datos del usuario para el registro o inicio de sesión. Contiene el nombre de usuario, la contraseña, el correo electrónico y la información adicional del cliente.
+   */
+  userData &#x3D; {
+    username: &#x27;&#x27;,
+    password: &#x27;&#x27;,
+    email: &#x27;&#x27;,
+    client: {
+      name: &#x27;&#x27;,
+      surname: &#x27;&#x27;,
+      birthdate: &#x27;&#x27;,
+      dni: &#x27;&#x27;,
+      address: &#x27;&#x27;,
+      phone_number: null
+    }
+  };
+
+  /**
+   * @description
+   * Validaciones de los campos de correo electrónico, DNI, fecha de nacimiento y número de teléfono.
+   * Los valores pueden ser &#x60;true&#x60;, &#x60;false&#x60;, o &#x60;null&#x60; si no hay un valor para validar.
+   */
+  emailValid: boolean | null &#x3D; null;
+  dniValid: boolean | null &#x3D; null;
+  birthdateValid: boolean | null &#x3D; null;
+  phoneValid: boolean | null &#x3D; null;
+
+  /**
+   * @description
+   * Forma activa, ya sea &#x27;login&#x27; (inicio de sesión) o &#x27;register&#x27; (registro).
+   */
+  activeForm: string &#x3D; &#x27;login&#x27;;
+
+  /**
+   * @description
+   * Datos del usuario para el inicio de sesión.
+   */
+  user: User &#x3D; { username: &#x27;&#x27;, password: &#x27;&#x27; };
+
+  /**
+   * @description
+   * Mensaje de error cuando el inicio de sesión falla.
+   */
+  errorMessage: string &#x3D; &#x27;&#x27;;
+
+  /**
+   * @description
+   * Mensaje de verificación cuando el registro es exitoso.
+   */
+  verificationMessage: string &#x3D; &#x27;&#x27;;
+
+  /**
+   * @description
+   * Constructor que inyecta los servicios necesarios, como &#x60;AuthService&#x60;, &#x60;Router&#x60;, &#x60;MessageService&#x60; y &#x60;EmailService&#x60;.
+   *
+   * @param authService - Servicio que gestiona la autenticación de usuarios.
+   * @param router - El router de Angular que permite redirigir al usuario después del inicio de sesión.
+   * @param messageService - Servicio que muestra mensajes emergentes de éxito o error.
+   * @param emailService - Servicio que gestiona el envío de correos electrónicos, como el correo de verificación.
+   */
+  constructor(private authService: AuthService, private router: Router, private messageService: MessageService, private emailService: EmailService) {}
+
+  /**
+   * @description
+   * Método de inicialización del componente. No realiza ninguna acción adicional en este caso.
+   */
+  ngOnInit() {}
+
+  /**
+   * @description
+   * Valida el número de teléfono utilizando una expresión regular. El número debe ser entre 9 y 15 dígitos.
+   */
+  validatePhoneNumber() {
+    const phoneRegex &#x3D; /^[0-9]{9,15}$/;
+
+    if (!this.userData.client.phone_number) {
+      this.phoneValid &#x3D; null;
+      return;
+    }
+
+    this.phoneValid &#x3D; phoneRegex.test(this.userData.client.phone_number);
+  }
+
+  /**
+   * @description
+   * Valida el correo electrónico utilizando una expresión regular.
+   *
+   * @returns {void}
+   */
+  validateEmail() {
+    const emailPattern &#x3D; /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    this.emailValid &#x3D; emailPattern.test(this.userData.email);
+  }
+
+  /**
+   * @description
+   * Valida el DNI utilizando una expresión regular.
+   * El DNI debe tener 8 dígitos seguidos de una letra.
+   *
+   * @returns {void}
+   */
+  validateDNI() {
+    const dniPattern &#x3D; /^[0-9]{8}[A-Za-z]$/;
+    this.dniValid &#x3D; dniPattern.test(this.userData.client.dni);
+  }
+
+  /**
+   * @description
+   * Valida la fecha de nacimiento del usuario. Asegura que la edad sea mayor o igual a 18 años.
+   *
+   * @returns {void}
+   */
+  validateBirthdate() {
+    if (!this.userData.client.birthdate) {
+      this.birthdateValid &#x3D; null;
+      return;
+    }
+
+    const birthdate &#x3D; new Date(this.userData.client.birthdate);
+    const today &#x3D; new Date();
+
+    const age &#x3D; today.getFullYear() - birthdate.getFullYear();
+    const monthDiff &#x3D; today.getMonth() - birthdate.getMonth();
+    const dayDiff &#x3D; today.getDate() - birthdate.getDate();
+
+    if (monthDiff &lt; 0 || (monthDiff &#x3D;&#x3D;&#x3D; 0 &amp;&amp; dayDiff &lt; 0)) {
+      this.birthdateValid &#x3D; age - 1 &gt;&#x3D; 18;
+    } else {
+      this.birthdateValid &#x3D; age &gt;&#x3D; 18;
+    }
+  }
+
+  /**
+   * @description
+   * Actualiza la contraseña del usuario cuando cambia en el formulario.
+   *
+   * @param event - El evento que contiene el nuevo valor de la contraseña.
+   */
+  updatePassword(event: any) {
+    this.userData.password &#x3D; event.target.value;
+  }
+
+  /**
+   * @description
+   * Registra un nuevo usuario en la plataforma. Si la información está incompleta, muestra un mensaje de error.
+   * Luego, envía un correo de verificación al usuario si el registro es exitoso.
+   */
+  register() {
+    if (!this.userData.username || !this.userData.password || !this.userData.email ||
+      !this.userData.client.name || !this.userData.client.surname ||
+      !this.userData.client.birthdate || !this.userData.client.dni ||
+      !this.userData.client.address || !this.userData.client.phone_number) {
+      this.messageService.add({ severity: &#x27;error&#x27;, summary: &#x27;Error&#x27;, detail: &#x27;Completa todos los campos&#x27; });
+      return;
+    }
+
+    this.authService.register(this.userData).subscribe({
+      next: (response: any) &#x3D;&gt; {
+        this.messageService.add({ severity: &#x27;success&#x27;, summary: &#x27;Éxito&#x27;, detail: &#x27;Registro exitoso&#x27; });
+
+        if (response.id) { // 🔹 Usamos &#x27;id&#x27; en vez de &#x27;user_id&#x27;
+          this.sendVerificationEmail(response.id);
+        } else {
+          console.error(&quot;❌ No se recibió un ID en la respuesta del backend.&quot;);
+        }
+
+        this.resetForm();
+        this.activeForm &#x3D; &#x27;login&#x27;;
+      },
+      error: (error) &#x3D;&gt; {
+        console.error(&#x27;❌ Error en el registro:&#x27;, error);
+        this.messageService.add({ severity: &#x27;error&#x27;, summary: &#x27;Error&#x27;, detail: &#x27;Error en el registro&#x27; });
+        this.userData.password &#x3D; &#x27;&#x27;;
+      }
+    });
+  }
+
+  /**
+   * @description
+   * Envía un correo electrónico de verificación al usuario después de un registro exitoso.
+   *
+   * @param userId - El ID del usuario para enviar el correo de verificación.
+   */
+  sendVerificationEmail(userId: number): void {
+    this.emailService.sendVerificationEmail(userId).subscribe({
+      next: response &#x3D;&gt; console.log(&#x27;✅ Verification email sent:&#x27;, response),
+      error: error &#x3D;&gt; console.error(&#x27;❌ Error sending verification email:&#x27;, error)
+    });
+  }
+
+  /**
+   * @description
+   * Restablece el formulario de registro a su estado inicial.
+   */
+  resetForm() {
+    this.userData &#x3D; {
+      username: &#x27;&#x27;,
+      password: &#x27;&#x27;,
+      email: &#x27;&#x27;,
+      client: {
+        name: &#x27;&#x27;,
+        surname: &#x27;&#x27;,
+        birthdate: &#x27;&#x27;,
+        dni: &#x27;&#x27;,
+        address: &#x27;&#x27;,
+        phone_number: null
+      }
+    };
+  }
+
+  /**
+   * @description
+   * Inicia sesión con el usuario proporcionado. Si el inicio de sesión falla, muestra un mensaje de error.
+   */
+  login() {
+    if (!this.user.username || !this.user.password) {
+      this.errorMessage &#x3D; &#x27;Por favor, completa todos los campos.&#x27;;
+      return;
+    }
+
+    this.authService.login(this.user).subscribe({
+      next: () &#x3D;&gt; {
+        this.router.navigate([&#x27;/&#x27;]); // Redirigir a la página de inicio
+      },
+      error: (error) &#x3D;&gt; {
+        console.error(&#x27;Error en login:&#x27;, error);
+        this.errorMessage &#x3D; &#x27;Usuario o contraseña incorrectos.&#x27;;
+      }
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;bg-[url(&#x27;/login-bg.png&#x27;)] bg-auto min-h-screen&quot;&gt;
+  &lt;div class&#x3D;&quot;card flex pt-20 justify-center&quot;&gt;
+    &lt;div&gt;
+      &lt;p-selectButton
+        [options]&#x3D;&quot;stateOptions&quot;
+        [(ngModel)]&#x3D;&quot;activeForm&quot;
+        optionLabel&#x3D;&quot;label&quot;
+        optionValue&#x3D;&quot;value&quot;
+        allowEmpty&#x3D;&quot;false&quot;
+        class&#x3D;&quot;p-selectbutton w-full&quot;&gt;
+      &lt;/p-selectButton&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;mt-5 flex items-center justify-center&quot;&gt;
+    &lt;div class&#x3D;&quot;bg-white p-8 rounded-lg shadow-lg max-w-lg w-full mb-10&quot;&gt;
+      &lt;div class&#x3D;&quot;flex flex-col items-center p-4&quot; *ngIf&#x3D;&quot;activeForm&#x3D;&#x3D;&#x27;login&#x27;&quot;&gt;
+        &lt;h2 class&#x3D;&quot;mb-2 text-center text-2xl font-bold tracking-tight text-gray-800&quot;&gt;Inicio de Sesión&lt;/h2&gt;
+        &lt;h2 class&#x3D;&quot;mb-9 text-center text-l font-bold tracking-tight text-gray-600&quot;&gt;¡Bienvenido de vuelta!&lt;/h2&gt;
+
+        &lt;div class&#x3D;&quot;w-full space-y-4&quot;&gt;
+          &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+            &lt;label for&#x3D;&quot;loginUsername&quot; class&#x3D;&quot;block text-m font-medium text-gray-700&quot;&gt;Nombre de Usuario&lt;/label&gt;
+            &lt;input class&#x3D;&quot;w-100&quot; pInputText id&#x3D;&quot;loginUsername&quot; type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;user.username&quot;/&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+            &lt;label for&#x3D;&quot;loginPassword&quot; class&#x3D;&quot;block text-m font-medium text-gray-700&quot;&gt;Contraseña&lt;/label&gt;
+            &lt;p-password id&#x3D;&quot;loginPassword&quot; type&#x3D;&quot;password&quot; [feedback]&#x3D;&quot;false&quot;
+                        styleClass&#x3D;&quot;p-password p-component p-inputwrapper p-input-icon-right&quot;
+                        [style]&#x3D;&quot;{&#x27;width&#x27;:&#x27;100%&#x27;}&quot;
+                        [inputStyle]&#x3D;&quot;{&#x27;width&#x27;:&#x27;100%&#x27;}&quot; [toggleMask]&#x3D;&quot;true&quot;
+                        [(ngModel)]&#x3D;&quot;user.password&quot;
+            &gt;&lt;/p-password&gt;
+          &lt;/div&gt;
+
+          &lt;p *ngIf&#x3D;&quot;errorMessage&quot; class&#x3D;&quot;text-red-500 text-sm&quot;&gt;{{ errorMessage }}&lt;/p&gt;
+
+          &lt;div class&#x3D;&quot;flex items-center align-middle justify-center&quot;&gt;
+            &lt;p-button
+              [style]&#x3D;&quot;{&#x27;width&#x27;:&#x27;100%&#x27;, &#x27;margin-top&#x27;:&#x27;3rem&#x27;, &#x27;background-color&#x27;:&#x27;#102F41&#x27;}&quot;
+              type&#x3D;&quot;button&quot;
+              label&#x3D;&quot;Iniciar Sesión&quot;
+              icon&#x3D;&quot;pi pi-user&quot;
+              styleClass&#x3D;&quot;icon-button&quot;
+              (click)&#x3D;&quot;login()&quot;
+            &gt;&lt;/p-button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;flex flex-col items-center p-4&quot; *ngIf&#x3D;&quot;activeForm&#x3D;&#x3D;&#x27;register&#x27;&quot;&gt;
+        &lt;h2 class&#x3D;&quot;mb-2 text-center text-2xl font-bold tracking-tight text-gray-800&quot;&gt;Registro&lt;/h2&gt;
+        &lt;h2 class&#x3D;&quot;mb-9 text-center text-l font-bold tracking-tight text-gray-600&quot;&gt;Experiencias únicas te esperan&lt;/h2&gt;
+
+        &lt;div class&#x3D;&quot;w-full space-y-4&quot;&gt;
+          &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+            &lt;label for&#x3D;&quot;username&quot;&gt;Nombre de Usuario&lt;/label&gt;
+            &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;username&quot; [(ngModel)]&#x3D;&quot;userData.username&quot; pInputText/&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+            &lt;label for&#x3D;&quot;password&quot;&gt;Contraseña&lt;/label&gt;
+            &lt;p-password [(ngModel)]&#x3D;&quot;userData.password&quot;
+                        (input)&#x3D;&quot;updatePassword($event)&quot;
+                        [toggleMask]&#x3D;&quot;true&quot;
+                        [feedback]&#x3D;&quot;true&quot;
+                        id&#x3D;&quot;password&quot;
+                        styleClass&#x3D;&quot;w-full&quot;
+                        [inputStyle]&#x3D;&quot;{&#x27;width&#x27;:&#x27;100%&#x27;}&quot;
+                        weakLabel&#x3D;&quot;Fortaleza baja&quot;
+                        mediumLabel&#x3D;&quot;Fortaleza media&quot;
+                        strongLabel&#x3D;&quot;Fortaleza alta&quot; /&gt;
+
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+            &lt;label for&#x3D;&quot;dni&quot;&gt;DNI&lt;/label&gt;
+
+            &lt;input
+              type&#x3D;&quot;text&quot;
+              id&#x3D;&quot;dni&quot;
+              [(ngModel)]&#x3D;&quot;userData.client.dni&quot;
+              pInputText
+              (input)&#x3D;&quot;validateDNI()&quot;
+              [ngClass]&#x3D;&quot;{&#x27;ng-invalid ng-dirty border-red-500&#x27;: dniValid &#x3D;&#x3D;&#x3D; false}&quot;
+            /&gt;
+
+            &lt;!-- Mensaje de error cuando el DNI es inválido --&gt;
+            &lt;small class&#x3D;&quot;text-red-500 mt-1&quot; *ngIf&#x3D;&quot;dniValid &#x3D;&#x3D;&#x3D; false&quot;&gt;
+              Introduce un DNI válido (8 números seguidos de una letra).
+            &lt;/small&gt;
+          &lt;/div&gt;
+
+
+          &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+            &lt;label for&#x3D;&quot;address&quot;&gt;Dirección&lt;/label&gt;
+            &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;address&quot; [(ngModel)]&#x3D;&quot;userData.client.address&quot; pInputText/&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+            &lt;label for&#x3D;&quot;telephone&quot;&gt;Número de Teléfono&lt;/label&gt;
+
+            &lt;input
+              [(ngModel)]&#x3D;&quot;userData.client.phone_number&quot;
+              id&#x3D;&quot;telephone&quot;
+              type&#x3D;&quot;number&quot;
+              (input)&#x3D;&quot;validatePhoneNumber()&quot;
+              pInputText
+              [ngClass]&#x3D;&quot;{&#x27;ng-invalid ng-dirty border-red-500&#x27;: phoneValid &#x3D;&#x3D;&#x3D; false}&quot;
+            /&gt;
+            &lt;small class&#x3D;&quot;text-red-500 mt-1&quot; *ngIf&#x3D;&quot;phoneValid &#x3D;&#x3D;&#x3D; false&quot;&gt;
+              Introduce un número de teléfono válido (9-15 dígitos).
+            &lt;/small&gt;
+          &lt;/div&gt;
+
+
+          &lt;div class&#x3D;&quot;grid grid-cols-1 sm:grid-cols-2 gap-4&quot;&gt;
+            &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+              &lt;label for&#x3D;&quot;firstname&quot;&gt;Nombre&lt;/label&gt;
+              &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;firstname&quot; [(ngModel)]&#x3D;&quot;userData.client.name&quot; pInputText/&gt;
+            &lt;/div&gt;
+
+            &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+              &lt;label for&#x3D;&quot;surname&quot;&gt;Apellidos&lt;/label&gt;
+              &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;surname&quot; [(ngModel)]&#x3D;&quot;userData.client.surname&quot; pInputText/&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;grid grid-cols-1 sm:grid-cols-2 gap-4&quot;&gt;
+            &lt;div class&#x3D;&quot;grid  gap-4 w-full&quot;&gt;
+              &lt;div class&#x3D;&quot;flex flex-col w-full&quot;&gt;
+                &lt;label for&#x3D;&quot;email&quot;&gt;Email&lt;/label&gt;
+
+                &lt;input
+                  type&#x3D;&quot;email&quot;
+                  id&#x3D;&quot;email&quot;
+                  [(ngModel)]&#x3D;&quot;userData.email&quot;
+                  pInputText
+                  (input)&#x3D;&quot;validateEmail()&quot;
+                  class&#x3D;&quot;w-full&quot;
+                  [ngClass]&#x3D;&quot;{&#x27;ng-invalid ng-dirty border-red-500&#x27;: emailValid &#x3D;&#x3D;&#x3D; false}&quot;
+                /&gt;
+                &lt;small class&#x3D;&quot;text-red-500 mt-1&quot; *ngIf&#x3D;&quot;emailValid &#x3D;&#x3D;&#x3D; false&quot;&gt;
+                  Introduce un correo válido.
+                &lt;/small&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class&#x3D;&quot;flex flex-col&quot;&gt;
+              &lt;label for&#x3D;&quot;birthdate&quot;&gt;Fecha de nacimiento&lt;/label&gt;
+
+              &lt;input
+                type&#x3D;&quot;date&quot;
+                id&#x3D;&quot;birthdate&quot;
+                [(ngModel)]&#x3D;&quot;userData.client.birthdate&quot;
+                (input)&#x3D;&quot;validateBirthdate()&quot;
+                pInputText
+                [ngClass]&#x3D;&quot;{&#x27;ng-invalid ng-dirty border-red-500&#x27;: birthdateValid &#x3D;&#x3D;&#x3D; false}&quot;
+              /&gt;
+              &lt;small class&#x3D;&quot;text-red-500 mt-1&quot; *ngIf&#x3D;&quot;birthdateValid &#x3D;&#x3D;&#x3D; false&quot;&gt;
+                Debes tener al menos 18 años para registrarte.
+              &lt;/small&gt;
+            &lt;/div&gt;
+
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;p-button [style]&#x3D;&quot;{&#x27;width&#x27;:&#x27;100%&#x27;, &#x27;margin-top&#x27;:&#x27;3rem&#x27;, &#x27;background-color&#x27;:&#x27;#102F41&#x27;}&quot;
+                  (click)&#x3D;&quot;register()&quot;
+                  label&#x3D;&quot;Registrarse&quot;
+                  icon&#x3D;&quot;pi pi-user&quot;
+                  styleClass&#x3D;&quot;icon-button&quot;&gt;
+        &lt;/p-button&gt;
+        &lt;p *ngIf&#x3D;&quot;errorMessage&quot; class&#x3D;&quot;text-red-500 text-center mt-3&quot;&gt;{{ errorMessage }}&lt;/p&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;app-sidebar/&gt;
+  &lt;p-toast&gt;&lt;/p-toast&gt;
+&lt;/div&gt;
+
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="bg-[url(\'/login-bg.png\')] bg-auto min-h-screen">  <div class="card flex pt-20 justify-center">    <div>      <p-selectButton        [options]="stateOptions"        [(ngModel)]="activeForm"        optionLabel="label"        optionValue="value"        allowEmpty="false"        class="p-selectbutton w-full">      </p-selectButton>    </div>  </div>  <div class="mt-5 flex items-center justify-center">    <div class="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full mb-10">      <div class="flex flex-col items-center p-4" *ngIf="activeForm==\'login\'">        <h2 class="mb-2 text-center text-2xl font-bold tracking-tight text-gray-800">Inicio de Sesión</h2>        <h2 class="mb-9 text-center text-l font-bold tracking-tight text-gray-600">¡Bienvenido de vuelta!</h2>        <div class="w-full space-y-4">          <div class="flex flex-col">            <label for="loginUsername" class="block text-m font-medium text-gray-700">Nombre de Usuario</label>            <input class="w-100" pInputText id="loginUsername" type="text" [(ngModel)]="user.username"/>          </div>          <div class="flex flex-col">            <label for="loginPassword" class="block text-m font-medium text-gray-700">Contraseña</label>            <p-password id="loginPassword" type="password" [feedback]="false"                        styleClass="p-password p-component p-inputwrapper p-input-icon-right"                        [style]="{\'width\':\'100%\'}"                        [inputStyle]="{\'width\':\'100%\'}" [toggleMask]="true"                        [(ngModel)]="user.password"            ></p-password>          </div>          <p *ngIf="errorMessage" class="text-red-500 text-sm">{{ errorMessage }}</p>          <div class="flex items-center align-middle justify-center">            <p-button              [style]="{\'width\':\'100%\', \'margin-top\':\'3rem\', \'background-color\':\'#102F41\'}"              type="button"              label="Iniciar Sesión"              icon="pi pi-user"              styleClass="icon-button"              (click)="login()"            ></p-button>          </div>        </div>      </div>      <div class="flex flex-col items-center p-4" *ngIf="activeForm==\'register\'">        <h2 class="mb-2 text-center text-2xl font-bold tracking-tight text-gray-800">Registro</h2>        <h2 class="mb-9 text-center text-l font-bold tracking-tight text-gray-600">Experiencias únicas te esperan</h2>        <div class="w-full space-y-4">          <div class="flex flex-col">            <label for="username">Nombre de Usuario</label>            <input type="text" id="username" [(ngModel)]="userData.username" pInputText/>          </div>          <div class="flex flex-col">            <label for="password">Contraseña</label>            <p-password [(ngModel)]="userData.password"                        (input)="updatePassword($event)"                        [toggleMask]="true"                        [feedback]="true"                        id="password"                        styleClass="w-full"                        [inputStyle]="{\'width\':\'100%\'}"                        weakLabel="Fortaleza baja"                        mediumLabel="Fortaleza media"                        strongLabel="Fortaleza alta" />          </div>          <div class="flex flex-col">            <label for="dni">DNI</label>            <input              type="text"              id="dni"              [(ngModel)]="userData.client.dni"              pInputText              (input)="validateDNI()"              [ngClass]="{\'ng-invalid ng-dirty border-red-500\': dniValid === false}"            />            <!-- Mensaje de error cuando el DNI es inválido -->            <small class="text-red-500 mt-1" *ngIf="dniValid === false">              Introduce un DNI válido (8 números seguidos de una letra).            </small>          </div>          <div class="flex flex-col">            <label for="address">Dirección</label>            <input type="text" id="address" [(ngModel)]="userData.client.address" pInputText/>          </div>          <div class="flex flex-col">            <label for="telephone">Número de Teléfono</label>            <input              [(ngModel)]="userData.client.phone_number"              id="telephone"              type="number"              (input)="validatePhoneNumber()"              pInputText              [ngClass]="{\'ng-invalid ng-dirty border-red-500\': phoneValid === false}"            />            <small class="text-red-500 mt-1" *ngIf="phoneValid === false">              Introduce un número de teléfono válido (9-15 dígitos).            </small>          </div>          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">            <div class="flex flex-col">              <label for="firstname">Nombre</label>              <input type="text" id="firstname" [(ngModel)]="userData.client.name" pInputText/>            </div>            <div class="flex flex-col">              <label for="surname">Apellidos</label>              <input type="text" id="surname" [(ngModel)]="userData.client.surname" pInputText/>            </div>          </div>          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">            <div class="grid  gap-4 w-full">              <div class="flex flex-col w-full">                <label for="email">Email</label>                <input                  type="email"                  id="email"                  [(ngModel)]="userData.email"                  pInputText                  (input)="validateEmail()"                  class="w-full"                  [ngClass]="{\'ng-invalid ng-dirty border-red-500\': emailValid === false}"                />                <small class="text-red-500 mt-1" *ngIf="emailValid === false">                  Introduce un correo válido.                </small>              </div>            </div>            <div class="flex flex-col">              <label for="birthdate">Fecha de nacimiento</label>              <input                type="date"                id="birthdate"                [(ngModel)]="userData.client.birthdate"                (input)="validateBirthdate()"                pInputText                [ngClass]="{\'ng-invalid ng-dirty border-red-500\': birthdateValid === false}"              />              <small class="text-red-500 mt-1" *ngIf="birthdateValid === false">                Debes tener al menos 18 años para registrarte.              </small>            </div>          </div>        </div>        <p-button [style]="{\'width\':\'100%\', \'margin-top\':\'3rem\', \'background-color\':\'#102F41\'}"                  (click)="register()"                  label="Registrarse"                  icon="pi pi-user"                  styleClass="icon-button">        </p-button>        <p *ngIf="errorMessage" class="text-red-500 text-center mt-3">{{ errorMessage }}</p>      </div>    </div>  </div>  <app-sidebar/>  <p-toast></p-toast></div></div>'
+    var COMPONENTS = [{'name': 'AdminHomepageComponent', 'selector': 'app-admin-homepage'},{'name': 'AdminTripsComponent', 'selector': 'app-admin-trips'},{'name': 'AdminYachtsComponent', 'selector': 'app-admin-yachts'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BookingCardComponent', 'selector': 'app-booking-card'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'CardDetailsComponent', 'selector': 'app-card-details'},{'name': 'CheckoutComponent', 'selector': 'app-checkout'},{'name': 'CheckTicketsComponent', 'selector': 'app-check-tickets'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoadingComponent', 'selector': 'app-loading'},{'name': 'MainPageComponent', 'selector': 'app-main-page'},{'name': 'ModalFilterComponent', 'selector': 'app-modal-filter'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'SearchbarComponent', 'selector': 'app-searchbar'},{'name': 'SearchPageComponent', 'selector': 'app-search-page'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'ToastComponent', 'selector': 'app-toast'},{'name': 'VerificationComponent', 'selector': 'app-verification'},{'name': 'ViewLoginRegisterComponent', 'selector': 'app-view-login-register'},{'name': 'ViewTripComponent', 'selector': 'app-view-trip'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ViewLoginRegisterComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ViewLoginRegisterComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

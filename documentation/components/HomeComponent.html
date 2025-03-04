@@ -1,0 +1,389 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ocenan-lux-front-end documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">ocenan-lux-front-end documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  HomeComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/features/home/home.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente principal de la página de inicio. Incluye un sidebar y es responsable de mostrar la vista inicial del sitio.</p>
+<ul>
+<li><code>HomeComponent</code>: Componente que define la estructura de la página de inicio.</li>
+</ul>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-home</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                                <code><a href="../components/SidebarComponent.html" target="_self" >SidebarComponent</a></code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./home.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { SidebarComponent } from &#x27;../../../component/sidebar/sidebar.component&#x27;;
+
+/**
+ * @description
+ * Componente principal de la página de inicio. Incluye un sidebar y es responsable de mostrar la vista inicial del sitio.
+ *
+ * @exports
+ * - &#x60;HomeComponent&#x60;: Componente que define la estructura de la página de inicio.
+ */
+@Component({
+  selector: &#x27;app-home&#x27;,
+  standalone: true,
+  imports: [
+    SidebarComponent
+  ],
+  templateUrl: &#x27;./home.component.html&#x27;
+})
+export class HomeComponent {
+  // Este componente no tiene lógica adicional, solo presenta la estructura con el sidebar.
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;bg-[url(&#x27;/landing-page-bg.png&#x27;)] bg-scroll bg-cover bg-center min-h-screen&quot;&gt;
+  &lt;div class&#x3D;&quot;flex flex-col items-center pt-48 sm:px-[100px] md:px-[180px] lg:px-[300px] px-[30px]&quot;&gt;
+    &lt;div class&#x3D;&quot;text-secondary flex flex-col items-center text-center sm:mb-64 mb-80&quot;&gt;
+      &lt;img src&#x3D;&quot;/oceanLux-logo.png&quot; class&#x3D;&quot;sm:w-[320px] w-[200px] p-4&quot;&gt;
+      &lt;h1 class&#x3D;&quot;sm:text-7xl text-5xl pb-4&quot;&gt;OceanLux&lt;/h1&gt;
+      &lt;p class&#x3D;&quot;italic lg:text-2xl sm:text-xl text font-light&quot;&gt;Siente cada ola, vive la experiencia&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;flex flex-col text-center items-center gap-8 mb-48&quot;&gt;
+      &lt;h3 class&#x3D;&quot;text-secondary sm:text-xl lg:text-2xl text-lg&quot;&gt;EMPIEZA A BUSCAR TU PRÓXIMA EXPERIENCIA&lt;/h3&gt;
+      &lt;div class&#x3D;&quot;flex sm:flex-row flex-col gap-6&quot;&gt;
+        &lt;button class&#x3D;&quot;bg-primary text-secondary py-2 w-[225px] rounded-md hover:bg-primary-light transition duration-300&quot;&gt;
+          Iniciar sesión
+        &lt;/button&gt;
+        &lt;button class&#x3D;&quot;bg-secondary text-primary py-2 w-[225px] rounded-md hover:text-secondary hover:bg-primary-light transition duration-300&quot;&gt;
+          Buscar experiencias
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- BENTO GRID --&gt;
+    &lt;div class&#x3D;&quot;grid grid-flow-row grid-cols-7 gap-3 w-full mb-10&quot;&gt;
+      &lt;div class&#x3D;&quot;col-span-3 md:h-[170px] h-[100px] rounded-xl&quot;&gt;
+        &lt;img class&#x3D;&quot;object-cover h-full w-full rounded-xl&quot; src&#x3D;&quot;https://placehold.co/520x410&quot;&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-span-2 md:h-[170px] h-[100px] rounded-xl&quot;&gt;
+        &lt;img class&#x3D;&quot;object-cover h-full w-full rounded-xl&quot; src&#x3D;&quot;https://placehold.co/520x410&quot;&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;row-span-2 col-span-2 rounded-xl&quot;&gt;
+        &lt;img class&#x3D;&quot;object-cover h-full w-full rounded-xl&quot; src&#x3D;&quot;https://placehold.co/520x410&quot;&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-span-2 md:h-[170px] h-[100px] rounded-xl&quot;&gt;
+        &lt;img class&#x3D;&quot;object-cover h-full w-full rounded-xl&quot; src&#x3D;&quot;https://placehold.co/520x410&quot;&gt;
+      &lt;/div&gt;
+      &lt;div class&#x3D;&quot;col-span-3 md:h-[170px] h-[100px] rounded-xl&quot;&gt;
+        &lt;img class&#x3D;&quot;object-cover h-full w-full rounded-xl&quot; src&#x3D;&quot;https://placehold.co/520x410&quot;&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+  &lt;app-sidebar/&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="bg-[url(\'/landing-page-bg.png\')] bg-scroll bg-cover bg-center min-h-screen">  <div class="flex flex-col items-center pt-48 sm:px-[100px] md:px-[180px] lg:px-[300px] px-[30px]">    <div class="text-secondary flex flex-col items-center text-center sm:mb-64 mb-80">      <img src="/oceanLux-logo.png" class="sm:w-[320px] w-[200px] p-4">      <h1 class="sm:text-7xl text-5xl pb-4">OceanLux</h1>      <p class="italic lg:text-2xl sm:text-xl text font-light">Siente cada ola, vive la experiencia</p>    </div>    <div class="flex flex-col text-center items-center gap-8 mb-48">      <h3 class="text-secondary sm:text-xl lg:text-2xl text-lg">EMPIEZA A BUSCAR TU PRÓXIMA EXPERIENCIA</h3>      <div class="flex sm:flex-row flex-col gap-6">        <button class="bg-primary text-secondary py-2 w-[225px] rounded-md hover:bg-primary-light transition duration-300">          Iniciar sesión        </button>        <button class="bg-secondary text-primary py-2 w-[225px] rounded-md hover:text-secondary hover:bg-primary-light transition duration-300">          Buscar experiencias        </button>      </div>    </div>    <!-- BENTO GRID -->    <div class="grid grid-flow-row grid-cols-7 gap-3 w-full mb-10">      <div class="col-span-3 md:h-[170px] h-[100px] rounded-xl">        <img class="object-cover h-full w-full rounded-xl" src="https://placehold.co/520x410">      </div>      <div class="col-span-2 md:h-[170px] h-[100px] rounded-xl">        <img class="object-cover h-full w-full rounded-xl" src="https://placehold.co/520x410">      </div>      <div class="row-span-2 col-span-2 rounded-xl">        <img class="object-cover h-full w-full rounded-xl" src="https://placehold.co/520x410">      </div>      <div class="col-span-2 md:h-[170px] h-[100px] rounded-xl">        <img class="object-cover h-full w-full rounded-xl" src="https://placehold.co/520x410">      </div>      <div class="col-span-3 md:h-[170px] h-[100px] rounded-xl">        <img class="object-cover h-full w-full rounded-xl" src="https://placehold.co/520x410">      </div>    </div>  </div>  <app-sidebar/></div></div>'
+    var COMPONENTS = [{'name': 'AdminHomepageComponent', 'selector': 'app-admin-homepage'},{'name': 'AdminTripsComponent', 'selector': 'app-admin-trips'},{'name': 'AdminYachtsComponent', 'selector': 'app-admin-yachts'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BookingCardComponent', 'selector': 'app-booking-card'},{'name': 'CardComponent', 'selector': 'app-card'},{'name': 'CardDetailsComponent', 'selector': 'app-card-details'},{'name': 'CheckoutComponent', 'selector': 'app-checkout'},{'name': 'CheckTicketsComponent', 'selector': 'app-check-tickets'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoadingComponent', 'selector': 'app-loading'},{'name': 'MainPageComponent', 'selector': 'app-main-page'},{'name': 'ModalFilterComponent', 'selector': 'app-modal-filter'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'SearchbarComponent', 'selector': 'app-searchbar'},{'name': 'SearchPageComponent', 'selector': 'app-search-page'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'ToastComponent', 'selector': 'app-toast'},{'name': 'VerificationComponent', 'selector': 'app-verification'},{'name': 'ViewLoginRegisterComponent', 'selector': 'app-view-login-register'},{'name': 'ViewTripComponent', 'selector': 'app-view-trip'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'HomeComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'HomeComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

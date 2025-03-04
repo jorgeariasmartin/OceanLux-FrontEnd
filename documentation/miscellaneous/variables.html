@@ -1,0 +1,1171 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ocenan-lux-front-end documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">ocenan-lux-front-end documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Miscellaneous</li>
+  <li class="breadcrumb-item">Variables</li>
+</ol>
+
+<section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#appConfig" title="src/app/app.config.ts" ><b>appConfig</b>&nbsp;&nbsp;&nbsp;(src/.../app.config.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#authInterceptor" title="src/app/Interceptors/auth.interceptor.ts" ><b>authInterceptor</b>&nbsp;&nbsp;&nbsp;(src/.../auth.interceptor.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#customtheme" title="src/app/mytheme.ts" ><b>customtheme</b>&nbsp;&nbsp;&nbsp;(src/.../mytheme.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#loadingInterceptor" title="src/app/Interceptors/loading.interceptor.ts" ><b>loadingInterceptor</b>&nbsp;&nbsp;&nbsp;(src/.../loading.interceptor.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SkipAuth" title="src/app/Interceptors/auth.interceptor.ts" ><b>SkipAuth</b>&nbsp;&nbsp;&nbsp;(src/.../auth.interceptor.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SkipLoading" title="src/app/Interceptors/loading.interceptor.ts" ><b>SkipLoading</b>&nbsp;&nbsp;&nbsp;(src/.../loading.interceptor.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/app/app.config.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="appConfig"></a>
+                    <span class="name">
+                        <span ><b>appConfig</b></span>
+                        <a href="#appConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ApplicationConfig</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  providers: [
+    /**
+     * Configuración de la detección de cambios de zona.
+     * Permite la coalescencia de eventos para mejorar el rendimiento.
+     *
+     * @default true
+     */
+    provideZoneChangeDetection({ eventCoalescing: true }),
+
+    /**
+     * Configuración de las rutas de la aplicación.
+     * Define las rutas que serán gestionadas por el router.
+     *
+     * @example
+     * provideRouter(routes)
+     */
+    provideRouter(routes),
+
+    /**
+     * Proveedor de animaciones asíncronas.
+     * Permite la carga de animaciones de manera asíncrona.
+     */
+    provideAnimationsAsync(),
+
+    /**
+     * Configuración de PrimeNG.
+     * Se aplica un tema personalizado definido por &#x60;customtheme&#x60; y se ajusta la configuración de modo oscuro.
+     */
+    providePrimeNG({
+      theme: {
+        preset: customtheme,
+        options: {
+          darkModeSelector: false || &#x27;none&#x27; // Configura el selector de modo oscuro
+        }
+      }
+    }),
+
+    /**
+     * Proveedor de cliente HTTP con interceptores.
+     * Se aplican los interceptores de autenticación (&#x60;authInterceptor&#x60;) y de carga (&#x60;loadingInterceptor&#x60;).
+     */
+    provideHttpClient(
+      withInterceptors([authInterceptor, loadingInterceptor]) // Se mantienen los interceptores configurados
+    ),
+
+    /**
+     * Importación del módulo de Toast de PrimeNG.
+     * Este módulo es necesario para mostrar notificaciones de toast en la aplicación.
+     */
+    importProvidersFrom(ToastModule),
+
+    /**
+     * Proveedor del servicio &#x60;MessageService&#x60; de PrimeNG.
+     * Permite mostrar mensajes y notificaciones en la aplicación.
+     */
+    MessageService
+  ]
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Configuración de la aplicación Angular.</p>
+<p>Este objeto <code>appConfig</code> define los proveedores y configuraciones necesarios para que la aplicación funcione correctamente.</p>
+<p>Se configura la detección de cambios de zona, las rutas de la aplicación, animaciones, interceptores de HTTP, el tema de PrimeNG y otros servicios como el de mensajes.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/Interceptors/auth.interceptor.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="authInterceptor"></a>
+                    <span class="name">
+                        <span ><b>authInterceptor</b></span>
+                        <a href="#authInterceptor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HttpInterceptorFn</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(req: HttpRequest&lt;any&gt;, next: HttpHandlerFn) &#x3D;&gt; {
+  // Inyección de dependencias
+  const authService &#x3D; inject(AuthService); // Servicio de autenticación
+  const router &#x3D; inject(Router); // Servicio de navegación
+  const toastService &#x3D; inject(ToastService); // Servicio de notificaciones
+  const token &#x3D; authService.getToken(); // Obtención del token de autenticación
+
+  console.log(&#x27;Interceptando:&#x27;, req.url);
+
+  // Verificar si la ruta actual debe omitir la autenticación
+  if (req.url.endsWith(&#x27;/logaccount&#x27;) || req.url.endsWith(&#x27;/send-verification-email&#x27;) || req.url.includes(&#x27;/verify&#x27;) || req.context.get(SkipAuth)) {
+    console.log(&#x27;⏩ Saltando autenticación:&#x27;, req.url);
+    return next(req); // Continuar sin modificar la solicitud
+  }
+
+  // Si no hay token, redirigir al login
+  if (!token) {
+    console.warn(&#x27;🔴 No hay token, redirigiendo a login...&#x27;);
+    toastService.showMessage(&#x27;error&#x27;, &#x27;Sesión Expirada&#x27;, &#x27;Tu sesión ha caducado. Inicia sesión nuevamente.&#x27;);
+
+    // Cerrar sesión y redirigir
+    authService.logout();
+    router.navigate([&#x27;/logaccount&#x27;]).then(() &#x3D;&gt; {});
+
+    return next(req); // Continuar sin modificar la solicitud
+  }
+
+  // Clonar la solicitud e incluir el token en los encabezados
+  const authReq &#x3D; req.clone({ setHeaders: { Authorization: &#x60;Bearer ${token}&#x60; } });
+
+  return next(authReq).pipe(
+    catchError((error: HttpErrorResponse) &#x3D;&gt; {
+      // Manejo de errores relacionados con la autenticación
+      if (error.status &#x3D;&#x3D;&#x3D; 401 || error.status &#x3D;&#x3D;&#x3D; 403) {
+        console.error(&#x27;🚨 Token inválido o expirado, cerrando sesión...&#x27;);
+        toastService.showMessage(&#x27;error&#x27;, &#x27;Acceso Denegado&#x27;, &#x27;Tu sesión ha expirado o no tienes permisos.&#x27;);
+
+        // Cerrar sesión y redirigir
+        authService.logout();
+        router.navigate([&#x27;/logaccount&#x27;]);
+      }
+      return throwError(() &#x3D;&gt; error); // Propagar el error
+    })
+  );
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Interceptor que maneja la autenticación para las solicitudes HTTP en la aplicación.</p>
+<p>Este interceptor revisa si existe un token de autenticación antes de cada solicitud. Si la solicitud requiere autenticación y no tiene un token válido,
+el interceptor redirige al usuario al login. Además, permite omitir la autenticación en ciertas rutas especificadas.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SkipAuth"></a>
+                    <span class="name">
+                        <span ><b>SkipAuth</b></span>
+                        <a href="#SkipAuth"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new HttpContextToken&lt;boolean&gt;(() &#x3D;&gt; false)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Token que permite especificar si una solicitud debe omitir la autenticación.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/mytheme.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="customtheme"></a>
+                    <span class="name">
+                        <span ><b>customtheme</b></span>
+                        <a href="#customtheme"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>definePreset(Aura, {
+    primitive: {
+        borderRadius: {
+            none: &quot;0&quot;,
+            xs: &quot;2px&quot;,
+            sm: &quot;4px&quot;,
+            md: &quot;6px&quot;,
+            lg: &quot;8px&quot;,
+            xl: &quot;12px&quot;
+        },
+        emerald: {
+            50: &quot;#ecfdf5&quot;,
+            100: &quot;#d1fae5&quot;,
+            200: &quot;#a7f3d0&quot;,
+            300: &quot;#6ee7b7&quot;,
+            400: &quot;#34d399&quot;,
+            500: &quot;#10b981&quot;,
+            600: &quot;#059669&quot;,
+            700: &quot;#047857&quot;,
+            800: &quot;#065f46&quot;,
+            900: &quot;#064e3b&quot;,
+            950: &quot;#022c22&quot;
+        },
+        green: {
+            50: &quot;#f0fdf4&quot;,
+            100: &quot;#dcfce7&quot;,
+            200: &quot;#bbf7d0&quot;,
+            300: &quot;#86efac&quot;,
+            400: &quot;#4ade80&quot;,
+            500: &quot;#22c55e&quot;,
+            600: &quot;#16a34a&quot;,
+            700: &quot;#15803d&quot;,
+            800: &quot;#166534&quot;,
+            900: &quot;#14532d&quot;,
+            950: &quot;#052e16&quot;
+        },
+        lime: {
+            50: &quot;#f7fee7&quot;,
+            100: &quot;#ecfccb&quot;,
+            200: &quot;#d9f99d&quot;,
+            300: &quot;#bef264&quot;,
+            400: &quot;#a3e635&quot;,
+            500: &quot;#84cc16&quot;,
+            600: &quot;#65a30d&quot;,
+            700: &quot;#4d7c0f&quot;,
+            800: &quot;#3f6212&quot;,
+            900: &quot;#365314&quot;,
+            950: &quot;#1a2e05&quot;
+        },
+        red: {
+            50: &quot;#fef2f2&quot;,
+            100: &quot;#fee2e2&quot;,
+            200: &quot;#fecaca&quot;,
+            300: &quot;#fca5a5&quot;,
+            400: &quot;#f87171&quot;,
+            500: &quot;#ef4444&quot;,
+            600: &quot;#dc2626&quot;,
+            700: &quot;#b91c1c&quot;,
+            800: &quot;#991b1b&quot;,
+            900: &quot;#7f1d1d&quot;,
+            950: &quot;#450a0a&quot;
+        },
+        orange: {
+            50: &quot;#fff7ed&quot;,
+            100: &quot;#ffedd5&quot;,
+            200: &quot;#fed7aa&quot;,
+            300: &quot;#fdba74&quot;,
+            400: &quot;#fb923c&quot;,
+            500: &quot;#f97316&quot;,
+            600: &quot;#ea580c&quot;,
+            700: &quot;#c2410c&quot;,
+            800: &quot;#9a3412&quot;,
+            900: &quot;#7c2d12&quot;,
+            950: &quot;#431407&quot;
+        },
+        amber: {
+            50: &quot;#fffbeb&quot;,
+            100: &quot;#fef3c7&quot;,
+            200: &quot;#fde68a&quot;,
+            300: &quot;#fcd34d&quot;,
+            400: &quot;#fbbf24&quot;,
+            500: &quot;#f59e0b&quot;,
+            600: &quot;#d97706&quot;,
+            700: &quot;#b45309&quot;,
+            800: &quot;#92400e&quot;,
+            900: &quot;#78350f&quot;,
+            950: &quot;#451a03&quot;
+        },
+        yellow: {
+            50: &quot;#fefce8&quot;,
+            100: &quot;#fef9c3&quot;,
+            200: &quot;#fef08a&quot;,
+            300: &quot;#fde047&quot;,
+            400: &quot;#facc15&quot;,
+            500: &quot;#eab308&quot;,
+            600: &quot;#ca8a04&quot;,
+            700: &quot;#a16207&quot;,
+            800: &quot;#854d0e&quot;,
+            900: &quot;#713f12&quot;,
+            950: &quot;#422006&quot;
+        },
+        teal: {
+            50: &quot;#f0fdfa&quot;,
+            100: &quot;#ccfbf1&quot;,
+            200: &quot;#99f6e4&quot;,
+            300: &quot;#5eead4&quot;,
+            400: &quot;#2dd4bf&quot;,
+            500: &quot;#14b8a6&quot;,
+            600: &quot;#0d9488&quot;,
+            700: &quot;#0f766e&quot;,
+            800: &quot;#115e59&quot;,
+            900: &quot;#134e4a&quot;,
+            950: &quot;#042f2e&quot;
+        },
+        cyan: {
+            50: &quot;#ecfeff&quot;,
+            100: &quot;#cffafe&quot;,
+            200: &quot;#a5f3fc&quot;,
+            300: &quot;#67e8f9&quot;,
+            400: &quot;#22d3ee&quot;,
+            500: &quot;#06b6d4&quot;,
+            600: &quot;#0891b2&quot;,
+            700: &quot;#0e7490&quot;,
+            800: &quot;#155e75&quot;,
+            900: &quot;#164e63&quot;,
+            950: &quot;#083344&quot;
+        },
+        sky: {
+            50: &quot;#f0f9ff&quot;,
+            100: &quot;#e0f2fe&quot;,
+            200: &quot;#bae6fd&quot;,
+            300: &quot;#7dd3fc&quot;,
+            400: &quot;#38bdf8&quot;,
+            500: &quot;#0ea5e9&quot;,
+            600: &quot;#0284c7&quot;,
+            700: &quot;#0369a1&quot;,
+            800: &quot;#075985&quot;,
+            900: &quot;#0c4a6e&quot;,
+            950: &quot;#082f49&quot;
+        },
+        blue: {
+            50: &quot;#eff6ff&quot;,
+            100: &quot;#dbeafe&quot;,
+            200: &quot;#bfdbfe&quot;,
+            300: &quot;#93c5fd&quot;,
+            400: &quot;#60a5fa&quot;,
+            500: &quot;#3b82f6&quot;,
+            600: &quot;#2563eb&quot;,
+            700: &quot;#1d4ed8&quot;,
+            800: &quot;#1e40af&quot;,
+            900: &quot;#1e3a8a&quot;,
+            950: &quot;#172554&quot;
+        },
+        indigo: {
+            50: &quot;#eef2ff&quot;,
+            100: &quot;#e0e7ff&quot;,
+            200: &quot;#c7d2fe&quot;,
+            300: &quot;#a5b4fc&quot;,
+            400: &quot;#818cf8&quot;,
+            500: &quot;#6366f1&quot;,
+            600: &quot;#4f46e5&quot;,
+            700: &quot;#4338ca&quot;,
+            800: &quot;#3730a3&quot;,
+            900: &quot;#312e81&quot;,
+            950: &quot;#1e1b4b&quot;
+        },
+        violet: {
+            50: &quot;#f5f3ff&quot;,
+            100: &quot;#ede9fe&quot;,
+            200: &quot;#ddd6fe&quot;,
+            300: &quot;#c4b5fd&quot;,
+            400: &quot;#a78bfa&quot;,
+            500: &quot;#8b5cf6&quot;,
+            600: &quot;#7c3aed&quot;,
+            700: &quot;#6d28d9&quot;,
+            800: &quot;#5b21b6&quot;,
+            900: &quot;#4c1d95&quot;,
+            950: &quot;#2e1065&quot;
+        },
+        purple: {
+            50: &quot;#faf5ff&quot;,
+            100: &quot;#f3e8ff&quot;,
+            200: &quot;#e9d5ff&quot;,
+            300: &quot;#d8b4fe&quot;,
+            400: &quot;#c084fc&quot;,
+            500: &quot;#a855f7&quot;,
+            600: &quot;#9333ea&quot;,
+            700: &quot;#7e22ce&quot;,
+            800: &quot;#6b21a8&quot;,
+            900: &quot;#581c87&quot;,
+            950: &quot;#3b0764&quot;
+        },
+        fuchsia: {
+            50: &quot;#fdf4ff&quot;,
+            100: &quot;#fae8ff&quot;,
+            200: &quot;#f5d0fe&quot;,
+            300: &quot;#f0abfc&quot;,
+            400: &quot;#e879f9&quot;,
+            500: &quot;#d946ef&quot;,
+            600: &quot;#c026d3&quot;,
+            700: &quot;#a21caf&quot;,
+            800: &quot;#86198f&quot;,
+            900: &quot;#701a75&quot;,
+            950: &quot;#4a044e&quot;
+        },
+        pink: {
+            50: &quot;#fdf2f8&quot;,
+            100: &quot;#fce7f3&quot;,
+            200: &quot;#fbcfe8&quot;,
+            300: &quot;#f9a8d4&quot;,
+            400: &quot;#f472b6&quot;,
+            500: &quot;#ec4899&quot;,
+            600: &quot;#db2777&quot;,
+            700: &quot;#be185d&quot;,
+            800: &quot;#9d174d&quot;,
+            900: &quot;#831843&quot;,
+            950: &quot;#500724&quot;
+        },
+        rose: {
+            50: &quot;#fff1f2&quot;,
+            100: &quot;#ffe4e6&quot;,
+            200: &quot;#fecdd3&quot;,
+            300: &quot;#fda4af&quot;,
+            400: &quot;#fb7185&quot;,
+            500: &quot;#f43f5e&quot;,
+            600: &quot;#e11d48&quot;,
+            700: &quot;#be123c&quot;,
+            800: &quot;#9f1239&quot;,
+            900: &quot;#881337&quot;,
+            950: &quot;#4c0519&quot;
+        },
+        slate: {
+            50: &quot;#f8fafc&quot;,
+            100: &quot;#f1f5f9&quot;,
+            200: &quot;#e2e8f0&quot;,
+            300: &quot;#cbd5e1&quot;,
+            400: &quot;#94a3b8&quot;,
+            500: &quot;#64748b&quot;,
+            600: &quot;#475569&quot;,
+            700: &quot;#334155&quot;,
+            800: &quot;#1e293b&quot;,
+            900: &quot;#0f172a&quot;,
+            950: &quot;#020617&quot;
+        },
+        gray: {
+            50: &quot;#f9fafb&quot;,
+            100: &quot;#f3f4f6&quot;,
+            200: &quot;#e5e7eb&quot;,
+            300: &quot;#d1d5db&quot;,
+            400: &quot;#9ca3af&quot;,
+            500: &quot;#6b7280&quot;,
+            600: &quot;#4b5563&quot;,
+            700: &quot;#374151&quot;,
+            800: &quot;#1f2937&quot;,
+            900: &quot;#111827&quot;,
+            950: &quot;#030712&quot;
+        },
+        zinc: {
+            50: &quot;#fafafa&quot;,
+            100: &quot;#f4f4f5&quot;,
+            200: &quot;#e4e4e7&quot;,
+            300: &quot;#d4d4d8&quot;,
+            400: &quot;#a1a1aa&quot;,
+            500: &quot;#71717a&quot;,
+            600: &quot;#52525b&quot;,
+            700: &quot;#3f3f46&quot;,
+            800: &quot;#27272a&quot;,
+            900: &quot;#18181b&quot;,
+            950: &quot;#09090b&quot;
+        },
+        neutral: {
+            50: &quot;#fafafa&quot;,
+            100: &quot;#f5f5f5&quot;,
+            200: &quot;#e5e5e5&quot;,
+            300: &quot;#d4d4d4&quot;,
+            400: &quot;#a3a3a3&quot;,
+            500: &quot;#737373&quot;,
+            600: &quot;#525252&quot;,
+            700: &quot;#404040&quot;,
+            800: &quot;#262626&quot;,
+            900: &quot;#171717&quot;,
+            950: &quot;#0a0a0a&quot;
+        },
+        stone: {
+            50: &quot;#fafaf9&quot;,
+            100: &quot;#f5f5f4&quot;,
+            200: &quot;#e7e5e4&quot;,
+            300: &quot;#d6d3d1&quot;,
+            400: &quot;#a8a29e&quot;,
+            500: &quot;#78716c&quot;,
+            600: &quot;#57534e&quot;,
+            700: &quot;#44403c&quot;,
+            800: &quot;#292524&quot;,
+            900: &quot;#1c1917&quot;,
+            950: &quot;#0c0a09&quot;
+        }
+    },
+    semantic: {
+        transitionDuration: &quot;0.2s&quot;,
+        focusRing: {
+            width: &quot;1px&quot;,
+            style: &quot;solid&quot;,
+            color: &quot;{primary.color}&quot;,
+            offset: &quot;2px&quot;,
+            shadow: &quot;none&quot;
+        },
+        disabledOpacity: &quot;0.6&quot;,
+        iconSize: &quot;1rem&quot;,
+        anchorGutter: &quot;2px&quot;,
+        primary: {
+            50: &quot;#f4f9fb&quot;,
+            100: &quot;#c9e2ed&quot;,
+            200: &quot;#9dcbdf&quot;,
+            300: &quot;#72b5d1&quot;,
+            400: &quot;#479ec3&quot;,
+            500: &quot;#1c87b5&quot;,
+            600: &quot;#18739a&quot;,
+            700: &quot;#145f7f&quot;,
+            800: &quot;#0f4a64&quot;,
+            900: &quot;#0b3648&quot;,
+            950: &quot;#07222d&quot;
+        },
+        formField: {
+            paddingX: &quot;0.75rem&quot;,
+            paddingY: &quot;0.5rem&quot;,
+            sm: {
+                fontSize: &quot;0.875rem&quot;,
+                paddingX: &quot;0.625rem&quot;,
+                paddingY: &quot;0.375rem&quot;
+            },
+            lg: {
+                fontSize: &quot;1.125rem&quot;,
+                paddingX: &quot;0.875rem&quot;,
+                paddingY: &quot;0.625rem&quot;
+            },
+            borderRadius: &quot;{border.radius.md}&quot;,
+            focusRing: {
+                width: &quot;0&quot;,
+                style: &quot;none&quot;,
+                color: &quot;transparent&quot;,
+                offset: &quot;0&quot;,
+                shadow: &quot;none&quot;
+            },
+            transitionDuration: &quot;{transition.duration}&quot;
+        },
+        list: {
+            padding: &quot;0.25rem 0.25rem&quot;,
+            gap: &quot;2px&quot;,
+            header: {
+                padding: &quot;0.5rem 1rem 0.25rem 1rem&quot;
+            },
+            option: {
+                padding: &quot;0.5rem 0.75rem&quot;,
+                borderRadius: &quot;{border.radius.sm}&quot;
+            },
+            optionGroup: {
+                padding: &quot;0.5rem 0.75rem&quot;,
+                fontWeight: &quot;600&quot;
+            }
+        },
+        content: {
+            borderRadius: &quot;{border.radius.md}&quot;
+        },
+        mask: {
+            transitionDuration: &quot;0.15s&quot;
+        },
+        navigation: {
+            list: {
+                padding: &quot;0.25rem 0.25rem&quot;,
+                gap: &quot;2px&quot;
+            },
+            item: {
+                padding: &quot;0.5rem 0.75rem&quot;,
+                borderRadius: &quot;{border.radius.sm}&quot;,
+                gap: &quot;0.5rem&quot;
+            },
+            submenuLabel: {
+                padding: &quot;0.5rem 0.75rem&quot;,
+                fontWeight: &quot;600&quot;
+            },
+            submenuIcon: {
+                size: &quot;0.875rem&quot;
+            }
+        },
+        overlay: {
+            select: {
+                borderRadius: &quot;{border.radius.md}&quot;,
+                shadow: &quot;0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)&quot;
+            },
+            popover: {
+                borderRadius: &quot;{border.radius.md}&quot;,
+                padding: &quot;0.75rem&quot;,
+                shadow: &quot;0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)&quot;
+            },
+            modal: {
+                borderRadius: &quot;{border.radius.xl}&quot;,
+                padding: &quot;1.25rem&quot;,
+                shadow: &quot;0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)&quot;
+            },
+            navigation: {
+                shadow: &quot;0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)&quot;
+            }
+        },
+        colorScheme: {
+            light: {
+                surface: {
+                    0: &quot;#ffffff&quot;,
+                    50: &quot;#f4f9fb&quot;,
+                    100: &quot;#c9e2ed&quot;,
+                    200: &quot;#9dcbdf&quot;,
+                    300: &quot;#72b5d1&quot;,
+                    400: &quot;#479ec3&quot;,
+                    500: &quot;#1c87b5&quot;,
+                    600: &quot;#18739a&quot;,
+                    700: &quot;#145f7f&quot;,
+                    800: &quot;#0f4a64&quot;,
+                    900: &quot;#0b3648&quot;,
+                    950: &quot;#07222d&quot;
+                },
+                primary: {
+                    color: &quot;{primary.500}&quot;,
+                    contrastColor: &quot;#ffffff&quot;,
+                    hoverColor: &quot;{primary.600}&quot;,
+                    activeColor: &quot;{primary.700}&quot;
+                },
+                highlight: {
+                    background: &quot;{primary.50}&quot;,
+                    focusBackground: &quot;{primary.100}&quot;,
+                    color: &quot;{primary.700}&quot;,
+                    focusColor: &quot;{primary.800}&quot;
+                },
+                mask: {
+                    background: &quot;rgba(0,0,0,0.4)&quot;,
+                    color: &quot;{surface.200}&quot;
+                },
+                formField: {
+                    background: &quot;{surface.0}&quot;,
+                    disabledBackground: &quot;{surface.200}&quot;,
+                    filledBackground: &quot;{surface.50}&quot;,
+                    filledHoverBackground: &quot;{surface.50}&quot;,
+                    filledFocusBackground: &quot;{surface.50}&quot;,
+                    borderColor: &quot;{surface.300}&quot;,
+                    hoverBorderColor: &quot;{surface.400}&quot;,
+                    focusBorderColor: &quot;{primary.color}&quot;,
+                    invalidBorderColor: &quot;{red.400}&quot;,
+                    color: &quot;{surface.700}&quot;,
+                    disabledColor: &quot;{surface.500}&quot;,
+                    placeholderColor: &quot;{surface.500}&quot;,
+                    invalidPlaceholderColor: &quot;{red.600}&quot;,
+                    floatLabelColor: &quot;{surface.500}&quot;,
+                    floatLabelFocusColor: &quot;{primary.600}&quot;,
+                    floatLabelActiveColor: &quot;{surface.500}&quot;,
+                    floatLabelInvalidColor: &quot;{form.field.invalid.placeholder.color}&quot;,
+                    iconColor: &quot;{surface.400}&quot;,
+                    shadow: &quot;0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgba(18, 18, 23, 0.05)&quot;
+                },
+                text: {
+                    color: &quot;{surface.700}&quot;,
+                    hoverColor: &quot;{surface.800}&quot;,
+                    mutedColor: &quot;{surface.500}&quot;,
+                    hoverMutedColor: &quot;{surface.600}&quot;
+                },
+                content: {
+                    background: &quot;{surface.0}&quot;,
+                    hoverBackground: &quot;{surface.100}&quot;,
+                    borderColor: &quot;{surface.200}&quot;,
+                    color: &quot;{text.color}&quot;,
+                    hoverColor: &quot;{text.hover.color}&quot;
+                },
+                overlay: {
+                    select: {
+                        background: &quot;{surface.0}&quot;,
+                        borderColor: &quot;{surface.200}&quot;,
+                        color: &quot;{text.color}&quot;
+                    },
+                    popover: {
+                        background: &quot;{surface.0}&quot;,
+                        borderColor: &quot;{surface.200}&quot;,
+                        color: &quot;{text.color}&quot;
+                    },
+                    modal: {
+                        background: &quot;{surface.0}&quot;,
+                        borderColor: &quot;{surface.200}&quot;,
+                        color: &quot;{text.color}&quot;
+                    }
+                },
+                list: {
+                    option: {
+                        focusBackground: &quot;{surface.100}&quot;,
+                        selectedBackground: &quot;{highlight.background}&quot;,
+                        selectedFocusBackground: &quot;{highlight.focus.background}&quot;,
+                        color: &quot;{text.color}&quot;,
+                        focusColor: &quot;{text.hover.color}&quot;,
+                        selectedColor: &quot;{highlight.color}&quot;,
+                        selectedFocusColor: &quot;{highlight.focus.color}&quot;,
+                        icon: {
+                            color: &quot;{surface.400}&quot;,
+                            focusColor: &quot;{surface.500}&quot;
+                        }
+                    },
+                    optionGroup: {
+                        background: &quot;transparent&quot;,
+                        color: &quot;{text.muted.color}&quot;
+                    }
+                },
+                navigation: {
+                    item: {
+                        focusBackground: &quot;{surface.200}&quot;,
+                        activeBackground: &quot;{surface.100}&quot;,
+                        color: &quot;{text.color}&quot;,
+                        focusColor: &quot;{text.hover.color}&quot;,
+                        activeColor: &quot;{text.hover.color}&quot;,
+                        icon: {
+                            color: &quot;{surface.400}&quot;,
+                            focusColor: &quot;{surface.500}&quot;,
+                            activeColor: &quot;{surface.500}&quot;
+                        }
+                    },
+                    submenuLabel: {
+                        background: &quot;transparent&quot;,
+                        color: &quot;{text.muted.color}&quot;
+                    },
+                    submenuIcon: {
+                        color: &quot;{surface.400}&quot;,
+                        focusColor: &quot;{surface.500}&quot;,
+                        activeColor: &quot;{surface.500}&quot;
+                    }
+                }
+            },
+            dark: {
+                surface: {
+                    0: &quot;#ffffff&quot;,
+                    50: &quot;#fafafa&quot;,
+                    100: &quot;#f4f4f5&quot;,
+                    200: &quot;#e4e4e7&quot;,
+                    300: &quot;#d4d4d8&quot;,
+                    400: &quot;#a1a1aa&quot;,
+                    500: &quot;#71717a&quot;,
+                    600: &quot;#52525b&quot;,
+                    700: &quot;#3f3f46&quot;,
+                    800: &quot;#27272a&quot;,
+                    900: &quot;#18181b&quot;,
+                    950: &quot;#09090b&quot;
+                },
+                primary: {
+                    color: &quot;{primary.400}&quot;,
+                    contrastColor: &quot;{surface.900}&quot;,
+                    hoverColor: &quot;{primary.300}&quot;,
+                    activeColor: &quot;{primary.200}&quot;
+                },
+                highlight: {
+                    background: &quot;color-mix(in srgb, {primary.400}, transparent 84%)&quot;,
+                    focusBackground: &quot;color-mix(in srgb, {primary.400}, transparent 76%)&quot;,
+                    color: &quot;rgba(255,255,255,.87)&quot;,
+                    focusColor: &quot;rgba(255,255,255,.87)&quot;
+                },
+                mask: {
+                    background: &quot;rgba(0,0,0,0.6)&quot;,
+                    color: &quot;{surface.200}&quot;
+                },
+                formField: {
+                    background: &quot;{surface.950}&quot;,
+                    disabledBackground: &quot;{surface.700}&quot;,
+                    filledBackground: &quot;{surface.800}&quot;,
+                    filledHoverBackground: &quot;{surface.800}&quot;,
+                    filledFocusBackground: &quot;{surface.800}&quot;,
+                    borderColor: &quot;{surface.600}&quot;,
+                    hoverBorderColor: &quot;{surface.500}&quot;,
+                    focusBorderColor: &quot;{primary.color}&quot;,
+                    invalidBorderColor: &quot;{red.300}&quot;,
+                    color: &quot;{surface.0}&quot;,
+                    disabledColor: &quot;{surface.400}&quot;,
+                    placeholderColor: &quot;{surface.400}&quot;,
+                    invalidPlaceholderColor: &quot;{red.400}&quot;,
+                    floatLabelColor: &quot;{surface.400}&quot;,
+                    floatLabelFocusColor: &quot;{primary.color}&quot;,
+                    floatLabelActiveColor: &quot;{surface.400}&quot;,
+                    floatLabelInvalidColor: &quot;{form.field.invalid.placeholder.color}&quot;,
+                    iconColor: &quot;{surface.400}&quot;,
+                    shadow: &quot;0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgba(18, 18, 23, 0.05)&quot;
+                },
+                text: {
+                    color: &quot;{surface.0}&quot;,
+                    hoverColor: &quot;{surface.0}&quot;,
+                    mutedColor: &quot;{surface.400}&quot;,
+                    hoverMutedColor: &quot;{surface.300}&quot;
+                },
+                content: {
+                    background: &quot;{surface.900}&quot;,
+                    hoverBackground: &quot;{surface.800}&quot;,
+                    borderColor: &quot;{surface.700}&quot;,
+                    color: &quot;{text.color}&quot;,
+                    hoverColor: &quot;{text.hover.color}&quot;
+                },
+                overlay: {
+                    select: {
+                        background: &quot;{surface.900}&quot;,
+                        borderColor: &quot;{surface.700}&quot;,
+                        color: &quot;{text.color}&quot;
+                    },
+                    popover: {
+                        background: &quot;{surface.900}&quot;,
+                        borderColor: &quot;{surface.700}&quot;,
+                        color: &quot;{text.color}&quot;
+                    },
+                    modal: {
+                        background: &quot;{surface.900}&quot;,
+                        borderColor: &quot;{surface.700}&quot;,
+                        color: &quot;{text.color}&quot;
+                    }
+                },
+                list: {
+                    option: {
+                        focusBackground: &quot;{surface.800}&quot;,
+                        selectedBackground: &quot;{highlight.background}&quot;,
+                        selectedFocusBackground: &quot;{highlight.focus.background}&quot;,
+                        color: &quot;{text.color}&quot;,
+                        focusColor: &quot;{text.hover.color}&quot;,
+                        selectedColor: &quot;{highlight.color}&quot;,
+                        selectedFocusColor: &quot;{highlight.focus.color}&quot;,
+                        icon: {
+                            color: &quot;{surface.500}&quot;,
+                            focusColor: &quot;{surface.400}&quot;
+                        }
+                    },
+                    optionGroup: {
+                        background: &quot;transparent&quot;,
+                        color: &quot;{text.muted.color}&quot;
+                    }
+                },
+                navigation: {
+                    item: {
+                        focusBackground: &quot;{surface.800}&quot;,
+                        activeBackground: &quot;{surface.800}&quot;,
+                        color: &quot;{text.color}&quot;,
+                        focusColor: &quot;{text.hover.color}&quot;,
+                        activeColor: &quot;{text.hover.color}&quot;,
+                        icon: {
+                            color: &quot;{surface.500}&quot;,
+                            focusColor: &quot;{surface.400}&quot;,
+                            activeColor: &quot;{surface.400}&quot;
+                        }
+                    },
+                    submenuLabel: {
+                        background: &quot;transparent&quot;,
+                        color: &quot;{text.muted.color}&quot;
+                    },
+                    submenuIcon: {
+                        color: &quot;{surface.500}&quot;,
+                        focusColor: &quot;{surface.400}&quot;,
+                        activeColor: &quot;{surface.400}&quot;
+                    }
+                }
+            }
+        }
+    }
+})</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/app/Interceptors/loading.interceptor.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadingInterceptor"></a>
+                    <span class="name">
+                        <span ><b>loadingInterceptor</b></span>
+                        <a href="#loadingInterceptor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>HttpInterceptorFn</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(req, next) &#x3D;&gt; {
+  // Inyección de dependencias
+  const loadingService &#x3D; inject(LoadingService); // Servicio de carga
+
+  // Verificar si la solicitud debe omitir el indicador de carga
+  if (req.context.get(SkipLoading)) {
+    return next(req); // Continuar sin mostrar el indicador de carga
+  }
+
+  // Activar el indicador de carga
+  loadingService.loadingOn();
+
+  return next(req).pipe(
+    finalize(() &#x3D;&gt; setTimeout(() &#x3D;&gt; loadingService.loadingOff(), 250)) // Desactivar el indicador después de la solicitud
+  );
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Interceptor que maneja la visualización de un indicador de carga durante las solicitudes HTTP.</p>
+<p>Este interceptor activa el servicio de carga antes de hacer la solicitud y desactiva el indicador de carga cuando la solicitud se completa.
+Si una solicitud especifica la opción <code>SkipLoading</code> en su contexto, el interceptor omite el manejo del indicador de carga.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SkipLoading"></a>
+                    <span class="name">
+                        <span ><b>SkipLoading</b></span>
+                        <a href="#SkipLoading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new HttpContextToken&lt;boolean&gt;(() &#x3D;&gt; false)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Token que permite especificar si una solicitud debe omitir la visualización del indicador de carga.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

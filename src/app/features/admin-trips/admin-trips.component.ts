@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {FormsModule, NgForm} from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { TripService } from '../../services/trip.service';
 import { YachtService } from '../../services/yacht.service';
 import { Trip } from '../../model/trip';
@@ -17,11 +17,21 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ToastComponent } from '../../../component/toast/toast.component';
 import { InputNumber } from 'primeng/inputnumber';
 import { TableModule } from 'primeng/table';
-import {Calendar} from 'primeng/calendar';
 
+/**
+ * Componente para la administración de viajes.
+ *
+ * Este componente permite a los administradores gestionar los viajes disponibles en la aplicación.
+ * Puede crear, editar, eliminar y listar viajes, además de interactuar con un servicio de gestión de yates.
+ *
+ * Utiliza varios componentes de PrimeNG para la interfaz de usuario, como formularios, tablas y modales de confirmación.
+ *
+ * @example
+ * <app-admin-trips></app-admin-trips>
+ */
 @Component({
   selector: 'app-admin-trips',
-  standalone: true,
+  standalone: true, // Componente autónomo, no requiere un módulo específico
   imports: [
     CommonModule,
     FormsModule,
@@ -37,14 +47,18 @@ import {Calendar} from 'primeng/calendar';
     TableModule,
     DatePicker
   ],
-  templateUrl: './admin-trips.component.html',
-  providers: [ConfirmationService]
+  templateUrl: './admin-trips.component.html', // Ruta a la plantilla HTML
+  providers: [ConfirmationService] // Proveedor para el servicio de confirmación
 })
 export class AdminTripsComponent implements OnInit, AfterViewInit {
+
+  /** Componente Toast para mostrar mensajes */
   @ViewChild(ToastComponent) toast!: ToastComponent;
+
+  /** Formulario para la creación/edición de viajes */
   @ViewChild('tripForm') tripForm!: NgForm;
 
-
+  /** Objeto trip para almacenar datos del viaje */
   trip: Trip = {
     name: '',
     departure: '',
@@ -63,24 +77,47 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
     }
   };
 
-
+  /** Lista de yates disponibles */
   yachts: Yacht[] = [];
+
+  /** Lista filtrada de yates basada en la búsqueda */
   filteredYachts: Yacht[] = [];
+
+  /** Lista de viajes disponibles */
   trips: Trip[] = [];
+
+  /** Viaje seleccionado para edición */
   selectedTrip: Trip | null = null;
+
+  /** Indicador de si estamos en modo de edición */
   isEditMode: boolean = false;
 
+  /**
+   * Constructor para inyectar los servicios necesarios.
+   *
+   * @param tripService Servicio para gestionar los viajes
+   * @param yachtService Servicio para gestionar los yates
+   * @param confirmationService Servicio para manejar las confirmaciones de acción
+   */
   constructor(
     private tripService: TripService,
     private yachtService: YachtService,
     private confirmationService: ConfirmationService
   ) {}
 
+  /**
+   * Método del ciclo de vida OnInit.
+   * Carga los datos de los viajes y los yates.
+   */
   ngOnInit(): void {
     this.loadYachts();
     this.loadTrips();
   }
 
+  /**
+   * Método del ciclo de vida AfterViewInit.
+   * Se ejecuta después de la inicialización de las vistas, verifica si los componentes necesarios están inicializados.
+   */
   ngAfterViewInit(): void {
     if (!this.toast) {
       console.error('ToastComponent is not initialized');
@@ -90,6 +127,9 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
     }
   }
 
+  /**
+   * Carga la lista de yates desde el servicio.
+   */
   loadYachts(): void {
     this.yachtService.getYachts().subscribe({
       next: (data: Yacht[]) => {
@@ -102,6 +142,9 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
     });
   }
 
+  /**
+   * Carga la lista de viajes desde el servicio.
+   */
   loadTrips(): void {
     this.tripService.allTrips().subscribe({
       next: (data: Trip[]) => {
@@ -113,11 +156,22 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
     });
   }
 
+  /**
+   * Filtra la lista de yates según la búsqueda del usuario.
+   *
+   * @param event Evento de búsqueda
+   */
   searchYachts(event: any) {
     const query = event.query.toLowerCase();
     this.filteredYachts = this.yachts.filter(yacht => yacht.model.toLowerCase().includes(query));
   }
 
+  /**
+   * Muestra una confirmación antes de enviar el formulario.
+   * Dependiendo del modo (creación o edición), muestra un mensaje de confirmación diferente.
+   *
+   * @param event Evento de confirmación
+   */
   confirmSubmit(event: Event) {
     this.confirmationService.confirm({
       target: event.target as EventTarget,
@@ -139,13 +193,18 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
     });
   }
 
+  /**
+   * Crea un nuevo viaje, verificando que todos los campos sean válidos.
+   */
   createTrip() {
+    // Validaciones del formulario
     if (!this.trip.startdate || !this.trip.enddate || !this.trip.yacht || !this.trip.yacht.id || !this.trip.name || !this.trip.price || !this.trip.duration_hours || !this.trip.description) {
       this.toast.addMessage('error', 'Error', 'Por favor, rellena todos los campos.');
       return;
     }
 
-    const today = new Date().toISOString().split('T')[0]; // Obtiene "yyyy-MM-dd" del día actual
+    // Validación de fechas
+    const today = new Date().toISOString().split('T')[0];
 
     if (this.trip.enddate < today || this.trip.startdate < today) {
       this.toast.addMessage('error', 'Error', 'La fecha de llegada o salida no puede ser anterior a hoy.');
@@ -160,11 +219,11 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
     const tripToSend: Trip = {
       ...this.trip,
       yacht: {
-        ...this.trip.yacht, // Usa los datos completos del yate seleccionado
+        ...this.trip.yacht,
         id: Number(this.trip.yacht.id)
       },
-      startdate: this.trip.startdate, // Se mantiene como string
-      enddate: this.trip.enddate // Se mantiene como string
+      startdate: this.trip.startdate,
+      enddate: this.trip.enddate
     };
 
     this.tripService.createTrip(tripToSend).subscribe({
@@ -179,10 +238,12 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
     });
   }
 
-
+  /**
+   * Permite editar un viaje, cargando sus datos en el formulario.
+   *
+   * @param trip Viaje a editar
+   */
   editTrip(trip: Trip): void {
-    console.log('Editando viaje:', trip);
-
     this.selectedTrip = { ...trip };
     this.trip = {
       ...trip,
@@ -191,11 +252,11 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
     };
 
     this.isEditMode = true;
-
-    console.log('Datos en el formulario:', this.trip);
   }
 
-
+  /**
+   * Actualiza un viaje existente.
+   */
   updateTrip(): void {
     if (!this.selectedTrip) return;
 
@@ -208,8 +269,6 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
       enddate: endDate.toISOString(),
       yacht: { ...this.trip.yacht }
     };
-
-    console.log('Request payload:', tripToSend); // Log the payload
 
     this.tripService.updateTrip(this.selectedTrip.id!, tripToSend).subscribe({
       next: () => {
@@ -224,13 +283,11 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
     });
   }
 
-
-  formatDate(date: string | Date): string {
-    if (!date) return '';
-    const d = new Date(date);
-    return d.toISOString().split('T')[0]; // ✅ Obtiene solo "YYYY-MM-DD"
-  }
-
+  /**
+   * Borra un viaje después de la confirmación.
+   *
+   * @param trip Viaje a eliminar
+   */
   deleteTrip(trip: Trip): void {
     this.confirmationService.confirm({
       message: 'estás seguro de que deseas borrar este viaje?',
@@ -250,6 +307,9 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
     });
   }
 
+  /**
+   * Resetea el formulario y el estado del componente.
+   */
   resetForm(): void {
     this.trip = {
       name: '',
@@ -270,14 +330,18 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
     };
 
     if (this.tripForm) {
-      this.tripForm.resetForm(); // Resetea los valores y estados del formulario
+      this.tripForm.resetForm();
     }
 
     this.selectedTrip = null;
     this.isEditMode = false;
   }
 
-
+  /**
+   * Método personalizado para ordenar datos en la tabla.
+   *
+   * @param event Evento de ordenación
+   */
   customSort(event: any) {
     event.data.sort((a: any, b: any) => {
       let value1 = a;
@@ -302,9 +366,3 @@ export class AdminTripsComponent implements OnInit, AfterViewInit {
 
   protected readonly String = String;
 }
-
-
-
-
-
-

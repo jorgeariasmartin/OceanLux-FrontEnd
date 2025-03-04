@@ -8,7 +8,7 @@ OceanLux es una aplicación web que permite a los usuarios explorar y comprar ti
 
 - **🖥️ Framework:** Angular
 - **📦 Administrador de paquetes:** npm
-- **🎨 Framework de estilos:** Bootstrap
+- **🎨 Framework de estilos:** Tailwind
 - **⚙️ Backend:** PHP con Symfony
 - **🗄️ Base de datos:** PostgreSQL
 
