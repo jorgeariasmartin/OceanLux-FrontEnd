@@ -24,7 +24,7 @@ Antes de ejecutar el proyecto, asegúrate de tener instalado:
 
 ### 1️⃣ Clona este repositorio:
 ```sh
-git clone https://github.com/tu-usuario/oceanlux-frontend.git
+git clone https://github.com/raulcruzadodelgado1/OceanLux-FrontEnd.git
 cd oceanlux-frontend
 ```
 
@@ -77,6 +77,36 @@ ng serve --proxy-config proxy.conf.json
 │── package.json       # Dependencias y scripts
 │── proxy.conf.json    # Configuración del proxy para la API
 ```
+
+## 📚 Documentación con Compodoc
+
+**Compodoc** es una herramienta para generar documentación automática de código Angular. Esta documentación incluye detalles sobre los componentes, servicios, modelos, módulos, etc.
+
+### Para generar y visualizar la documentación:
+
+1. **Generar la documentación**: Ejecuta el siguiente comando en la raíz del proyecto para generar los archivos de documentación:
+
+```sh
+npx compodoc -d docs
+```
+
+Este comando creará una carpeta `docs/` con toda la documentación generada.
+
+2. **Iniciar el servidor de documentación**: Para ver la documentación en el navegador, ejecuta:
+
+```sh
+npx compodoc -s
+```
+
+La documentación estará disponible en: [http://localhost:8080](http://localhost:8080).
+
+### Estructura de la documentación generada:
+
+- **Componentes**: Incluye detalles sobre los componentes, sus métodos, propiedades, y eventos.
+- **Servicios**: Se documentan los servicios y las interacciones con la API.
+- **Modelos y Interfaces**: Muestra la estructura de los datos manejados en la aplicación.
+- **Módulos**: Información sobre los módulos y sus dependencias.
+
 
 ## 👨‍💻 Autores
 
