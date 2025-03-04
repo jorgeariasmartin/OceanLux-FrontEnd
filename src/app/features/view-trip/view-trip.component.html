@@ -90,7 +90,9 @@
             icon="pi pi-ticket"
             severity="contrast"
             (click)="bookTrip()"
-            [disabled]="isBooking">
+            [disabled]="isBooking"
+            routerLink="/home"
+          >
           </p-button>
           <span class="font-bold text-xl text-primary">Total {{ totalPrice }} €</span>
         </div>
@@ -99,4 +101,4 @@
     </div>
   </div>
 </div>
-<app-loading></app-loading>
+<app-loading *ngIf="isBooking"></app-loading>

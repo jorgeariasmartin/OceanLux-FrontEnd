@@ -13,6 +13,8 @@ import { catchError, throwError } from 'rxjs';
  */
 export const SkipAuth = new HttpContextToken<boolean>(() => false);
 
+let alreadyRedirected = false;
+
 /**
  * Interceptor que maneja la autenticación para las solicitudes HTTP en la aplicación.
  *
@@ -38,18 +40,20 @@ export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<any>, next: 
   // Verificar si la ruta actual debe omitir la autenticación
   if (req.url.endsWith('/logaccount') || req.url.endsWith('/send-verification-email') || req.url.includes('/verify') || req.context.get(SkipAuth)) {
     console.log('⏩ Saltando autenticación:', req.url);
-    return next(req); // Continuar sin modificar la solicitud
+    return next(req);
   }
 
   // Si no hay token, redirigir al login
   if (!token) {
-    console.warn('🔴 No hay token, redirigiendo a login...');
-    toastService.showMessage('error', 'Sesión Expirada', 'Tu sesión ha caducado. Inicia sesión nuevamente.');
+    if (!alreadyRedirected) {
+      console.warn('🔴 No hay token, redirigiendo a login...');
+      toastService.showMessage('error', 'Sesión Expirada', 'Tu sesión ha caducado. Inicia sesión nuevamente.');
 
-    // Cerrar sesión y redirigir
-    authService.logout();
-    router.navigate(['/logaccount']).then(() => {});
-
+      authService.logout();
+      router.navigate(['/logaccount'], { replaceUrl: true }).then(() => {
+        alreadyRedirected = true;  // Marcar como redirigido
+      });
+    }
     return next(req); // Continuar sin modificar la solicitud
   }
 
@@ -58,16 +62,14 @@ export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<any>, next: 
 
   return next(authReq).pipe(
     catchError((error: HttpErrorResponse) => {
-      // Manejo de errores relacionados con la autenticación
       if (error.status === 401 || error.status === 403) {
         console.error('🚨 Token inválido o expirado, cerrando sesión...');
         toastService.showMessage('error', 'Acceso Denegado', 'Tu sesión ha expirado o no tienes permisos.');
 
-        // Cerrar sesión y redirigir
         authService.logout();
-        router.navigate(['/logaccount']);
+        router.navigate(['/logaccount'], { replaceUrl: true });
       }
-      return throwError(() => error); // Propagar el error
+      return throwError(() => error);
     })
   );
 };

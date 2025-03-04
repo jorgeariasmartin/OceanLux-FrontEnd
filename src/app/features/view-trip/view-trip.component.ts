@@ -6,13 +6,14 @@ import { InputNumber } from 'primeng/inputnumber';
 import { ButtonModule } from 'primeng/button';
 import { Trip } from '../../model/trip';
 import { TripService } from '../../services/trip.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { LoadingService } from '../../services/loading.service';
 import { LoadingComponent } from '../../../component/loading/loading.component';
 import { MessageService } from 'primeng/api';
 import { BookingService } from '../../services/booking.service';
 import { AuthService } from '../../services/auth.service';
+import { NgIf} from '@angular/common';
 
 /**
  * @description
@@ -30,11 +31,14 @@ import { AuthService } from '../../services/auth.service';
     FormsModule,
     InputNumber,
     ButtonModule,
-    LoadingComponent
+    LoadingComponent,
+    NgIf,
+    RouterLink
   ],
   templateUrl: './view-trip.component.html',
   providers: [MessageService]
 })
+
 export class ViewTripComponent implements OnInit {
 
   /**
@@ -95,6 +99,8 @@ export class ViewTripComponent implements OnInit {
    */
   isBooking: boolean = false;
 
+  cart: any[] = [];  // Definición de la propiedad cart
+
   /**
    * @description
    * Constructor que inyecta los servicios necesarios: `TripService`, `ActivatedRoute`, `LoadingService`, `BookingService`, `MessageService`, y `AuthService`.
@@ -120,14 +126,20 @@ export class ViewTripComponent implements OnInit {
    * Método de inicialización del componente que obtiene los datos del viaje desde el servicio `TripService` basado en el ID extraído de los parámetros de la ruta.
    */
   ngOnInit() {
-    this.loadingService.loadingOn();
+    this.loadingService.loading$.subscribe((isLoading) => {
+      if (isLoading) {
+        console.log('Cargando...');
+      } else {
+        console.log('Carga completada');
+      }
+    });
 
     this.route.paramMap.pipe(
       switchMap(params => {
         const id = Number(params.get('id'));
         if (isNaN(id) || id <= 0) {
           console.error("ID inválido del viaje");
-          this.loadingService.loadingOff();
+          this.loadingService.loadingOff(); // ✅ Correcto
           return [];
         }
         this.tripId = id;
@@ -139,10 +151,12 @@ export class ViewTripComponent implements OnInit {
         this.basePrice = data.price || 1000;
         this.setMaxTickets();
         this.calculateTotal();
-        this.loadingService.loadingOff();
       },
       error: () => {
-        this.loadingService.loadingOff();
+        console.error('Error al obtener el viaje');
+      },
+      complete: () => {
+        this.loadingService.loadingOff(); // ✅ Correcto
       }
     });
   }
@@ -172,20 +186,21 @@ export class ViewTripComponent implements OnInit {
    *
    * @returns {void}
    */
-  bookTrip() {
+  bookTrip(): void {
     if (this.value > this.maxTickets) {
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Número de tickets excede el máximo permitido' });
       return;
     }
 
     this.isBooking = true;
+    this.loadingService.loadingOn(); // Activar la carga solo al iniciar el proceso
 
-    // Obtén el user_id del AuthService
     this.authService.getUserId().subscribe({
       next: (userId) => {
-        if (userId === null) {
+        if (!userId) {
           this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo obtener el ID del usuario' });
           this.isBooking = false;
+          this.loadingService.loadingOff(); // Desactivar la carga en caso de error
           return;
         }
 
@@ -197,23 +212,32 @@ export class ViewTripComponent implements OnInit {
           booking_date: new Date().toISOString().split('T')[0]
         };
 
-        // Llamamos al servicio para crear la reserva
+        // Crear la reserva
         this.bookingService.createReservation(reservation).subscribe({
           next: () => {
+            // Agregar la reserva al "carrito" local
+            // Puedes guardar temporalmente la reserva en una propiedad como `cart` (array).
+            // Aquí mostramos el mensaje inmediatamente después de la reserva.
             this.messageService.add({ severity: 'success', summary: 'Añadido al carrito', detail: 'Tu viaje se ha añadido al carrito' });
+
+            // Si tienes una propiedad local para el "carrito", añade la reserva a ella
+            this.cart.push(reservation);
+
             this.isBooking = false;
+            this.loadingService.loadingOff(); // Desactivar la carga
           },
           error: () => {
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Ha ocurrido un error' });
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Ha ocurrido un error al crear la reserva' });
             this.isBooking = false;
+            this.loadingService.loadingOff(); // Desactivar la carga al fallar
           }
         });
       },
       error: () => {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo obtener el ID del usuario' });
         this.isBooking = false;
+        this.loadingService.loadingOff(); // Desactivar la carga al fallar
       }
     });
   }
-
 }
