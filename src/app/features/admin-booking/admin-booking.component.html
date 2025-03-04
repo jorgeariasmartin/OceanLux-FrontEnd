@@ -1,0 +1,61 @@
+<app-header></app-header>
+<div>
+  <p-table #dt [value]="reservations" (sortFunction)="customSort($event)" [customSort]="true" class="mt-8">
+    <ng-template #header>
+      <tr>
+        <th pSortableColumn="id">
+          ID
+          <p-sortIcon field="id" />
+        </th>
+        <th pSortableColumn="user.username">
+          User
+          <p-sortIcon field="user.username" />
+        </th>
+        <th pSortableColumn="trip.name">
+          Trip Name
+          <p-sortIcon field="trip.name" />
+        </th>
+        <th pSortableColumn="booking_date">
+          Booking Date
+          <p-sortIcon field="booking_date" />
+        </th>
+        <th pSortableColumn="number_of_guest">
+          Guests
+          <p-sortIcon field="number_of_guest" />
+        </th>
+        <th pSortableColumn="total_price">
+          Total Price
+          <p-sortIcon field="total_price" />
+        </th>
+        <th pSortableColumn="status">
+          Status
+          <p-sortIcon field="status" />
+        </th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-reservation>
+      <tr>
+        <td>{{ reservation.id }}</td>
+        <td>{{ reservation.user.username }}</td>
+        <td>{{ reservation.trip.name }}</td>
+        <td>{{ reservation.booking_date | date: 'shortDate' }}</td>
+        <td>{{ reservation.number_of_guest }}</td>
+        <td>{{ reservation.total_price | currency: 'EUR' }}</td>
+        <td>
+          <span [ngClass]="{
+            'status-pending': reservation.status === 'PENDING',
+            'status-confirmed': reservation.status === 'CONFIRMED',
+            'status-cancelled': reservation.status === 'CANCELLED'
+          }">
+            {{ reservation.status }}
+          </span>
+        </td>
+        <td>
+          <p-button icon="pi pi-trash" severity="danger" (click)="deleteReservation(reservation)"></p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
