@@ -2,8 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ToastModule} from 'primeng/toast';
 import {HeaderComponent} from '../../../component/header/header.component';
 import {CommonModule} from '@angular/common';
-import {HttpClient} from '@angular/common/http';
-import {ReservationService} from '../../services/booking.service';
+import {BookingService} from '../../services/booking.service';
 import {Button, ButtonModule} from 'primeng/button';
 import {TableModule} from 'primeng/table';
 
@@ -22,7 +21,7 @@ import {TableModule} from 'primeng/table';
 export class AdminBookingComponent implements OnInit {
   reservations: any[] = [];
 
-  constructor(private reservationService: ReservationService) {}
+  constructor(private reservationService: BookingService) {}
 
 
   ngOnInit(): void {
