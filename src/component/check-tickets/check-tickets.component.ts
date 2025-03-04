@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule, NgIf } from '@angular/common';
 import { Observable } from 'rxjs';
@@ -56,8 +56,13 @@ export class CheckTicketsComponent implements OnInit {
    * @param authService Servicio que gestiona la autenticación.
    * @param bookingService Servicio que gestiona las reservas.
    * @param tripService Servicio que gestiona los viajes.
+   * @param cdr
    */
-  constructor(private authService: AuthService, private bookingService: BookingService, private tripService: TripService) {}
+  constructor(
+    private authService: AuthService,
+    private bookingService: BookingService,
+    private tripService: TripService,
+    private cdr: ChangeDetectorRef) {}
 
   /**
    * Método de inicialización del componente. Verifica si el usuario está autenticado,
@@ -100,6 +105,8 @@ export class CheckTicketsComponent implements OnInit {
    */
   closeDropdown(event: Event) {
     const clickedElement = event.target as HTMLElement;
+
+    // Si el clic no está dentro del dropdown ni del botón de toggle
     if (!clickedElement.closest('#cartDropdown') && !clickedElement.closest('#toggleCart')) {
       this.showCartDropdown = false;
     }
@@ -137,7 +144,11 @@ export class CheckTicketsComponent implements OnInit {
   deleteReservation(reservationId: number) {
     this.bookingService.deleteReservation(reservationId).subscribe({
       next: () => {
+        // Filtramos la reserva eliminada
         this.pendingReservations = this.pendingReservations.filter(res => res.id !== reservationId);
+
+        // Forzar la detección de cambios
+        this.cdr.detectChanges();  // Forzar la actualización de la vista
       },
       error: () => {
         console.error('Error al eliminar la reserva');
