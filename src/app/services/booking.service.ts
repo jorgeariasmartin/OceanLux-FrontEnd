@@ -46,6 +46,10 @@ export class BookingService {
     return this.http.get<any[]>(`${this.apiUrl}/pending/${userId}`);
   }
 
+  getAllReservations(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/all`);
+  }
+
   /**
    * Método para eliminar una reserva.
    *
